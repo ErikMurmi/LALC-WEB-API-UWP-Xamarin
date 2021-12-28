@@ -6,12 +6,11 @@ namespace LALC_API.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Usuarios
+    public partial class Usuario
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuarios()
+        public Usuario()
         {
-            Categorias = new HashSet<Categorias>();
+            Categorias = new HashSet<Categoria>();
         }
 
         [Key]
@@ -25,6 +24,6 @@ namespace LALC_API.Models
         public string nombre { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Categorias> Categorias { get; set; }
+        public virtual ICollection<Categoria> Categorias { get; set; }
     }
 }

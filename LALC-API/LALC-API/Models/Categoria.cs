@@ -6,19 +6,18 @@ namespace LALC_API.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Subcategorias
+    public partial class Categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Subcategorias()
+        public Categoria()
         {
-            Conceptoes = new HashSet<Conceptoes>();
-            Practicas = new HashSet<Practicas>();
+            Subcategorias = new HashSet<Subcategoria>();
         }
 
         [Key]
-        public int SubcategoriaID { get; set; }
-
         public int CategoriaID { get; set; }
+
+        public int UsuarioID { get; set; }
 
         [Required]
         public string Nombre { get; set; }
@@ -27,12 +26,11 @@ namespace LALC_API.Models
 
         public string Descripcion { get; set; }
 
-        public virtual Categorias Categorias { get; set; }
+        public bool esPrioritaria { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Conceptoes> Conceptoes { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Practicas> Practicas { get; set; }
+        public virtual ICollection<Subcategoria> Subcategorias { get; set; }
     }
 }

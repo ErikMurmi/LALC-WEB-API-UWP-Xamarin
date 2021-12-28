@@ -6,17 +6,19 @@ namespace LALC_API.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Practicas
+    public partial class Concepto
     {
         [Key]
-        public int PracticaID { get; set; }
+        public int ConceptoID { get; set; }
 
         public int SubcategoriaID { get; set; }
 
-        public int CantidadConceptos { get; set; }
+        [Required]
+        public string Definicion { get; set; }
 
-        public DateTime Fecha { get; set; }
+        [Required]
+        public string Titulo { get; set; }
 
-        public virtual Subcategorias Subcategorias { get; set; }
+        public virtual Subcategoria Subcategoria { get; set; }
     }
 }

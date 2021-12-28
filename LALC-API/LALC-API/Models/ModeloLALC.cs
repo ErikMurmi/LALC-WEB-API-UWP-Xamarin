@@ -13,11 +13,11 @@ namespace LALC_API.Models
         }
 
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<Categorias> Categorias { get; set; }
-        public virtual DbSet<Conceptoes> Conceptoes { get; set; }
-        public virtual DbSet<Practicas> Practicas { get; set; }
-        public virtual DbSet<Subcategorias> Subcategorias { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Categoria> Categorias { get; set; }
+        public virtual DbSet<Concepto> Conceptoes { get; set; }
+        public virtual DbSet<Practica> Practicas { get; set; }
+        public virtual DbSet<Subcategoria> Subcategorias { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -17,16 +17,16 @@ namespace LALC_API.Controllers
         private ModeloLALC db = new ModeloLALC();
 
         // GET: api/Conceptoes
-        public IQueryable<Conceptoes> GetConceptoes()
+        public IQueryable<Concepto> GetConceptoes()
         {
             return db.Conceptoes;
         }
 
         // GET: api/Conceptoes/5
-        [ResponseType(typeof(Conceptoes))]
+        [ResponseType(typeof(Concepto))]
         public IHttpActionResult GetConceptoes(int id)
         {
-            Conceptoes conceptoes = db.Conceptoes.Find(id);
+            Concepto conceptoes = db.Conceptoes.Find(id);
             if (conceptoes == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace LALC_API.Controllers
 
         // PUT: api/Conceptoes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutConceptoes(int id, Conceptoes conceptoes)
+        public IHttpActionResult PutConceptoes(int id, Concepto conceptoes)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +71,8 @@ namespace LALC_API.Controllers
         }
 
         // POST: api/Conceptoes
-        [ResponseType(typeof(Conceptoes))]
-        public IHttpActionResult PostConceptoes(Conceptoes conceptoes)
+        [ResponseType(typeof(Concepto))]
+        public IHttpActionResult PostConceptoes(Concepto conceptoes)
         {
             if (!ModelState.IsValid)
             {
@@ -86,10 +86,10 @@ namespace LALC_API.Controllers
         }
 
         // DELETE: api/Conceptoes/5
-        [ResponseType(typeof(Conceptoes))]
+        [ResponseType(typeof(Concepto))]
         public IHttpActionResult DeleteConceptoes(int id)
         {
-            Conceptoes conceptoes = db.Conceptoes.Find(id);
+            Concepto conceptoes = db.Conceptoes.Find(id);
             if (conceptoes == null)
             {
                 return NotFound();

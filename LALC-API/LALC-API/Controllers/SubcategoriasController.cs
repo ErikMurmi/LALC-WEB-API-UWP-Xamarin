@@ -17,16 +17,16 @@ namespace LALC_API.Controllers
         private ModeloLALC db = new ModeloLALC();
 
         // GET: api/Subcategorias
-        public IQueryable<Subcategorias> GetSubcategorias()
+        public IQueryable<Subcategoria> GetSubcategorias()
         {
             return db.Subcategorias;
         }
 
         // GET: api/Subcategorias/5
-        [ResponseType(typeof(Subcategorias))]
+        [ResponseType(typeof(Subcategoria))]
         public IHttpActionResult GetSubcategorias(int id)
         {
-            Subcategorias subcategorias = db.Subcategorias.Find(id);
+            Subcategoria subcategorias = db.Subcategorias.Find(id);
             if (subcategorias == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace LALC_API.Controllers
 
         // PUT: api/Subcategorias/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSubcategorias(int id, Subcategorias subcategorias)
+        public IHttpActionResult PutSubcategorias(int id, Subcategoria subcategorias)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +71,8 @@ namespace LALC_API.Controllers
         }
 
         // POST: api/Subcategorias
-        [ResponseType(typeof(Subcategorias))]
-        public IHttpActionResult PostSubcategorias(Subcategorias subcategorias)
+        [ResponseType(typeof(Subcategoria))]
+        public IHttpActionResult PostSubcategorias(Subcategoria subcategorias)
         {
             if (!ModelState.IsValid)
             {
@@ -86,10 +86,10 @@ namespace LALC_API.Controllers
         }
 
         // DELETE: api/Subcategorias/5
-        [ResponseType(typeof(Subcategorias))]
+        [ResponseType(typeof(Subcategoria))]
         public IHttpActionResult DeleteSubcategorias(int id)
         {
-            Subcategorias subcategorias = db.Subcategorias.Find(id);
+            Subcategoria subcategorias = db.Subcategorias.Find(id);
             if (subcategorias == null)
             {
                 return NotFound();

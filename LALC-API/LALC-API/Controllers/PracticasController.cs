@@ -17,16 +17,16 @@ namespace LALC_API.Controllers
         private ModeloLALC db = new ModeloLALC();
 
         // GET: api/Practicas
-        public IQueryable<Practicas> GetPracticas()
+        public IQueryable<Practica> GetPracticas()
         {
             return db.Practicas;
         }
 
         // GET: api/Practicas/5
-        [ResponseType(typeof(Practicas))]
+        [ResponseType(typeof(Practica))]
         public IHttpActionResult GetPracticas(int id)
         {
-            Practicas practicas = db.Practicas.Find(id);
+            Practica practicas = db.Practicas.Find(id);
             if (practicas == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace LALC_API.Controllers
 
         // PUT: api/Practicas/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPracticas(int id, Practicas practicas)
+        public IHttpActionResult PutPracticas(int id, Practica practicas)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +71,8 @@ namespace LALC_API.Controllers
         }
 
         // POST: api/Practicas
-        [ResponseType(typeof(Practicas))]
-        public IHttpActionResult PostPracticas(Practicas practicas)
+        [ResponseType(typeof(Practica))]
+        public IHttpActionResult PostPracticas(Practica practicas)
         {
             if (!ModelState.IsValid)
             {
@@ -86,10 +86,10 @@ namespace LALC_API.Controllers
         }
 
         // DELETE: api/Practicas/5
-        [ResponseType(typeof(Practicas))]
+        [ResponseType(typeof(Practica))]
         public IHttpActionResult DeletePracticas(int id)
         {
-            Practicas practicas = db.Practicas.Find(id);
+            Practica practicas = db.Practicas.Find(id);
             if (practicas == null)
             {
                 return NotFound();

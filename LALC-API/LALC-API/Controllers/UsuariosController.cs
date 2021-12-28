@@ -17,16 +17,16 @@ namespace LALC_API.Controllers
         private ModeloLALC db = new ModeloLALC();
 
         // GET: api/Usuarios
-        public IQueryable<Usuarios> GetUsuarios()
+        public IQueryable<Usuario> GetUsuarios()
         {
             return db.Usuarios;
         }
 
         // GET: api/Usuarios/5
-        [ResponseType(typeof(Usuarios))]
+        [ResponseType(typeof(Usuario))]
         public IHttpActionResult GetUsuarios(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
+            Usuario usuarios = db.Usuarios.Find(id);
             if (usuarios == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace LALC_API.Controllers
 
         // PUT: api/Usuarios/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUsuarios(int id, Usuarios usuarios)
+        public IHttpActionResult PutUsuarios(int id, Usuario usuarios)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +71,8 @@ namespace LALC_API.Controllers
         }
 
         // POST: api/Usuarios
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult PostUsuarios(Usuarios usuarios)
+        [ResponseType(typeof(Usuario))]
+        public IHttpActionResult PostUsuarios(Usuario usuarios)
         {
             if (!ModelState.IsValid)
             {
@@ -86,10 +86,10 @@ namespace LALC_API.Controllers
         }
 
         // DELETE: api/Usuarios/5
-        [ResponseType(typeof(Usuarios))]
+        [ResponseType(typeof(Usuario))]
         public IHttpActionResult DeleteUsuarios(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
+            Usuario usuarios = db.Usuarios.Find(id);
             if (usuarios == null)
             {
                 return NotFound();

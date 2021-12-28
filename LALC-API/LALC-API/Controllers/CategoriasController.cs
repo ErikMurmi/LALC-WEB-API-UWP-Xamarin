@@ -17,16 +17,16 @@ namespace LALC_API.Controllers
         private ModeloLALC db = new ModeloLALC();
 
         // GET: api/Categorias
-        public IQueryable<Categorias> GetCategorias()
+        public IQueryable<Categoria> GetCategorias()
         {
             return db.Categorias;
         }
 
         // GET: api/Categorias/5
-        [ResponseType(typeof(Categorias))]
+        [ResponseType(typeof(Categoria))]
         public IHttpActionResult GetCategorias(int id)
         {
-            Categorias categorias = db.Categorias.Find(id);
+            Categoria categorias = db.Categorias.Find(id);
             if (categorias == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace LALC_API.Controllers
 
         // PUT: api/Categorias/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCategorias(int id, Categorias categorias)
+        public IHttpActionResult PutCategorias(int id, Categoria categorias)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +71,8 @@ namespace LALC_API.Controllers
         }
 
         // POST: api/Categorias
-        [ResponseType(typeof(Categorias))]
-        public IHttpActionResult PostCategorias(Categorias categorias)
+        [ResponseType(typeof(Categoria))]
+        public IHttpActionResult PostCategorias(Categoria categorias)
         {
             if (!ModelState.IsValid)
             {
@@ -86,10 +86,10 @@ namespace LALC_API.Controllers
         }
 
         // DELETE: api/Categorias/5
-        [ResponseType(typeof(Categorias))]
+        [ResponseType(typeof(Categoria))]
         public IHttpActionResult DeleteCategorias(int id)
         {
-            Categorias categorias = db.Categorias.Find(id);
+            Categoria categorias = db.Categorias.Find(id);
             if (categorias == null)
             {
                 return NotFound();
