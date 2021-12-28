@@ -81,5 +81,20 @@ namespace LALC_UWP
             Frame.Navigate(typeof(SubcategoriasView));
         }
 
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri(categorias_url);
+            request.Method = HttpMethod.Delete;
+            request.Headers.Add("Accept", "application/json");
+            var client = new HttpClient(httpHandler);
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                initialLoad();
+            }
+        }
     }
 }

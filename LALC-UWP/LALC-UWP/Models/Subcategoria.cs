@@ -22,5 +22,6 @@ namespace LALC_UWP.Models
 
         public virtual Categoria Categoria { get; set; }
 
+        public virtual ICollection<Concepto> Conceptos { get; set; }
     }
 }

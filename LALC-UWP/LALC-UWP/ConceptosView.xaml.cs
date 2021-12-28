@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,29 +21,19 @@ namespace LALC_UWP
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SubcategoriasView : Page
+    public sealed partial class ConceptosView : Page
     {
-        public static Categoria categoria;
-        public SubcategoriasView()
+        public static Subcategoria subcategoria;
+        public ConceptosView()
         {
             this.InitializeComponent();
-            LoadSubcategorias();
+            LoadConceptos();
         }
 
-        public void LoadSubcategorias()
+        public void LoadConceptos()
         {
-            Subcategories.ItemsSource = categoria.Subcategorias;
-        }
-
-        public void Subcategorias_ItemClick(object sender  , ItemClickEventArgs e)
-        {
-            var sb = (Subcategoria)e.ClickedItem;
-            ConceptosView.subcategoria = sb;
-            if (sb.Conceptos.Count > 0)
-            {
-                Frame.Navigate(typeof(ConceptosView));
-            }
-            
+            Conceptos.ItemsSource = subcategoria.Conceptos;
         }
     }
+
 }
