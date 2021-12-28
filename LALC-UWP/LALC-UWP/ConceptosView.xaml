@@ -16,27 +16,36 @@
                 Background="Aqua"
                 BorderBrush="Black"
                 BorderThickness="1" CornerRadius="15,15,15,15" Margin="10,10,10,10" >
-
-                <TextBlock 
+                <StackPanel 
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <TextBlock 
                     x:Name="title" 
                     Margin="8,0"  
                     Text="{x:Bind Titulo}" Foreground="White"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     />
-                <TextBlock 
+                    <TextBlock 
                     x:Name="def" 
                     Margin="8,0"  
+                    TextWrapping="Wrap" 
                     Text="{x:Bind Definicion}" Foreground="White"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     />
+                </StackPanel>
+                
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
     <Grid>
         <StackPanel Orientation="Vertical">
+            <TextBlock  x:Name="TituloConceptos" Text="Conceptos" HorizontalAlignment="Center" FontSize="50">
+
+            </TextBlock>
             <controls:AdaptiveGridView Name="Conceptos"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"

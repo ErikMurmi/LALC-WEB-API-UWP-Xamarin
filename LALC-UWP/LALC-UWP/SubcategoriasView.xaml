@@ -30,6 +30,9 @@
     
     <Grid>
         <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="TituloSubcategorias" Text="Subcategorias" HorizontalAlignment="Center" FontSize="50">
+                
+            </TextBlock>
             <controls:AdaptiveGridView Name="Subcategories"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"

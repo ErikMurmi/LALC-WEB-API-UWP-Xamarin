@@ -11,7 +11,7 @@ namespace LALC_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Subcategoria()
         {
-            Conceptoes = new HashSet<Concepto>();
+            Conceptos = new HashSet<Concepto>();
             Practicas = new HashSet<Practica>();
         }
 
@@ -30,7 +30,7 @@ namespace LALC_API.Models
         public virtual Categoria Categoria { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Concepto> Conceptoes { get; set; }
+        public virtual ICollection<Concepto> Conceptos { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Practica> Practicas { get; set; }

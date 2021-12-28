@@ -31,10 +31,11 @@ namespace LALC_UWP
         public string actualUserId = "1";
         public string categorias_url = "https://localhost:44318/API/Categorias";
         public string usuarios_url = "https://localhost:44318/API/Usuarios";
+        public Usuario usuarioActual;
         public MainPage()
         {
             this.InitializeComponent();
-            initialLoad();
+            loadUserInfo();
         }
 
 
@@ -52,12 +53,13 @@ namespace LALC_UWP
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Usuario>(content);
-                Cards.ItemsSource = resultado.Categorias;
+                usuarioActual = resultado;
+                CategoriasGrid.ItemsSource = resultado.Categorias;
             }
         }
         public async void initialLoad()
         {
-            var lt = Cards as AdaptiveGridView;
+            var lt = CategoriasGrid as AdaptiveGridView;
             //ListaArtistas.ItemClick += onItemClick;
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
@@ -71,7 +73,7 @@ namespace LALC_UWP
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<List<Categoria>>(content);
-                Cards.ItemsSource = resultado;
+                CategoriasGrid.ItemsSource = resultado;
             }
         }
 
@@ -94,6 +96,21 @@ namespace LALC_UWP
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 initialLoad();
+            }
+        }
+
+        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            // Only get results when it was a user typing, 
+            // otherwise assume the value got filled in by TextMemberPath 
+            // or the handler for SuggestionChosen.
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                var filteredList =(List<Categoria>) usuarioActual.Categorias;
+                filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
+                CategoriasGrid.ItemsSource = filteredList;
+                //Set the ItemsSource to be your filtered dataset
+                //sender.ItemsSource = dataset;
             }
         }
     }
