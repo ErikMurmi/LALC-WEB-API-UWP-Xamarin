@@ -32,6 +32,7 @@ namespace LALC_UWP
 
         public void LoadConceptos()
         {
+            TituloConceptos.Text = subcategoria.Nombre;
             Conceptos.ItemsSource = subcategoria.Conceptos;
         }
     }

@@ -30,18 +30,31 @@
     
     <Grid>
         <StackPanel Orientation="Vertical">
+            <Button Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,20,0" Foreground="White" Background="White" Width="100" Height="50">
+                
+            </Button>
             <TextBlock x:Name="TituloSubcategorias" Text="Subcategorias" HorizontalAlignment="Center" FontSize="50">
                 
             </TextBlock>
-            <controls:AdaptiveGridView Name="Subcategories"
+            <controls:AdaptiveGridView Name="SubcategoriasGrid"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
                                    ItemHeight="143"
                                    DesiredWidth="232"
                                    SelectionMode="None"
+                                   RightTapped="Subcategories_RightTapped"
                                    ItemClick="Subcategorias_ItemClick"
                                    IsItemClickEnabled="True"
-                                   ItemTemplate="{StaticResource SubcategoriaTemplate}" />
+                                   ItemTemplate="{StaticResource SubcategoriaTemplate}">
+                <controls:AdaptiveGridView.Resources>
+                    <MenuFlyout x:Name="subcategoriasMenuFlyout">
+                        <MenuFlyout.Items>
+                            <MenuFlyoutItem x:Name="Editar" Text="Editar" Icon="Edit" Click="Editar_Click"/>
+                            <MenuFlyoutItem x:Name="Eliminar" Text="Eliminar" Icon="Delete" Click="Eliminar_Click"/>
+                        </MenuFlyout.Items>
+                    </MenuFlyout>
+                </controls:AdaptiveGridView.Resources>
+            </controls:AdaptiveGridView> 
         </StackPanel>
     </Grid>
     

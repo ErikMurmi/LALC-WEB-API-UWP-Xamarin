@@ -32,10 +32,11 @@ namespace LALC_UWP
         public string categorias_url = "https://localhost:44318/API/Categorias";
         public string usuarios_url = "https://localhost:44318/API/Usuarios";
         public Usuario usuarioActual;
+        public int tappedCategoria;
         public MainPage()
         {
             this.InitializeComponent();
-            loadUserInfo();
+            initialLoad();
         }
 
 
@@ -59,7 +60,6 @@ namespace LALC_UWP
         }
         public async void initialLoad()
         {
-            var lt = CategoriasGrid as AdaptiveGridView;
             //ListaArtistas.ItemClick += onItemClick;
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
@@ -83,21 +83,6 @@ namespace LALC_UWP
             Frame.Navigate(typeof(SubcategoriasView));
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(categorias_url);
-            request.Method = HttpMethod.Delete;
-            request.Headers.Add("Accept", "application/json");
-            var client = new HttpClient(httpHandler);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                initialLoad();
-            }
-        }
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
@@ -113,5 +98,36 @@ namespace LALC_UWP
                 //sender.ItemsSource = dataset;
             }
         }
+
+        private void CategoriasGrid_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            AdaptiveGridView categorias = (AdaptiveGridView)sender;
+            categoriasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
+            var tempCategoria = ((FrameworkElement)e.OriginalSource).DataContext as Categoria;
+            tappedCategoria = tempCategoria.CategoriaID;
+        }
+
+        private void Editar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void Eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri(categorias_url+"/"+tappedCategoria);
+            request.Method = HttpMethod.Delete;
+            request.Headers.Add("Accept", "application/json");
+            var client = new HttpClient(httpHandler);
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                loadUserInfo();
+            }
+        }
+
     }
+
 }

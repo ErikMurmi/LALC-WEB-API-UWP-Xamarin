@@ -16,17 +16,6 @@
             <Grid
                 Background="{x:Bind Path=Color}"
                 BorderThickness="2" CornerRadius="15,15,15,15" Margin="10,10,10,10">
-                <Button 
-                    Content="..."
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Top"
-                    Background="{x:Bind Path=Color}"
-                    Height="32"
-                    FontSize="18"
-                    UseSystemFocusVisuals = "False"
-                    Click="Button_Click"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top" FontWeight="Bold" Margin="0,4,4,0" FocusVisualPrimaryBrush="#00000000" FocusVisualSecondaryBrush="#00000000" />
                 <TextBlock 
                     x:Name="EP2EmName" 
                     Margin="8,0" 
@@ -60,9 +49,19 @@
                                    ItemHeight="143"
                                    DesiredWidth="232"
                                    SelectionMode="None"
+                                   RightTapped="CategoriasGrid_RightTapped"
                                    ItemClick="Cards_ItemClick"
                                    IsItemClickEnabled="True"
-                                   ItemTemplate="{StaticResource CardTemplate}" Margin="10,10,10,10" />
+                                   ItemTemplate="{StaticResource CardTemplate}" Margin="10,10,10,10">
+                <controls:AdaptiveGridView.Resources>
+                    <MenuFlyout x:Name="categoriasMenuFlyout">
+                        <MenuFlyout.Items>
+                            <MenuFlyoutItem x:Name="Editar" Text="Editar" Icon="Edit" Click="Editar_Click"/>
+                            <MenuFlyoutItem x:Name="Eliminar" Text="Eliminar" Icon="Delete" Click="Eliminar_Click"/>
+                        </MenuFlyout.Items>
+                    </MenuFlyout>
+                </controls:AdaptiveGridView.Resources>
+            </controls:AdaptiveGridView> 
 
         </StackPanel>
 
