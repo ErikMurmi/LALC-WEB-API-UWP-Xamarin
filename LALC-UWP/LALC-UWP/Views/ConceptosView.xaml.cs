@@ -1,8 +1,12 @@
 ﻿using LALC_UWP.Models;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,18 +27,75 @@ namespace LALC_UWP
     /// </summary>
     public sealed partial class ConceptosView : Page
     {
+        public string subcategorias_url = "https://localhost:44318/API/Subcategorias";
+        public string conceptos_url = "https://localhost:44318/API/Conceptoes";
+
         public static Subcategoria subcategoria;
+        public int tappedConcepto;
         public ConceptosView()
         {
             this.InitializeComponent();
             LoadConceptos();
         }
 
-        public void LoadConceptos()
+        public async void LoadConceptos()
         {
-            TituloConceptos.Text = subcategoria.Nombre;
-            Conceptos.ItemsSource = subcategoria.Conceptos;
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri(subcategorias_url + "/" + subcategoria.SubcategoriaID);
+            request.Method = HttpMethod.Get;
+            request.Headers.Add("Accept", "application/json");
+            var client = new HttpClient(httpHandler);
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Subcategoria>(content);
+                TituloConceptos.Text = resultado.Nombre;
+                Conceptos.ItemsSource = resultado.Conceptos;
+            }
+
+            
         }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
+
+        private void Conceptos_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            AdaptiveGridView conceptos = (AdaptiveGridView)sender;
+            conceptosMenuFlyout.ShowAt(conceptos, e.GetPosition(conceptos));
+            var tempConcepto = ((FrameworkElement)e.OriginalSource).DataContext as Concepto;
+            tappedConcepto = tempConcepto.ConceptoID;
+        }
+
+
+        private async void Eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri(conceptos_url + "/" + tappedConcepto);
+            request.Method = HttpMethod.Delete;
+            request.Headers.Add("Accept", "application/json");
+            var client = new HttpClient(httpHandler);
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                LoadConceptos();
+            }
+        }
+
+        private void Editar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 
 }

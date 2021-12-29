@@ -43,6 +43,9 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
+            <Button Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,20,0" Foreground="White" Background="White" Width="100" Height="50">
+
+            </Button>
             <TextBlock  x:Name="TituloConceptos" Text="Conceptos" HorizontalAlignment="Center" FontSize="50">
 
             </TextBlock>
@@ -51,9 +54,20 @@
                                    OneRowModeEnabled="False"
                                    ItemHeight="143"
                                    DesiredWidth="232"
+                                   RightTapped="Conceptos_RightTapped"
                                    SelectionMode="None"
                                    IsItemClickEnabled="True"
-                                   ItemTemplate="{StaticResource ConceptoTemplate}" />
+                                   ItemTemplate="{StaticResource ConceptoTemplate}" >
+
+                <controls:AdaptiveGridView.Resources>
+                    <MenuFlyout x:Name="conceptosMenuFlyout">
+                        <MenuFlyout.Items>
+                            <MenuFlyoutItem x:Name="Editar" Text="Editar" Icon="Edit" Click="Editar_Click"/>
+                            <MenuFlyoutItem x:Name="Eliminar" Text="Eliminar" Icon="Delete" Click="Eliminar_Click"/>
+                        </MenuFlyout.Items>
+                    </MenuFlyout>
+                </controls:AdaptiveGridView.Resources>
+            </controls:AdaptiveGridView>
         </StackPanel>
     </Grid>
 </Page>
