@@ -57,10 +57,16 @@ namespace LALC_UWP
                 var resultado = JsonConvert.DeserializeObject<Usuario>(content);
                 usuarioActual = resultado;
                 CategoriasGrid.ItemsSource = usuarioActual.Categorias;
+                loadCategoriasPrioritarias();
             }
         }
         
-
+        public void loadCategoriasPrioritarias()
+        {
+            var filteredList = (List<Categoria>)usuarioActual.Categorias;
+            filteredList = filteredList.FindAll(s => s.esPrioritaria);
+            PrioritariasList.ItemsSource = filteredList;
+        }
         private void Cards_ItemClick(object sender, ItemClickEventArgs e)
         {
             SubcategoriasView.categoria = (Categoria)e.ClickedItem;
@@ -74,6 +80,7 @@ namespace LALC_UWP
             {
                 var filteredList =(List<Categoria>) usuarioActual.Categorias;
                 filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
+                CategoriasGrid.ItemsSource = filteredList;
             }
         }
 
