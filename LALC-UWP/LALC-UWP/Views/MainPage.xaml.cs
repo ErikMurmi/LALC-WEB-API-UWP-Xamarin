@@ -26,6 +26,12 @@ namespace LALC_UWP
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
+    /// 
+    public class BoolToVisibility : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language) => value!=null ? Visibility.Visible : Visibility.Collapsed;
+        public object ConvertBack(object value, Type targetType, object parameter, string language) { throw new NotImplementedException(); }
+    }
     public sealed partial class MainPage : Page
     {
 
