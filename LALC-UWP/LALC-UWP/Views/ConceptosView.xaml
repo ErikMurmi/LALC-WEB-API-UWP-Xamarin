@@ -52,7 +52,14 @@
             <TextBlock  x:Name="TituloConceptos" Text="Conceptos" HorizontalAlignment="Center" FontSize="50">
 
             </TextBlock>
-            <controls:AdaptiveGridView Name="Conceptos"
+            <AutoSuggestBox PlaceholderText="Buscar"  x:Name="BuscarCn" TextChanged="BuscarCn_TextChanged" 
+                            HorizontalAlignment="Center" Width="200"
+                            Margin="0,10,0,0" UseLayoutRounding="True"
+                            QueryIcon="Zoom" Background="White" 
+                            BorderBrush="White" Foreground="White" 
+                            RequestedTheme="Dark" 
+                            FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="White"/>
+            <controls:AdaptiveGridView Name="ConceptosGrid"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
                                    ItemHeight="200"

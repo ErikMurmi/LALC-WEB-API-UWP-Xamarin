@@ -56,7 +56,7 @@ namespace LALC_UWP
                 var resultado = JsonConvert.DeserializeObject<Subcategoria>(content);
                 color = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
                 TituloConceptos.Text = resultado.Nombre;
-                Conceptos.ItemsSource = resultado.Conceptos;
+                ConceptosGrid.ItemsSource = resultado.Conceptos;
                 //Conceptos.ItemTemplate.SetValue(BackgroundProperty, new SolidColorBrush(ColorHelper.ToColor(color)));
                 
             }
@@ -101,6 +101,15 @@ namespace LALC_UWP
         }
 
 
+        private void BuscarCn_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                var filteredList = (List<Concepto>)subcategoria.Conceptos;
+                filteredList = filteredList.FindAll(s => s.Titulo.ToLower().Contains(sender.Text.ToLower()));
+                ConceptosGrid.ItemsSource = filteredList;
+            }
+        }
     }
 
 }
