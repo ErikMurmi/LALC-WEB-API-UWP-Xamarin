@@ -63,7 +63,8 @@
         </controls:GridSplitter>
         <StackPanel Orientation="Vertical" MinWidth="250">
             <TextBlock Text="Categorias" x:Name="TituloCategorias" HorizontalAlignment="Center" FontSize="50"/>
-            <AutoSuggestBox PlaceholderText="Search"  TextChanged="AutoSuggestBox_TextChanged" HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" UseLayoutRounding="True" QueryIcon="Zoom" Background="White" BorderBrush="White" Foreground="White" RequestedTheme="Dark" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="White"/>
+            <AutoSuggestBox PlaceholderText="Buscar"  TextChanged="AutoSuggestBox_TextChanged" 
+                            HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" UseLayoutRounding="True" QueryIcon="Zoom" Background="White" BorderBrush="White" Foreground="White" RequestedTheme="Dark" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="White"/>
             <Border Grid.Column="0">
                 <controls:AdaptiveGridView x:Name="CategoriasGrid" 
                                    StretchContentForSingleRow="False"

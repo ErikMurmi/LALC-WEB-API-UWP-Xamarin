@@ -48,9 +48,14 @@
                     Foreground="White" Background="White"
                     Width="100" Height="50"/>
 
-            <TextBlock x:Name="TituloSubcategorias" Text="Subcategorias" HorizontalAlignment="Center" FontSize="50">
-                
-            </TextBlock>
+            <TextBlock x:Name="TituloSubcategorias" 
+                       Text="Subcategorias" HorizontalAlignment="Center" FontSize="50"/>
+            <AutoSuggestBox PlaceholderText="Buscar"  Name ="BuscarSb" TextChanged="BuscarSb_TextChanged" 
+                            HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" UseLayoutRounding="True"
+                            QueryIcon="Zoom" Background="White"
+                            BorderBrush="White" Foreground="White"
+                            RequestedTheme="Dark" FocusVisualSecondaryBrush="White" 
+                            FocusVisualPrimaryBrush="White"/>
             <controls:AdaptiveGridView Name="SubcategoriasGrid"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"

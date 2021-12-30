@@ -100,5 +100,15 @@ namespace LALC_UWP
         {
             Frame.Navigate(typeof(MainPage));
         }
+
+        private void BuscarSb_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                var filteredList = (List<Subcategoria>)categoria.Subcategorias;
+                filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
+                SubcategoriasGrid.ItemsSource = filteredList;
+            }
+        }
     }
 }
