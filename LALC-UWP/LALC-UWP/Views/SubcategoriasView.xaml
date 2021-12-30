@@ -17,13 +17,25 @@
                 BorderBrush="Black"
                 BorderThickness="1" CornerRadius="15,15,15,15" Margin="10,10,10,10" >
 
-                <TextBlock 
-                    x:Name="EP2EmName" 
-                    Margin="8,0"  
-                    Text="{x:Bind Nombre}" Foreground="White"
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock 
+                    x:Name="NombreCategoria" 
+                    Margin="0,15,0,0" 
+                    Text="{x:Bind Path=Nombre}"
+                    Foreground="White"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Center" FontWeight="Bold" FontSize="20" TextAlignment="Center"
                     />
+                    <TextBlock 
+                    x:Name="DescripcionCategoria" 
+                    Margin="0,0,0,0"
+                    Text="{x:Bind Path=Descripcion}" 
+                    TextWrapping="Wrap"
+                    Foreground="White"
+                    HorizontalAlignment="Center" Padding="0,0,0,0"
+                    />
+                </StackPanel>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -42,8 +54,8 @@
             <controls:AdaptiveGridView Name="SubcategoriasGrid"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
-                                   ItemHeight="143"
-                                   DesiredWidth="232"
+                                   ItemHeight="200"
+                                   DesiredWidth="300"
                                    SelectionMode="None"
                                    RightTapped="Subcategories_RightTapped"
                                    ItemClick="Subcategorias_ItemClick"

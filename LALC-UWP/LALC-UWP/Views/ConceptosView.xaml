@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LALC_UWP"
     xmlns:models="using:LALC_UWP.Models"
+    xmlns:self="usign:LALC_UWP.Views.ConceptosView"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,9 +12,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
-        <DataTemplate x:Key="ConceptoTemplate" x:DataType="models:Concepto">
+        <DataTemplate x:Key="ConceptoTemplate" x:DataType="models:Concepto" x:Name="itemTemplate" >
             <Grid
-                Background="Aqua"
+                x:Name="itemGrid"
+                Background="{x:Bind local:ConceptosView.color, Mode=OneWay}"
                 BorderBrush="Black"
                 BorderThickness="1" CornerRadius="15,15,15,15" Margin="10,10,10,10" >
                 <StackPanel 
@@ -23,15 +25,16 @@
                     <TextBlock 
                     x:Name="title" 
                     Margin="8,0"  
-                    Text="{x:Bind Titulo}" Foreground="White"
+                    Text="{x:Bind Titulo}" FontSize="20" Foreground="White"
+                    TextWrapping="Wrap"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Center" TextAlignment="Center" 
                     />
                     <TextBlock 
                     x:Name="def" 
                     Margin="8,0"  
-                    TextWrapping="Wrap" 
-                    Text="{x:Bind Definicion}" Foreground="White"
+                    TextWrapping="Wrap"
+                    Text="{x:Bind Definicion}" FontSize="14" Foreground="White"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     />
@@ -52,8 +55,8 @@
             <controls:AdaptiveGridView Name="Conceptos"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
-                                   ItemHeight="143"
-                                   DesiredWidth="232"
+                                   ItemHeight="200"
+                                   DesiredWidth="300"
                                    RightTapped="Conceptos_RightTapped"
                                    SelectionMode="None"
                                    IsItemClickEnabled="True"

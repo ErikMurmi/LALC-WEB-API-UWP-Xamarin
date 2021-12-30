@@ -1,4 +1,5 @@
 ﻿using LALC_UWP.Models;
+using Microsoft.Toolkit.Uwp.Helpers;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Newtonsoft.Json;
 using System;
@@ -32,6 +33,7 @@ namespace LALC_UWP
 
         public static Subcategoria subcategoria;
         public int tappedConcepto;
+        public static SolidColorBrush color;
         public ConceptosView()
         {
             this.InitializeComponent();
@@ -52,8 +54,11 @@ namespace LALC_UWP
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Subcategoria>(content);
+                color = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
                 TituloConceptos.Text = resultado.Nombre;
                 Conceptos.ItemsSource = resultado.Conceptos;
+                //Conceptos.ItemTemplate.SetValue(BackgroundProperty, new SolidColorBrush(ColorHelper.ToColor(color)));
+                
             }
 
             
