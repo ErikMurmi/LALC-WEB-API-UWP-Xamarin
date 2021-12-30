@@ -1,4 +1,5 @@
 ﻿using LALC_UWP.Models;
+using LALC_UWP.Views;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Newtonsoft.Json;
 using System;
@@ -36,7 +37,7 @@ namespace LALC_UWP
         public MainPage()
         {
             this.InitializeComponent();
-            initialLoad();
+            loadUserInfo();
         }
 
 
@@ -55,27 +56,10 @@ namespace LALC_UWP
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Usuario>(content);
                 usuarioActual = resultado;
-                CategoriasGrid.ItemsSource = resultado.Categorias;
+                CategoriasGrid.ItemsSource = usuarioActual.Categorias;
             }
         }
-        public async void initialLoad()
-        {
-            //ListaArtistas.ItemClick += onItemClick;
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(categorias_url);
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
-            var client = new HttpClient(httpHandler);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<List<Categoria>>(content);
-                CategoriasGrid.ItemsSource = resultado;
-            }
-        }
+        
 
         private void Cards_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -86,16 +70,10 @@ namespace LALC_UWP
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            // Only get results when it was a user typing, 
-            // otherwise assume the value got filled in by TextMemberPath 
-            // or the handler for SuggestionChosen.
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
                 var filteredList =(List<Categoria>) usuarioActual.Categorias;
                 filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
-                CategoriasGrid.ItemsSource = filteredList;
-                //Set the ItemsSource to be your filtered dataset
-                //sender.ItemsSource = dataset;
             }
         }
 
@@ -105,11 +83,12 @@ namespace LALC_UWP
             categoriasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
             var tempCategoria = ((FrameworkElement)e.OriginalSource).DataContext as Categoria;
             tappedCategoria = tempCategoria.CategoriaID;
+            EditarCategoria.categoriaSeleccionada = tempCategoria.CategoriaID;
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(EditarCategoria));
         }
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)

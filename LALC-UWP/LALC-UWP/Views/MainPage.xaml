@@ -37,12 +37,7 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Categorias" x:Name="TituloCategorias" HorizontalAlignment="Center" FontSize="50"/>
-            <AutoSuggestBox PlaceholderText="Search"  TextChanged="AutoSuggestBox_TextChanged" HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" UseLayoutRounding="True">
-                
-                <AutoSuggestBox.QueryIcon>
-                    <Custom:ImageIcon/>
-                </AutoSuggestBox.QueryIcon>
-            </AutoSuggestBox>
+            <AutoSuggestBox PlaceholderText="Search"  TextChanged="AutoSuggestBox_TextChanged" HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" UseLayoutRounding="True" QueryIcon="Zoom"/>
             <controls:AdaptiveGridView x:Name="CategoriasGrid"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
@@ -61,7 +56,7 @@
                         </MenuFlyout.Items>
                     </MenuFlyout>
                 </controls:AdaptiveGridView.Resources>
-            </controls:AdaptiveGridView> 
+            </controls:AdaptiveGridView>
 
         </StackPanel>
 

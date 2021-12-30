@@ -30,9 +30,12 @@
     
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Button Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,20,0" Foreground="White" Background="White" Width="100" Height="50">
-                
-            </Button>
+            <Button Click="Button_Click" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20,20,0"
+                    Foreground="White" Background="White"
+                    Width="100" Height="50"/>
+
             <TextBlock x:Name="TituloSubcategorias" Text="Subcategorias" HorizontalAlignment="Center" FontSize="50">
                 
             </TextBlock>
