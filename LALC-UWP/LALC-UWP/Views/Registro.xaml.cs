@@ -36,9 +36,9 @@ namespace LALC_UWP.Views
         {
             var us = new Usuario
             {
-                nombre = NombreText.ToString(),
-                email = EmailText.ToString(),
-                password = ContraseñaText.ToString()
+                nombre = NombreText.Text,
+                email = EmailText.Text,
+                password = ContraseñaText.Text
             };
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
@@ -46,8 +46,13 @@ namespace LALC_UWP.Views
             var dato = new StringContent(content, Encoding.UTF8, "application/json");
             var httpResponse = await client.PostAsync(usuarios_url, dato);
 
+
             if (httpResponse.Content != null)
             {
+                string con = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Usuario>(con);
+
+                MainPage.actualUserId = resultado.UsuarioID;
                 Frame.Navigate(typeof(MainPage));
             }
         }
