@@ -55,9 +55,9 @@ namespace LALC_UWP.Views
         }
 
         private void BotonInicioSesion(object sender, RoutedEventArgs e)
-        {
+        { 
             getData();
-
+            Frame.Navigate(typeof(MainPage));
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, RoutedEventArgs e)

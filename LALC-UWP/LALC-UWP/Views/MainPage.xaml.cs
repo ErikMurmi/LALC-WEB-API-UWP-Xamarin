@@ -44,13 +44,7 @@ namespace LALC_UWP
         public MainPage()
         {
             this.InitializeComponent();
-            Loaded += MainPage_Loaded;
-            //loadUserInfo();
-        }
-
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Login));
+            loadUserInfo();
         }
 
         public async void loadUserInfo()
