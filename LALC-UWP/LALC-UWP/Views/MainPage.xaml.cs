@@ -62,6 +62,7 @@ namespace LALC_UWP
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Usuario>(content);
                 usuarioActual = resultado;
+                EmailUsuario.Text = usuarioActual.email;
                 usuarioActual.Categorias = usuarioActual.Categorias.OrderBy(ct => ct.Nombre).ToList();
                 CategoriasGrid.ItemsSource = usuarioActual.Categorias;
                 loadCategoriasPrioritarias();
