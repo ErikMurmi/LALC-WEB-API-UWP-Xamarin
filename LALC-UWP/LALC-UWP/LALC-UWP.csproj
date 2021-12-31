@@ -216,8 +216,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PracticaView.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SubcategoriasView.xaml">
       <SubType>Designer</SubType>
