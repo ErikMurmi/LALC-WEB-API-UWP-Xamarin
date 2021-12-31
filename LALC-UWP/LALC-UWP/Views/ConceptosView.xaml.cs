@@ -59,8 +59,6 @@ namespace LALC_UWP
                 TituloConceptos.Text = resultado.Nombre;
                 ConceptosGrid.ItemsSource = resultado.Conceptos;
             }
-
-            
         }
 
 
