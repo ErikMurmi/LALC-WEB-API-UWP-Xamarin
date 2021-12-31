@@ -59,5 +59,10 @@ namespace LALC_UWP.Views
             getData();
 
         }
+
+        private void RegisterButtonTextBlock_OnPointerPressed(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Registro));
+        }
     }
 }
