@@ -27,21 +27,45 @@ namespace LALC_UWP.Views
     public sealed partial class PracticaView : Page
     {
         
-        public Subcategoria seleccionada;
-        public static int subcategoriaSeleccionada;
-        public int contadorConceptos;
+        private List<Concepto> conceptosPractica;
+        private int indexPractica = 0;
+        public int contadorConceptos = 1;
+        private static Random rng = new Random();
         public string subcategorias_url = "https://localhost:44318/API/Subcategorias";
         public string praticas_url = "https://localhost:44318/API/Practicas";
         public PracticaView()
         {
             this.InitializeComponent();
+            generarListaPractica();
+        }
+
+
+        public void generarListaPractica()
+        {
+            conceptosPractica = ConceptosView.subcategoria.Conceptos.ToList();
+            conceptosPractica = Shuffle<Concepto>(conceptosPractica);
+            TituloCn.Text = conceptosPractica.First<Concepto>().Titulo;
+        }
+
+        public List<T> Shuffle<T>( List<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+            return list;
         }
 
         public async void guardarPractica()
         {
             var nuevaPractica = new Practica
             {
-                SubcategoriaID = seleccionada.SubcategoriaID,
+                SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
                 CantidadConceptos = contadorConceptos,
                 Fecha = DateTime.UtcNow.Date
             };
@@ -54,10 +78,36 @@ namespace LALC_UWP.Views
 
             if (httpResponse.Content != null)
             {
-                Frame.Navigate(typeof(MainPage));
+                //Frame.Navigate(typeof(MainPage));
             }
         }
 
+        private void SiguienteConcepto_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (indexPractica < conceptosPractica.Count() - 1)
+            {
+                contadorConceptos += 1;
+                indexPractica += 1;
+                cargarConcepto(conceptosPractica[indexPractica]);
+            }
+        }
 
+        public void cargarConcepto(Concepto cn)
+        {
+            TituloCn.Text = cn.Titulo;
+        }
+
+        private void SymbolIcon_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ConceptosView));
+        }
+
+
+        private void GuardarPractica(object sender, TappedRoutedEventArgs e)
+        {
+            guardarPractica();
+            Frame.Navigate(typeof(ConceptosView));
+        }
     }
 }

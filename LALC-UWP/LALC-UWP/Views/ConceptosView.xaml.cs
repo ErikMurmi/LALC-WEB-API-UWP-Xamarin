@@ -102,6 +102,12 @@ namespace LALC_UWP
         {
             Frame.Navigate(typeof(CrearConcepto));
         }
+
+        private void Practicar_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PracticaView));
+        }
+
         private void BuscarCn_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)

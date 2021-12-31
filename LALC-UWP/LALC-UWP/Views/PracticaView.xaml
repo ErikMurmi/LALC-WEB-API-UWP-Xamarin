@@ -13,7 +13,19 @@
             <TextBlock Text="A praticar " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" TextWrapping="Wrap" Margin="0,40,0,40"/>
             <Button Margin="50,0,0,0">
                 <StackPanel>
-                    <SymbolIcon Symbol="Cancel" RenderTransformOrigin="0.5,0.5" >
+                    <SymbolIcon Symbol="Cancel" RenderTransformOrigin="0.5,0.5" Tapped="SymbolIcon_Tapped">
+                        <SymbolIcon.RenderTransform>
+                            <CompositeTransform ScaleX="5" ScaleY="5"/>
+                        </SymbolIcon.RenderTransform>
+                        <SymbolIcon.Projection>
+                            <PlaneProjection RotationX="0" RotationY="0" GlobalOffsetX="2" GlobalOffsetY="1"/>
+                        </SymbolIcon.Projection>
+                    </SymbolIcon>
+                </StackPanel>
+            </Button>
+            <Button Margin="0,0,50,0" HorizontalAlignment="Right">
+                <StackPanel>
+                    <SymbolIcon Symbol="Save" RenderTransformOrigin="0.5,0.5" Tapped="GuardarPractica">
                         <SymbolIcon.RenderTransform>
                             <CompositeTransform ScaleX="5" ScaleY="5"/>
                         </SymbolIcon.RenderTransform>
@@ -27,11 +39,11 @@
 
         <Grid Height="600" Margin="350,0,350,0" BorderThickness="1" CornerRadius="25,25,25,25" Background="#FFC75858" VerticalAlignment="Center" HorizontalAlignment="Stretch" >
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="40,40,40,40">
-                <TextBlock Text="Titulo " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" TextWrapping="Wrap"/>
+                <TextBlock x:Name="TituloCn" Text="Titulo " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" TextWrapping="Wrap"/>
                 <TextBlock Text="Definicion " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" TextWrapping="Wrap"/>
             </StackPanel>
         </Grid>
-        <Button HorizontalAlignment="Center" Margin="0,70,0,0">
+        <Button x:Name="SiguienteConcepto" HorizontalAlignment="Center" Margin="0,70,0,0" Click="SiguienteConcepto_Click">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Siguiente" FontSize="48" Margin="15,15,15,15"/>
                 <SymbolIcon Symbol="Next" Margin="11,0,15,0" RenderTransformOrigin="0.5,0.5">
