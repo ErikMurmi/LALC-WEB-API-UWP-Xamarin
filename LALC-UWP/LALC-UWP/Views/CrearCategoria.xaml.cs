@@ -49,7 +49,7 @@ namespace LALC_UWP.Views
             var categoriaCreada = new Categoria
             {
                 Nombre = Nombrenueva.Text,
-                UsuarioID = Int32.Parse( MainPage.actualUserId),
+                UsuarioID = MainPage.actualUserId,
                 Descripcion = Descripcionnueva.Text,
                 esPrioritaria = (bool)Prioridadnueva.IsChecked,
                 Color = CreaColor.Color.ToHex()

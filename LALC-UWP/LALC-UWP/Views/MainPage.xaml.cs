@@ -36,7 +36,7 @@ namespace LALC_UWP
     public sealed partial class MainPage : Page
     {
 
-        public static string actualUserId = "1";
+        public static int actualUserId = 1;
         public string categorias_url = "https://localhost:44318/API/Categorias";
         public string usuarios_url = "https://localhost:44318/API/Usuarios";
         public Usuario usuarioActual;

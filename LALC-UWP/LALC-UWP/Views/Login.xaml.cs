@@ -1,7 +1,10 @@
-﻿using System;
+﻿using LALC_UWP.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -20,16 +23,12 @@ namespace LALC_UWP.Views
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class BlankPage1 : Page
+    public sealed partial class Login : Page
     {
-        public BlankPage1()
+        public string usuarios_url = "https://localhost:44318/API/Usuarios";
+        public Login()
         {
             this.InitializeComponent();
-        }
-
-        private void boton1_Click(object sender, RoutedEventArgs e)
-        {
-
         }
         private void PassportSignInButton_Click(object sender, RoutedEventArgs e)
         {
@@ -38,6 +37,27 @@ namespace LALC_UWP.Views
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
         {
             MensajeError.Text = "";
+        }
+        async void getData()
+        {
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(usuarios_url);
+            var data = JsonConvert.DeserializeObject<List<Usuario>>(response);
+            foreach(var i in data)
+            {
+                if (i.email.Equals(EmailText) && i.password.Equals(ContraseñaText))
+                {
+                    MainPage.actualUserId = i.UsuarioID;
+                    Frame.Navigate(typeof(MainPage));
+                }
+            }
+            
+        }
+
+        private void BotonInicioSesion(object sender, RoutedEventArgs e)
+        {
+            getData();
+
         }
     }
 }
