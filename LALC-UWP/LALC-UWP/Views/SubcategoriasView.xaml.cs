@@ -52,7 +52,7 @@ namespace LALC_UWP
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Categoria>(content);
-                SubcategoriasGrids.ItemsSource = resultado.Subcategorias;
+                SubcategoriasGrid.ItemsSource = resultado.Subcategorias;
                 TituloSubcategorias.Text = resultado.Nombre;
             }
         }
@@ -86,8 +86,8 @@ namespace LALC_UWP
 
         private  void Editar_Click(object sender, RoutedEventArgs e)
         {
-            EditarSubcategorias.subcategoriaSeleccionada = tappedSubcategoria;
-            Frame.Navigate(typeof(EditarSubcategorias));
+            EditarSubcategoria.subcategoriaSeleccionada = tappedSubcategoria;
+            Frame.Navigate(typeof(EditarSubcategoria));
         }
 
         private void Subcategories_RightTapped(object sender, RightTappedRoutedEventArgs e)
@@ -109,7 +109,7 @@ namespace LALC_UWP
             {
                 var filteredList = (List<Subcategoria>)categoria.Subcategorias;
                 filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
-                SubcategoriasGrids.ItemsSource = filteredList;
+                SubcategoriasGrid.ItemsSource = filteredList;
             }
         }
     }

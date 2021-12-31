@@ -125,8 +125,11 @@
     <Compile Include="Views\EditarCategoria.xaml.cs">
       <DependentUpon>EditarCategoria.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditarSubcategorias.xaml.cs">
-      <DependentUpon>EditarSubcategorias.xaml</DependentUpon>
+    <Compile Include="Views\EditarConcepto.xaml.cs">
+      <DependentUpon>EditarConcepto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditarSubcategoria.xaml.cs">
+      <DependentUpon>EditarSubcategoria.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -169,11 +172,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditarSubcategorias.xaml">
+    <Page Include="Views\EditarConcepto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditarSubcategorias.xaml">
+    <Page Include="Views\EditarSubcategoria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

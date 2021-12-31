@@ -56,7 +56,7 @@
                             BorderBrush="White" Foreground="White"
                             RequestedTheme="Dark" FocusVisualSecondaryBrush="White" 
                             FocusVisualPrimaryBrush="White"/>
-            <controls:AdaptiveGridView Name="SubcategoriasGrids"
+            <controls:AdaptiveGridView Name="SubcategoriasGrid"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
                                    ItemHeight="200"

@@ -26,12 +26,12 @@ namespace LALC_UWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EditarSubcategorias : Page
+    public sealed partial class EditarSubcategoria : Page
     {
         public Subcategoria seleccionada;
         public static int subcategoriaSeleccionada;
         public string subcategorias_url = "https://localhost:44318/API/Subcategorias";
-        public EditarSubcategorias()
+        public EditarSubcategoria()
         {
             this.InitializeComponent();
             cargarSubcategoriaInfo();

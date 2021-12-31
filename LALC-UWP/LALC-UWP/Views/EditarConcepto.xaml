@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="LALC_UWP.Views.EditarConcepto"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LALC_UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Background>
+        <ThemeResource ResourceKey="SystemControlAltHighAcrylicWindowBrush"/>
+    </Page.Background>
+    <StackPanel Orientation="Vertical">
+        <Button Click="Button_Click" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20,20,0"
+                    Foreground="White" Background="White"
+                    Width="100" Height="50"/>
+        <TextBlock Name="TituloEditConcepto" Text="Titulo" FontSize="48" Margin="50,20,0,0" />
+        <Grid>
+            <StackPanel Margin="50,23,0,0" HorizontalAlignment="Left" >
+                <TextBlock Text="Título" FontSize="24" Margin="0,23,0,0" />
+                <TextBox x:Name="EditTitulo" Background="White" 
+                     Margin="0,10,0,0"
+                     MinWidth="300" MaxWidth="500" Foreground="Black" HorizontalAlignment="Left" PlaceholderText="" FontSize="18"/>
+                <TextBlock  Text="Definición" FontSize="24" Margin="0,23,0,0"/>
+                <TextBox x:Name="EditDefinicion" Background="White" TextWrapping="Wrap"
+                     Margin="0,10,0,0"
+                     MinWidth="300" MaxWidth="200" FontSize="18" MinHeight="100" HorizontalAlignment="Left" />
+
+                <Button x:Name="Editar"
+                    Content="Editar"
+                    Click="Editar_Click" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,100,20,0"
+                    Foreground="#FF65EA1A" Background="White"
+                    Width="100" Height="50" FontWeight="Bold">
+                    <Button.Projection>
+                        <PlaneProjection CenterOfRotationX="0.06"/>
+                    </Button.Projection>
+                </Button>
+
+            </StackPanel>
+
+
+        </Grid>
+    </StackPanel>
+</Page>
