@@ -71,18 +71,18 @@ namespace LALC_UWP.Views
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeObject<List<Usuario>>(content);
-                if (data.Count() == 0) 
+                /*if (data.Count() == 0) 
                 {
                     //abcd.Text = "vacio";
-                }
-                /*foreach (var i in data)
+                }*/
+                foreach (var i in data)
                 {
                     if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Text))
                     {
                         MainPage.actualUserId = i.UsuarioID;
                         Frame.Navigate(typeof(MainPage));
                     }
-                }*/
+                }
             }
         }
 
