@@ -16,7 +16,7 @@
                     Margin="0,20,20,0"
                     Foreground="White" Background="White"
                     Width="100" Height="50"/>
-        <TextBlock Text="Crea una nueva categoria!!!!" FontSize="48" Margin="50,20,0,0" />
+        <TextBlock Text="Crea una nueva categoria" FontSize="48" Margin="50,20,0,0" />
         <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="500"/>
@@ -53,9 +53,9 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0" >
                     <Border x:Name="NuevoColor" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top"
                     HorizontalAlignment="Center" 
-                    Height="40" Margin="0,0,0,0" Width="60" Tapped="NuevoColor_Tapped" />
-                        <ColorPicker x:Name="CreaColor" HorizontalAlignment="Center" Margin="0,50,0,0"
-                         VerticalAlignment="Top" Width="100" ColorChanged="Colorpick_ColorChanged" Visibility="Collapsed" 
+                    Height="40" Margin="0,0,0,0" Width="60" />
+                        <ColorPicker x:Name="CreaColor" HorizontalAlignment="Center" Margin="0,50,0,0" Color="Aqua"
+                         VerticalAlignment="Top" Width="100" ColorChanged="CreaColor_ColorChanged" Visibility="Visible" 
                          ColorSpectrumShape="Ring"
                          IsColorPreviewVisible="False"
                          IsColorChannelTextInputVisible="False"

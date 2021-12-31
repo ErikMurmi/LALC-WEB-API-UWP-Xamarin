@@ -70,7 +70,7 @@
                 <AutoSuggestBox PlaceholderText="Buscar"  TextChanged="AutoSuggestBox_TextChanged" 
                             HorizontalAlignment="Center" Width="200" UseLayoutRounding="True"
                                 QueryIcon="Zoom" Background="White" BorderBrush="White" Foreground="White" RequestedTheme="Dark" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="White" VerticalAlignment="Center"/>
-                <Button HorizontalAlignment="Left" Margin="50,0,100,0" >
+                <Button HorizontalAlignment="Left" Margin="50,0,100,0" x:Name="Crear" Click="Crear_Click" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Crear" FontSize="18"/>
                         <SymbolIcon Symbol="Add" Margin="20,0,0,0"/>

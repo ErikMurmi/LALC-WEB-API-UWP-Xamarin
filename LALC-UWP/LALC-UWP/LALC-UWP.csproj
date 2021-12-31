@@ -122,6 +122,9 @@
     <Compile Include="Views\ConceptosView.xaml.cs">
       <DependentUpon>ConceptosView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CrearCategoria.xaml.cs">
+      <DependentUpon>CrearCategoria.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditarCategoria.xaml.cs">
       <DependentUpon>EditarCategoria.xaml</DependentUpon>
     </Compile>
@@ -143,8 +146,8 @@
     <Compile Include="Models\Subcategoria.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Practica.xaml.cs">
-      <DependentUpon>Practica.xaml</DependentUpon>
+    <Compile Include="Views\PracticaView.xaml.cs">
+      <DependentUpon>PracticaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SubcategoriasView.xaml.cs">
       <DependentUpon>SubcategoriasView.xaml</DependentUpon>
@@ -174,6 +177,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CrearCategoria.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EditarCategoria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,7 +201,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Practica.xaml">
+    <Page Include="Views\PracticaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
