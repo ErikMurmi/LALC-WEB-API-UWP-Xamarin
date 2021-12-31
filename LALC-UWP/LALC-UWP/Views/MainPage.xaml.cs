@@ -43,9 +43,14 @@ namespace LALC_UWP
         public MainPage()
         {
             this.InitializeComponent();
+            Loaded += MainPage_Loaded;
             loadUserInfo();
         }
 
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(BlankPage1));
+        }
 
         public async void loadUserInfo()
         {
@@ -78,6 +83,15 @@ namespace LALC_UWP
         {
             SubcategoriasView.categoria = (Categoria)e.ClickedItem;
             Frame.Navigate(typeof(SubcategoriasView));
+        }
+
+        public static Usuario añadirCuenta(string email)
+        {
+            // Create a new account with the username
+            Usuario us = new Usuario() { email = email };
+            // Add it to the local list of accounts
+            //Usuario.Add(email);
+            return us;
         }
 
 

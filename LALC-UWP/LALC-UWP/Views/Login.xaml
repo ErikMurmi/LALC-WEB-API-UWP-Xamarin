@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="LALC_UWP.Views.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LALC_UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="White">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Login" Foreground="Black" FontFamily="InriaSans-Light" FontSize="50" Margin="0,25,0,0" TextAlignment="Center"></TextBlock>
+            <TextBlock x:Name="MensajeError" Text="" FontSize="15" Margin="4" Foreground="Red" TextAlignment="Center"/>
+            <TextBlock Text="Email" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="10 "></TextBlock>
+            <TextBox x:Name="Email" Margin="4" Width="250"/>
+            <TextBlock Text="Contraseña" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="10 "></TextBlock>
+            <TextBox x:Name="Contraseña" Margin="4" Width="250"/>
+            <Button x:Name="BotonLogin" Content="Login" Background="DodgerBlue" Foreground="White" Click="BotonInicioSesion" Width="80" HorizontalAlignment="Center" Margin="0,35"/>
+            <TextBlock x:Name="BotonRegistrar" Text="¿No tienes cuenta? Regístrate"
+               PointerPressed="RegisterButtonTextBlock_OnPointerPressed" Foreground="DodgerBlue"
+               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="LoginExplaination" FontSize="24" TextAlignment="Center" TextWrapping="Wrap" Foreground="Black"  Text="Por favor, ingresa tus datos"/>
+        </StackPanel>
+
+
+    </Grid>
+</Page>
