@@ -1,4 +1,5 @@
 ﻿using LALC_UWP.Models;
+using LALC_UWP.Views;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Newtonsoft.Json;
@@ -56,12 +57,8 @@ namespace LALC_UWP
                 var resultado = JsonConvert.DeserializeObject<Subcategoria>(content);
                 color = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
                 TituloConceptos.Text = resultado.Nombre;
-                ConceptosGrids.ItemsSource = resultado.Conceptos;
-                //Conceptos.ItemTemplate.SetValue(BackgroundProperty, new SolidColorBrush(ColorHelper.ToColor(color)));
-                
+                ConceptosGrid.ItemsSource = resultado.Conceptos;
             }
-
-            
         }
 
 
@@ -97,7 +94,8 @@ namespace LALC_UWP
 
         private void Editar_Click(object sender, RoutedEventArgs e)
         {
-
+            EditarConcepto.conceptoSeleccionado = tappedConcepto;
+            Frame.Navigate(typeof(EditarConcepto));
         }
 
 
@@ -107,7 +105,7 @@ namespace LALC_UWP
             {
                 var filteredList = (List<Concepto>)subcategoria.Conceptos;
                 filteredList = filteredList.FindAll(s => s.Titulo.ToLower().Contains(sender.Text.ToLower()));
-                ConceptosGrids.ItemsSource = filteredList;
+                ConceptosGrid.ItemsSource = filteredList;
             }
         }
     }

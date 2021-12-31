@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="LALC_UWP.Views.EditarSubcategorias"
+    x:Class="LALC_UWP.Views.EditarSubcategoria"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LALC_UWP.Views"
@@ -16,7 +16,7 @@
                     Margin="0,20,20,0"
                     Foreground="White" Background="White"
                     Width="100" Height="50"/>
-        <TextBlock Name="TituloEditCategoria" Text="Titulo" FontSize="48" Margin="50,20,0,0" />
+        <TextBlock Name="TituloEditSubcategoria" Text="Titulo" FontSize="48" Margin="50,20,0,0" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="500"/>

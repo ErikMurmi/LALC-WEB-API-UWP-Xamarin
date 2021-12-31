@@ -54,7 +54,7 @@ namespace LALC_UWP.Views
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Categoria>(content);
                 seleccionada = resultado;
-                TituloEditCategoria.Text = "Editar" + seleccionada.Nombre;
+                TituloEditCategoria.Text = "Editar " + seleccionada.Nombre;
                 EditName.Text = resultado.Nombre;
                 if(resultado.Descripcion != null)
                 {

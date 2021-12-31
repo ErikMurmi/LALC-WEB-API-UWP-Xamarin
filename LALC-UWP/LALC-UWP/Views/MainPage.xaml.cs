@@ -44,14 +44,15 @@ namespace LALC_UWP
         public MainPage()
         {
             this.InitializeComponent();
-            Loaded += MainPage_Loaded;
+            //Loaded += MainPage_Loaded;
             loadUserInfo();
         }
 
+        /*
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(BlankPage1));
-        }
+        }*/
 
         public async void loadUserInfo()
         {
