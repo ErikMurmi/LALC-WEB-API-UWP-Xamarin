@@ -1,4 +1,5 @@
 ﻿using LALC_UWP.Models;
+using LALC_UWP.Views;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using Newtonsoft.Json;
 using System;
@@ -85,7 +86,8 @@ namespace LALC_UWP
 
         private  void Editar_Click(object sender, RoutedEventArgs e)
         {
-            
+            EditarSubcategorias.subcategoriaSeleccionada = tappedSubcategoria;
+            Frame.Navigate(typeof(EditarSubcategorias));
         }
 
         private void Subcategories_RightTapped(object sender, RightTappedRoutedEventArgs e)
