@@ -26,24 +26,22 @@ namespace LALC_UWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EditarCategoria : Page
+    public sealed partial class EditarSubcategorias : Page
     {
-        
-        public static int categoriaSeleccionada;
-        public string categorias_url = "https://localhost:44318/API/Categorias";
-        public Categoria seleccionada;
-        public EditarCategoria()
+        public Subcategoria seleccionada;
+        public static int subcategoriaSeleccionada;
+        public string subcategorias_url = "https://localhost:44318/API/Subcategorias";
+        public EditarSubcategorias()
         {
-            this.InitializeComponent();
-            cargarCategoriaInfo();
+            cargarSubcategoriaInfo();
         }
 
 
-        public async void cargarCategoriaInfo()
+        public async void cargarSubcategoriaInfo()
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(categorias_url + "/" + categoriaSeleccionada);
+            request.RequestUri = new Uri(subcategorias_url + "/" + subcategoriaSeleccionada);
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
             var client = new HttpClient(httpHandler);
@@ -52,16 +50,15 @@ namespace LALC_UWP.Views
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<Categoria>(content);
+                var resultado = JsonConvert.DeserializeObject<Subcategoria>(content);
                 seleccionada = resultado;
                 TituloEditCategoria.Text = "Editar" + seleccionada.Nombre;
                 EditName.Text = resultado.Nombre;
-                if(resultado.Descripcion != null)
+                if (resultado.Descripcion != null)
                 {
                     EditDescripcion.Text = resultado.Descripcion;
                 }
 
-                EditPriorotaria.IsChecked = resultado.esPrioritaria;
                 EditColor.Background = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
                 Colorpick.Color = ColorHelper.ToColor(resultado.Color);
             }
@@ -76,7 +73,7 @@ namespace LALC_UWP.Views
         private void EditColor_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //pickerShow = !pickerShow;
-            if(Colorpick.Visibility == Visibility.Visible)
+            if (Colorpick.Visibility == Visibility.Visible)
             {
                 Colorpick.Visibility = Visibility.Collapsed;
             }
@@ -84,7 +81,7 @@ namespace LALC_UWP.Views
             {
                 Colorpick.Visibility = Visibility.Visible;
             }
-            
+
         }
 
         private void Colorpick_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
@@ -94,27 +91,25 @@ namespace LALC_UWP.Views
 
         private async void Editar_Click(object sender, RoutedEventArgs e)
         {
-            var categoriaEditada = new Categoria
+            var subcategoriaEditada = new Subcategoria
             {
                 Nombre = EditName.Text,
+                SubcategoriaID = seleccionada.SubcategoriaID,
                 CategoriaID = seleccionada.CategoriaID,
-                UsuarioID = seleccionada.UsuarioID,
                 Descripcion = EditDescripcion.Text,
-                esPrioritaria = (bool)EditPriorotaria.IsChecked,
                 Color = Colorpick.Color.ToHex()
-
             };
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
-            var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
+            var serializedCategoria = JsonConvert.SerializeObject(subcategoriaEditada);
             var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PutAsync(categorias_url +"/"+categoriaSeleccionada, dato);
-            
-            if(httpResponse.Content != null)
+            var httpResponse = await client.PutAsync(subcategorias_url + "/" + subcategoriaSeleccionada, dato);
+
+            if (httpResponse.Content != null)
             {
                 Frame.Navigate(typeof(MainPage));
             }
-            
+
         }
     }
 }

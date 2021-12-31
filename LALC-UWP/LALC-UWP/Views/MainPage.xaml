@@ -8,7 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Custom="using:Microsoft.UI.Xaml.Controls"
     x:Class="LALC_UWP.MainPage"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    MinWidth="960">
 
     <!--Plantilla de la categoria-->
 
@@ -45,9 +46,9 @@
         <ThemeResource ResourceKey="SystemControlAltHighAcrylicWindowBrush"/>
     </Page.Background>
 
-    <Grid>
+    <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition MinWidth="900" MaxWidth="2000"/>
             <ColumnDefinition MinWidth="240" Width="240" MaxWidth="430"/>
         </Grid.ColumnDefinitions>
         <controls:GridSplitter
@@ -63,10 +64,20 @@
             </controls:GridSplitter.RenderTransform>
 
         </controls:GridSplitter>
-        <StackPanel Orientation="Vertical" MinWidth="250" >
+        <StackPanel Orientation="Vertical" >
             <TextBlock Text="Categorias" x:Name="TituloCategorias" HorizontalAlignment="Center" FontSize="50"/>
-            <AutoSuggestBox PlaceholderText="Buscar"  TextChanged="AutoSuggestBox_TextChanged" 
-                            HorizontalAlignment="Center" Width="200" Margin="0,10,0,0" UseLayoutRounding="True" QueryIcon="Zoom" Background="White" BorderBrush="White" Foreground="White" RequestedTheme="Dark" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="White"/>
+            <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500">
+                <AutoSuggestBox PlaceholderText="Buscar"  TextChanged="AutoSuggestBox_TextChanged" 
+                            HorizontalAlignment="Center" Width="200" UseLayoutRounding="True"
+                                QueryIcon="Zoom" Background="White" BorderBrush="White" Foreground="White" RequestedTheme="Dark" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="White" VerticalAlignment="Center"/>
+                <Button HorizontalAlignment="Left" Margin="50,0,100,0" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Crear" FontSize="18"/>
+                        <SymbolIcon Symbol="Add" Margin="20,0,0,0"/>
+                    </StackPanel>
+                </Button>
+                                
+            </Grid>
             <Border Grid.Column="0">
                 <controls:AdaptiveGridView x:Name="CategoriasGrid" 
                                    StretchContentForSingleRow="False"
@@ -74,7 +85,7 @@
                                    ItemHeight="200"
                                    DesiredWidth="300"
                                    SelectionMode="None"
-                                   HorizontalAlignment="Left"
+                                   HorizontalAlignment="Center"
                                    RightTapped="CategoriasGrid_RightTapped"
                                    ItemClick="Cards_ItemClick"
                                    IsItemClickEnabled="True"
