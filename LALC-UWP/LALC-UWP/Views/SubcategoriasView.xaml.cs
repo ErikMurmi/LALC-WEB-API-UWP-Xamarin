@@ -90,6 +90,11 @@ namespace LALC_UWP
             Frame.Navigate(typeof(EditarSubcategoria));
         }
 
+        private void Crear_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CrearSubcategoria));
+        }
+
         private void Subcategories_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             AdaptiveGridView subcategorias = (AdaptiveGridView)sender;
