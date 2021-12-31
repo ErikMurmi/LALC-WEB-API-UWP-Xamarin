@@ -9,7 +9,7 @@ namespace LALC_API.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(LALC_API.Models.ModeloLALC context)
