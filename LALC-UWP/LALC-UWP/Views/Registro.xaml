@@ -10,14 +10,14 @@
 
     <Grid Background="White">
         <StackPanel Orientation="Vertical">
-            <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Text="Registro" Foreground="Black" FontFamily="InriaSans-Light" FontSize="50" Margin="0,25,0,30" TextAlignment="Center"></TextBlock>
+            <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Text="Registro" Foreground="Black" FontFamily="InriaSans-Light" FontSize="50" Margin="0,50,0,30" TextAlignment="Center"></TextBlock>
             <TextBlock Text="Nombre" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="15" ></TextBlock>
             <TextBox x:Name="NombreText" Margin="4" Width="300" Height="35"/>
             <TextBlock Text="Email" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="15" ></TextBlock>
             <TextBox x:Name="EmailText" Margin="4" Width="300" Height="35"/>
             <TextBlock Text="Contraseña" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="15"></TextBlock>
             <TextBox x:Name="ContraseñaText" Margin="4" Width="300" Height="35"/>
-            <Button x:Name="BotonSingin" Content="Sing in" FontSize="20"  Background="DodgerBlue" Foreground="White" Click="BotonRegistro" Width="100" HorizontalAlignment="Center" Margin="0,35"/>
+            <Button x:Name="BotonSignin" Content="Sign in" FontSize="20"  Background="DodgerBlue" Foreground="White" Click="BotonRegistro" Width="100" HorizontalAlignment="Center" Margin="0,35"/>
         </StackPanel>
     </Grid>
 </Page>

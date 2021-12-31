@@ -10,17 +10,14 @@
 
     <Grid Background="White">
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Login" Foreground="Black" FontFamily="InriaSans-Light" FontSize="50" Margin="0,25,0,0" TextAlignment="Center"></TextBlock>
+            <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Text="Login" Foreground="Black" FontFamily="InriaSans-Light" FontSize="50" Margin="0,50,0,0" TextAlignment="Center"></TextBlock>
             <TextBlock x:Name="MensajeError" Text="" FontSize="15" Margin="4" Foreground="Red" TextAlignment="Center"/>
             <TextBlock Text="Email" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="10 "></TextBlock>
             <TextBox x:Name="EmailText" Margin="4" Width="250"/>
             <TextBlock Text="Contraseña" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="10 "></TextBlock>
             <TextBox x:Name="ContraseñaText" Margin="4" Width="250"/>
             <Button x:Name="BotonLogin" Content="Login" Background="DodgerBlue" Foreground="White"  Width="80" HorizontalAlignment="Center" Margin="0,35"/>
-            <TextBlock x:Name="BotonRegistrar" Text="¿No tienes cuenta? Regístrate"
-               PointerPressed="RegisterButtonTextBlock_OnPointerPressed" Foreground="DodgerBlue"
-               TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-            <TextBlock x:Name="LoginExplaination" FontSize="24" TextAlignment="Center" TextWrapping="Wrap" Foreground="Black"  Text="Por favor, ingresa tus datos"/>
+            <HyperlinkButton x:Name="BotonRegistrar" Click="RegisterButtonTextBlock_OnPointerPressed" HorizontalAlignment="Center" VerticalAlignment="Center" Content="¿No tienes cuenta? Regístrate" Foreground="DodgerBlue"></HyperlinkButton>
         </StackPanel>
     </Grid>
 </Page>
