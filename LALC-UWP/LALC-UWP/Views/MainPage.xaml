@@ -65,7 +65,7 @@
 
         </controls:GridSplitter>
         <StackPanel Orientation="Vertical" >
-            
+
             <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -82,7 +82,7 @@
                         <SymbolIcon Symbol="Add" Margin="20,0,0,0"/>
                     </StackPanel>
                 </Button>
-                                
+
             </Grid>
             <Border Grid.Column="0">
                 <controls:AdaptiveGridView x:Name="CategoriasGrid" 
@@ -108,12 +108,17 @@
                 </controls:AdaptiveGridView>
             </Border>
         </StackPanel>
-        
+
         <Border Grid.Column="1">
             <Border.Background>
                 <AcrylicBrush TintColor="#F2191717" BackgroundSource="HostBackdrop" TintOpacity="5"/>
             </Border.Background>
-            <StackPanel Orientation="Vertical"  Margin="0,40,0,0" HorizontalAlignment="Center" >
+            <StackPanel Orientation="Vertical"  Margin="0,0,0,0" HorizontalAlignment="Center" >
+                <Button Style="{StaticResource NavigationViewTitleHeaderContentControlTextStyle}" Content="Cerrar Sesión" Margin="10,20,10,50" Foreground="White" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Background="#FF5DA3F7" HorizontalAlignment="Center" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="Black" Click="Button_Click">
+                    <Button.RenderTransform>
+                        <CompositeTransform TranslateX="2" TranslateY="2"/>
+                    </Button.RenderTransform>
+                </Button>
                 <SymbolIcon Symbol="Important" Height="27" MaxHeight="54" RenderTransformOrigin="0.5,0.5" Width="29" >
                     <SymbolIcon.RenderTransform>
                         <CompositeTransform ScaleX="2" ScaleY="2"/>

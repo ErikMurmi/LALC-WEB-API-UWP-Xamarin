@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
@@ -45,7 +46,7 @@ namespace LALC_UWP.Views
             var data = JsonConvert.DeserializeObject<List<Usuario>>(response);
             foreach(var i in data)
             {
-                if (i.email.Equals(EmailText) && i.password.Equals(ContraseñaText))
+                if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Text))
                 {
                     MainPage.actualUserId = i.UsuarioID;
                     Frame.Navigate(typeof(MainPage));
@@ -54,10 +55,42 @@ namespace LALC_UWP.Views
             
         }
 
+        public async void getData2()
+        {
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri(usuarios_url);
+            request.Method = HttpMethod.Get;
+            request.Headers.Add("Accept", "application/json");
+            var client = new HttpClient(httpHandler);
+ 
+            HttpResponseMessage response = await client.SendAsync(request);
+            abcd.Text = "lleno";
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<List<Usuario>>(content);
+                if (data.Count() == 0) 
+                {
+                    //abcd.Text = "vacio";
+                }
+                /*foreach (var i in data)
+                {
+                    if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Text))
+                    {
+                        MainPage.actualUserId = i.UsuarioID;
+                        Frame.Navigate(typeof(MainPage));
+                    }
+                }*/
+            }
+        }
+
         private void BotonInicioSesion(object sender, RoutedEventArgs e)
-        { 
-            getData();
-            Frame.Navigate(typeof(MainPage));
+        {
+            abcd.Text = "lleno1";
+            getData2();
+            //Frame.Navigate(typeof(MainPage));
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, RoutedEventArgs e)

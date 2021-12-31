@@ -36,7 +36,7 @@ namespace LALC_UWP
     public sealed partial class MainPage : Page
     {
 
-        public static int actualUserId = 1;
+        public static int actualUserId = 0;
         public string categorias_url = "https://localhost:44318/API/Categorias";
         public string usuarios_url = "https://localhost:44318/API/Usuarios";
         public Usuario usuarioActual;
@@ -133,6 +133,13 @@ namespace LALC_UWP
         private void Crear_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CrearCategoria));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+            actualUserId = 0;
+            usuarioActual = null;
         }
     }
 

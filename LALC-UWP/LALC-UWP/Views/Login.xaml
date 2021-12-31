@@ -16,9 +16,13 @@
             <TextBox x:Name="EmailText" Margin="4" Width="250"/>
             <TextBlock Text="Contraseña" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="10 "></TextBlock>
             <TextBox x:Name="ContraseñaText" Margin="4" Width="250"/>
+            
             <Button x:Name="BotonLogin" Content="Login" Background="Black" Click="BotonInicioSesion" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0,35" FocusVisualPrimaryBrush="#FF008BFF"/>
+            
             <TextBlock x:Name="asdf" Foreground="Black"> </TextBlock>
             <HyperlinkButton x:Name="BotonRegistrar" Click="RegisterButtonTextBlock_OnPointerPressed" HorizontalAlignment="Center" VerticalAlignment="Center" Content="¿No tienes cuenta? Regístrate" Foreground="DodgerBlue"></HyperlinkButton>
+            <TextBlock x:Name="abcd" Foreground="Black" FontSize="30"></TextBlock>
         </StackPanel>
+        
     </Grid>
 </Page>
