@@ -26,6 +26,7 @@ namespace LALC_UWP.Views
     /// </summary>
     public sealed partial class CrearConcepto : Page
     {
+        public string conceptos_url = "https://localhost:44318/API/Conceptoes";
         public CrearConcepto()
         {
             this.InitializeComponent();
@@ -36,24 +37,23 @@ namespace LALC_UWP.Views
             Frame.Navigate(typeof(MainPage));
         }
 
-        private async void Crear_ClickSb(object sender, RoutedEventArgs e)
+        private async void Crear_ClickCn(object sender, RoutedEventArgs e)
         {
             var conceptoCreado = new Concepto
             {
-                Titulo = NombrenuevaSb.Text,
-                SubcategoriaID = SubcategoriasView.categoria.CategoriaID,
-                Descripcion = DescripcionnuevaSb.Text,
-                Color = CreaColorSb.Color.ToHex()
+                Titulo = NombrenuevaCn.Text,
+                SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
+                Definicion = DescripcionnuevaCn.Text
             };
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
             var serializedSubcategoria = JsonConvert.SerializeObject(conceptoCreado);
             var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PostAsync(subcategorias_url, dato);
+            var httpResponse = await client.PostAsync(conceptos_url, dato);
 
             if (httpResponse.Content != null)
             {
-                Frame.Navigate(typeof(SubcategoriasView));
+                Frame.Navigate(typeof(ConceptosView));
             }
 
         }

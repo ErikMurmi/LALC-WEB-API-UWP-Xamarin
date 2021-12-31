@@ -98,7 +98,10 @@ namespace LALC_UWP
             Frame.Navigate(typeof(EditarConcepto));
         }
 
-
+        private void Crear_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CrearConcepto));
+        }
         private void BuscarCn_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)

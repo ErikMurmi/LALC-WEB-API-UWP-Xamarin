@@ -61,7 +61,7 @@ namespace LALC_UWP
         {
             var sb = (Subcategoria)e.ClickedItem;
             ConceptosView.subcategoria = sb;
-            if (sb.Conceptos.Count > 0)
+            if (sb!=null)
             {
                 Frame.Navigate(typeof(ConceptosView));
             }
