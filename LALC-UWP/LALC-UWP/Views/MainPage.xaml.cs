@@ -137,6 +137,10 @@ namespace LALC_UWP
             }
         }
 
+        private void Crear_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CrearCategoria));
+        }
     }
 
 }

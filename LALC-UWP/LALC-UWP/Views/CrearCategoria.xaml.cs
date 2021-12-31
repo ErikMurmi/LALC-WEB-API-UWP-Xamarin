@@ -43,31 +43,13 @@ namespace LALC_UWP.Views
             Frame.Navigate(typeof(MainPage));
         }
 
-        private void NuevoColor_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            //pickerShow = !pickerShow;
-            if(CreaColor.Visibility == Visibility.Visible)
-            {
-                CreaColor.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                CreaColor.Visibility = Visibility.Visible;
-            }
-            
-        }
-
-        private void Colorpick_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
-        {
-            NuevoColor.Background = new SolidColorBrush(args.NewColor);
-        }
 
         private async void Crear_Click(object sender, RoutedEventArgs e)
         {
             var categoriaCreada = new Categoria
             {
                 Nombre = Nombrenueva.Text,
-                UsuarioID = 1,
+                UsuarioID = Int32.Parse( MainPage.actualUserId),
                 Descripcion = Descripcionnueva.Text,
                 esPrioritaria = (bool)Prioridadnueva.IsChecked,
                 Color = CreaColor.Color.ToHex()
@@ -76,13 +58,18 @@ namespace LALC_UWP.Views
             var client = new HttpClient(httpHandler);
             var serializedCategoria = JsonConvert.SerializeObject(categoriaCreada);
             var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PutAsync(categorias_url +"/"+categoriaSeleccionada, dato);
+            var httpResponse = await client.PostAsync(categorias_url, dato);
             
             if(httpResponse.Content != null)
             {
                 Frame.Navigate(typeof(MainPage));
             }
             
+        }
+
+        private void CreaColor_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
+        {
+            NuevoColor.Background = new SolidColorBrush(args.NewColor);
         }
     }
 }
