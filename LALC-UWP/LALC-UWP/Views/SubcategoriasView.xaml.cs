@@ -51,7 +51,7 @@ namespace LALC_UWP
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Categoria>(content);
-                SubcategoriasGrid.ItemsSource = resultado.Subcategorias;
+                SubcategoriasGrids.ItemsSource = resultado.Subcategorias;
                 TituloSubcategorias.Text = resultado.Nombre;
             }
         }
@@ -107,7 +107,7 @@ namespace LALC_UWP
             {
                 var filteredList = (List<Subcategoria>)categoria.Subcategorias;
                 filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
-                SubcategoriasGrid.ItemsSource = filteredList;
+                SubcategoriasGrids.ItemsSource = filteredList;
             }
         }
     }
