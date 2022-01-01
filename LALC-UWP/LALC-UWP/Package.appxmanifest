@@ -37,8 +37,8 @@
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="LALC-UWP"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="LALC"/>
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#e4f2f2"/>
       </uap:VisualElements>
     </Application>
   </Applications>
