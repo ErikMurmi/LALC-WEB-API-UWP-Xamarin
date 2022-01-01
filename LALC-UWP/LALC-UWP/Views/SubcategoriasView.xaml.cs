@@ -70,6 +70,29 @@ namespace LALC_UWP
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
+            /*MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar el concepto " + categoria.Subcategorias.Where<Subcategoria>(p => p.CategoriaID == tappedConcepto).FirstOrDefault().Titulo + " ?");
+            dialog.Title = "Eliminar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
+
+            if (cmd.Label == "Si")
+            {
+                var httpHandler = new HttpClientHandler();
+                var request = new HttpRequestMessage();
+                request.RequestUri = new Uri(subcategorias_url + "/" + tappedSubcategoria);
+                request.Method = HttpMethod.Delete;
+                request.Headers.Add("Accept", "application/json");
+                var client = new HttpClient(httpHandler);
+
+                HttpResponseMessage response = await client.SendAsync(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    LoadSubcategorias();
+                }
+            }        */
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
             request.RequestUri = new Uri(subcategorias_url + "/" + tappedSubcategoria);

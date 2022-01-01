@@ -11,7 +11,7 @@ namespace LALC_API.Models
         [Key]
         public int PracticaID { get; set; }
 
-        public int UsuarioID { get; set; }
+        //public int UsuarioID { get; set; }
         public int SubcategoriaID { get; set; }
 
         public int CantidadConceptos { get; set; }
@@ -20,6 +20,6 @@ namespace LALC_API.Models
 
         public virtual Subcategoria Subcategoria { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
+        //public virtual Usuario Usuario { get; set; }
     }
 }

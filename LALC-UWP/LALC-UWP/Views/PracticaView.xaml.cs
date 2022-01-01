@@ -68,14 +68,14 @@ namespace LALC_UWP.Views
             {
                 SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
                 CantidadConceptos = contadorConceptos,
-                UsuarioID = MainPage.actualUserId,
-                Fecha = DateTime.UtcNow.Date
+                //UsuarioID = MainPage.actualUserId,
+                Fecha = DateTime.UtcNow
             };
 
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
-            var serializedCategoria = JsonConvert.SerializeObject(nuevaPractica);
-            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
+            var serializedPractica = JsonConvert.SerializeObject(nuevaPractica);
+            var dato = new StringContent(serializedPractica, Encoding.UTF8, "application/json");
             var httpResponse = await client.PostAsync(praticas_url , dato);
 
             if (httpResponse.Content != null)

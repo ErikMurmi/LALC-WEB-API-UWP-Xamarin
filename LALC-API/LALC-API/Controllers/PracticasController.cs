@@ -24,32 +24,32 @@ namespace LALC_API.Controllers
 
         // GET: api/Practicas/5
         [ResponseType(typeof(Practica))]
-        public IHttpActionResult GetPracticas(int id)
+        public IHttpActionResult GetPractica(int id)
         {
-            Practica practicas = db.Practicas.Find(id);
-            if (practicas == null)
+            Practica practica = db.Practicas.Find(id);
+            if (practica == null)
             {
                 return NotFound();
             }
 
-            return Ok(practicas);
+            return Ok(practica);
         }
 
         // PUT: api/Practicas/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPracticas(int id, Practica practicas)
+        public IHttpActionResult PutPractica(int id, Practica practica)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != practicas.PracticaID)
+            if (id != practica.PracticaID)
             {
                 return BadRequest();
             }
 
-            db.Entry(practicas).State = EntityState.Modified;
+            db.Entry(practica).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace LALC_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PracticasExists(id))
+                if (!PracticaExists(id))
                 {
                     return NotFound();
                 }
@@ -72,33 +72,33 @@ namespace LALC_API.Controllers
 
         // POST: api/Practicas
         [ResponseType(typeof(Practica))]
-        public IHttpActionResult PostPracticas(Practica practicas)
+        public IHttpActionResult PostPractica(Practica practica)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Practicas.Add(practicas);
+            db.Practicas.Add(practica);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = practicas.PracticaID }, practicas);
+            return CreatedAtRoute("DefaultApi", new { id = practica.PracticaID }, practica);
         }
 
         // DELETE: api/Practicas/5
         [ResponseType(typeof(Practica))]
-        public IHttpActionResult DeletePracticas(int id)
+        public IHttpActionResult DeletePractica(int id)
         {
-            Practica practicas = db.Practicas.Find(id);
-            if (practicas == null)
+            Practica practica = db.Practicas.Find(id);
+            if (practica == null)
             {
                 return NotFound();
             }
 
-            db.Practicas.Remove(practicas);
+            db.Practicas.Remove(practica);
             db.SaveChanges();
 
-            return Ok(practicas);
+            return Ok(practica);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,7 +110,7 @@ namespace LALC_API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PracticasExists(int id)
+        private bool PracticaExists(int id)
         {
             return db.Practicas.Count(e => e.PracticaID == id) > 0;
         }

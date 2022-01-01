@@ -12,7 +12,6 @@ namespace LALC_API.Models
         public Subcategoria()
         {
             Conceptos = new HashSet<Concepto>();
-            Practicas = new HashSet<Practica>();
         }
 
         [Key]
@@ -32,7 +31,5 @@ namespace LALC_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Concepto> Conceptos { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Practica> Practicas { get; set; }
     }
 }
