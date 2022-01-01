@@ -63,9 +63,7 @@ namespace LALC_UWP.Views
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
             var client = new HttpClient(httpHandler);
- 
             HttpResponseMessage response = await client.SendAsync(request);
-            abcd.Text = "lleno";
 
             if (response.StatusCode == HttpStatusCode.OK)
             {

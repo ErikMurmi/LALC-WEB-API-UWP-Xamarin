@@ -12,6 +12,8 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Notifications;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -55,6 +57,7 @@ namespace LALC_UWP
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Subcategoria>(content);
+                subcategoria = resultado;
                 color = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
                 TituloConceptos.Text = resultado.Nombre;
                 ConceptosGrid.ItemsSource = resultado.Conceptos;
@@ -78,6 +81,26 @@ namespace LALC_UWP
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
+           /* MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar el concepto ");
+            dialog.Title = "Guardar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.Commands.Add(new UICommand("No salir", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 2;
+            var cmd = await dialog.ShowAsync();
+
+            if (cmd.Label == "Si")
+            {
+                guardarPractica();
+                Frame.Navigate(typeof(ConceptosView));
+            }
+            else if (cmd.Label == "No")
+            {
+                Frame.Navigate(typeof(ConceptosView));
+            }*/
+
+
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
             request.RequestUri = new Uri(conceptos_url + "/" + tappedConcepto);
@@ -103,9 +126,19 @@ namespace LALC_UWP
             Frame.Navigate(typeof(CrearConcepto));
         }
 
-        private void Practicar_Click(object sender, RoutedEventArgs e)
+        private async void Practicar_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PracticaView));
+            if (subcategoria.Conceptos.Count() == 0)
+            {
+                //ShowToastNotification("No puedes practicar","Esta subcategoria aún no cuenta con conceptos");
+                await new MessageDialog(subcategoria.Nombre+" aún no cuenta con conceptos", "No puedes practicar").ShowAsync();
+               
+            }
+            else
+            {
+                Frame.Navigate(typeof(PracticaView));
+            }
+            
         }
 
         private void BuscarCn_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -116,6 +149,22 @@ namespace LALC_UWP
                 filteredList = filteredList.FindAll(s => s.Titulo.ToLower().Contains(sender.Text.ToLower()));
                 ConceptosGrid.ItemsSource = filteredList;
             }
+        }
+
+        private void ShowToastNotification(string title, string stringContent)
+        {
+            ToastNotifier ToastNotifier = ToastNotificationManager.CreateToastNotifier();
+            Windows.Data.Xml.Dom.XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText02);
+            Windows.Data.Xml.Dom.XmlNodeList toastNodeList = toastXml.GetElementsByTagName("text");
+            toastNodeList.Item(0).AppendChild(toastXml.CreateTextNode(title));
+            toastNodeList.Item(1).AppendChild(toastXml.CreateTextNode(stringContent));
+            Windows.Data.Xml.Dom.IXmlNode toastNode = toastXml.SelectSingleNode("/toast");
+            Windows.Data.Xml.Dom.XmlElement audio = toastXml.CreateElement("audio");
+            audio.SetAttribute("src", "ms-winsoundevent:Notification.SMS");
+
+            ToastNotification toast = new ToastNotification(toastXml);
+            toast.ExpirationTime = DateTime.Now.AddSeconds(4);
+            ToastNotifier.Show(toast);
         }
     }
 

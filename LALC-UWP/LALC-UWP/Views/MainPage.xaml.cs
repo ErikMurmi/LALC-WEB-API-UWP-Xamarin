@@ -28,18 +28,14 @@ namespace LALC_UWP
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
     /// 
-    public class BoolToVisibility : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language) => value!=null ? Visibility.Visible : Visibility.Collapsed;
-        public object ConvertBack(object value, Type targetType, object parameter, string language) { throw new NotImplementedException(); }
-    }
+
     public sealed partial class MainPage : Page
     {
 
         public static int actualUserId = 0;
         public string categorias_url = "https://localhost:44318/API/Categorias";
         public string usuarios_url = "https://localhost:44318/API/Usuarios";
-        public Usuario usuarioActual;
+        public static Usuario usuarioActual;
         public int tappedCategoria;
         public MainPage()
         {
@@ -140,6 +136,11 @@ namespace LALC_UWP
             Frame.Navigate(typeof(Login));
             actualUserId = 0;
             usuarioActual = null;
+        }
+
+        private void PracticasBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(HistorialPracticas));
         }
     }
 
