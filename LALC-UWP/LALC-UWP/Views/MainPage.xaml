@@ -112,7 +112,16 @@
                 <AcrylicBrush TintColor="#F2191717" BackgroundSource="HostBackdrop" TintOpacity="5"/>
             </Border.Background>
             <StackPanel Orientation="Vertical"  Margin="0,0,0,0" HorizontalAlignment="Center" >
-                <Button Style="{StaticResource NavigationViewTitleHeaderContentControlTextStyle}" Content="Cerrar Sesión" Margin="10,20,10,50" Foreground="White" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Background="#FF5DA3F7" HorizontalAlignment="Center" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="Black" Click="Button_Click">
+                <Button Style="{StaticResource NavigationViewTitleHeaderContentControlTextStyle}" Content="Cerrar Sesión" Margin="10,20,10,5" Foreground="White" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Background="#FF5DA3F7" HorizontalAlignment="Center" FocusVisualSecondaryBrush="White" FocusVisualPrimaryBrush="Black" Click="Button_Click">
+                    <Button.RenderTransform>
+                        <CompositeTransform TranslateX="2" TranslateY="2"/>
+                    </Button.RenderTransform>
+                </Button>
+                <Button Style="{StaticResource NavigationViewTitleHeaderContentControlTextStyle}" 
+                        Content="Practicas" Margin="10,5,10,50" Foreground="White" RenderTransformOrigin="0.5,0.5" 
+                        x:Name="PracticasBtn"
+                        BorderBrush="{x:Null}" Background="#FF5446AA" HorizontalAlignment="Center" 
+                        FocusVisualSecondaryBrush="#FF8FA1DE" FocusVisualPrimaryBrush="Black" Click="PracticasBtn_Click">
                     <Button.RenderTransform>
                         <CompositeTransform TranslateX="2" TranslateY="2"/>
                     </Button.RenderTransform>

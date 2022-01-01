@@ -15,6 +15,7 @@ namespace LALC_UWP.Models
         public int CantidadConceptos { get; set; }
 
         public DateTime Fecha { get; set; }
+        public virtual Subcategoria Subcategoria { get; set; }
 
     }
 }
