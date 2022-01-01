@@ -12,12 +12,13 @@
         <StackPanel Orientation="Vertical">
             <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Text="Login" Foreground="Black" FontFamily="InriaSans-Light" FontSize="50" Margin="0,50,0,0" TextAlignment="Center" RequestedTheme="Default"></TextBlock>
             <TextBlock x:Name="MensajeError" Text="" FontSize="15" Margin="4" Foreground="Red" TextAlignment="Center"/>
-            <TextBlock Text="Email" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="10 "></TextBlock>
-            <TextBox x:Name="EmailText" Margin="4" Width="250"/>
-            <TextBlock Text="Contraseña" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="10 "></TextBlock>
-            <TextBox x:Name="ContraseñaText" Margin="4" Width="250"/>
+            <TextBox x:Name="EmailText" Margin="0,6,0,19" Width="300" Height="39" PlaceholderText="Email"/>
+            <StackPanel>
+                <PasswordBox x:Name="ContraseñaText" Width="300" Height="39" VerticalAlignment="Center" PasswordRevealMode="Peek" MaxLength="16" Margin="0,0,0,0" PlaceholderText="Contraseña" InputScope="Password" HorizontalAlignment="Stretch"/>
+                <TextBlock x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
+            </StackPanel>
             
-            <Button x:Name="BotonLogin" Content="Login" Background="Black" Click="BotonInicioSesion" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0,35" FocusVisualPrimaryBrush="#FF008BFF"/>
+            <Button x:Name="BotonLogin" Content="Login" Background="Black" Click="BotonInicioSesion" Foreground="White" Width="80" HorizontalAlignment="Center" Margin="0,20" FocusVisualPrimaryBrush="#FF008BFF"/>
             
             <TextBlock x:Name="asdf" Foreground="Black"> </TextBlock>
             <HyperlinkButton x:Name="BotonRegistrar" Click="RegisterButtonTextBlock_OnPointerPressed" HorizontalAlignment="Center" VerticalAlignment="Center" Content="¿No tienes cuenta? Regístrate" Foreground="DodgerBlue"></HyperlinkButton>

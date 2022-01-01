@@ -46,7 +46,7 @@ namespace LALC_UWP.Views
             var data = JsonConvert.DeserializeObject<List<Usuario>>(response);
             foreach(var i in data)
             {
-                if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Text))
+                if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Password))
                 {
                     MainPage.actualUserId = i.UsuarioID;
                     Frame.Navigate(typeof(MainPage));
@@ -77,7 +77,7 @@ namespace LALC_UWP.Views
                 }*/
                 foreach (var i in data)
                 {
-                    if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Text))
+                    if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Password))
                     {
                         MainPage.actualUserId = i.UsuarioID;
                         Frame.Navigate(typeof(MainPage));
@@ -96,6 +96,18 @@ namespace LALC_UWP.Views
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Registro));
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (ContraseñaText.Password == "Contraseña")
+            {
+                statusText.Text = "'Contraseña' no es una contraseña válida.";
+            }
+            else
+            {
+                statusText.Text = string.Empty;
+            }
         }
     }
 }
