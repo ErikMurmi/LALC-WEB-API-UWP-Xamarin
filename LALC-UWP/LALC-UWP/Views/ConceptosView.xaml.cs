@@ -81,7 +81,7 @@ namespace LALC_UWP
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar el concepto ");
+           /* MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar el concepto ");
             dialog.Title = "Guardar";
             dialog.Commands.Add(new UICommand("Si", null));
             dialog.Commands.Add(new UICommand("No", null));
@@ -98,7 +98,7 @@ namespace LALC_UWP
             else if (cmd.Label == "No")
             {
                 Frame.Navigate(typeof(ConceptosView));
-            }
+            }*/
 
 
             var httpHandler = new HttpClientHandler();
