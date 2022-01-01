@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -67,6 +68,7 @@ namespace LALC_UWP.Views
             {
                 SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
                 CantidadConceptos = contadorConceptos,
+                UsuarioID = MainPage.actualUserId,
                 Fecha = DateTime.UtcNow.Date
             };
 
@@ -104,10 +106,25 @@ namespace LALC_UWP.Views
         }
 
 
-        private void GuardarPractica(object sender, TappedRoutedEventArgs e)
+        private async void GuardarPractica(object sender, TappedRoutedEventArgs e)
         {
-            guardarPractica();
-            Frame.Navigate(typeof(ConceptosView));
+            MessageDialog dialog = new MessageDialog("¿Desea guardar la práctica antes de salir?");
+            dialog.Title = "Guardar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.Commands.Add(new UICommand("No salir", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 2;
+            var cmd = await dialog.ShowAsync();
+
+            if (cmd.Label == "Si")
+            {
+                guardarPractica();
+                Frame.Navigate(typeof(ConceptosView));
+            }else if (cmd.Label == "No")
+            {
+                Frame.Navigate(typeof(ConceptosView));
+            }            
         }
     }
 }

@@ -34,8 +34,18 @@ namespace LALC_UWP.Views
             LoadPracticas();
         }
 
+        /*public  void LoadPracticas()
+        {
+            ListaPracticas.ItemsSource = MainPage.usuarioActual.Practicas;
+        }*/
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
         public async void LoadPracticas()
         {
+            //ListaPracticas.ItemsSource = MainPage.usuarioActual.Practicas;
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
             request.RequestUri = new Uri(practicas_url);
@@ -51,12 +61,13 @@ namespace LALC_UWP.Views
                 var praticas = new List<Practica>();
                 foreach(var p in data)
                 {
-                    if(p.Subcategoria.Categoria.UsuarioID == MainPage.actualUserId)
+                    if(p.UsuarioID == MainPage.actualUserId)
                     {
                         praticas.Add(p);
                     }
                 }
-                ListaPracticas.ItemsSource = praticas;
+                ListaPracticas.ItemsSource = data;
+                //ListaPracticas.ItemsSource = data;
             }
         }
     }

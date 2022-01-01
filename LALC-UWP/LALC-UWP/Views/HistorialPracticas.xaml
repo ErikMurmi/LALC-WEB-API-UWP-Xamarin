@@ -11,6 +11,10 @@
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <RelativePanel>
+
+            <Button Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,20,0" Foreground="White" Background="White" Width="100" Height="50">
+
+            </Button>
             <ListView Name="ListaPracticas"
                   SelectionMode="Single"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -19,7 +23,7 @@
                   ScrollViewer.HorizontalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True"
-                  Margin="20">
+                  Margin="70">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"  >
@@ -27,7 +31,7 @@
                             <TextBlock Text="Categoría" Width="300" Foreground="DarkRed" />
                             <TextBlock Text="Subcategoría" Width="200" Foreground="DarkRed" />
                             <TextBlock Text="Conceptos" Width="80" Foreground="DarkRed" />
-                            <TextBlock Text="Fecha" Width="80" Foreground="DarkRed" />
+                            <TextBlock Text="Fecha" Width="150" Foreground="DarkRed" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.HeaderTemplate>
@@ -38,14 +42,14 @@
                                     Text="{x:Bind PracticaID}"
                                     Width="50" />
                             <TextBlock Name="Categoría"
-                                    Text="{x:Bind Subcategoria.Categoria.Nombre}"
+                                    Text="{x:Bind SubcategoriaID}"
                                     Width="300" />
-                            <TextBlock Text="{x:Bind Subcategoria.Nombre}"
+                            <TextBlock Text="{x:Bind SubcategoriaID}"
                                    Width="200" />
                             <TextBlock Text="{x:Bind CantidadConceptos}"
                                    Width="80" />
                             <TextBlock Text="{x:Bind Fecha}"
-                                   Width="80" />
+                                   Width="150" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

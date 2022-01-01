@@ -18,6 +18,8 @@ namespace LALC_UWP.Models
 
         public virtual ICollection<Categoria> Categorias { get; set; }
 
+        public virtual ICollection<Practica> Practicas { get; set; }
+
 
 
     }
