@@ -9,20 +9,109 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="White">
-        <StackPanel Orientation="Vertical">
-            <Button x:Name="backRegistro" Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="Black" Margin="30,30,30,5" Click="backRegistro_Click" RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="10">
+            </ColumnDefinition>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button x:Name="backRegistro"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}" 
+                    Foreground="Black" 
+                    Margin="30,30,30,5" 
+                    Click="backRegistro_Click" 
+                    RenderTransformOrigin="0.5,0.5">
                 <Button.RenderTransform>
                     <CompositeTransform ScaleX="2" ScaleY="2"/>
                 </Button.RenderTransform>
             </Button>
-            <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Text="Registro" Foreground="Black" FontFamily="InriaSans-Light" FontSize="50" Margin="0,50,0,30" TextAlignment="Center"></TextBlock>
-            <TextBlock Text="Nombre" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="15" ></TextBlock>
-            <TextBox x:Name="NombreText" Margin="4" Width="300" Height="35"/>
-            <TextBlock Text="Email" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="15" ></TextBlock>
-            <TextBox x:Name="EmailText" Margin="4" Width="300" Height="35"/>
-            <TextBlock Text="Contraseña" Margin="2" Foreground="Black" TextAlignment="Center" FontSize="15"></TextBlock>
-            <TextBox x:Name="ContraseñaText" Margin="4" Width="300" Height="35"/>
-            <Button x:Name="BotonSignin" Content="Sign in" FontSize="20"  Background="#FF008BFF" Foreground="White" Click="BotonRegistro" Width="100" HorizontalAlignment="Center" Margin="0,35" FocusVisualPrimaryBrush="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="2"
+                    Width="400"
+                    Height="480"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    BorderBrush="#FF514D4D"
+                    FocusVisualSecondaryBrush="White"
+                    FocusVisualPrimaryBrush="#FF666262"
+                    Background="WhiteSmoke">
+            <TextBlock Style="{ThemeResource HeaderTextBlockStyle}"
+                       Text="Registro" 
+                       Foreground="Black" 
+                       FontFamily="InriaSans-Light" 
+                       FontSize="50" 
+                       Margin="0,50,0,30" 
+                       TextAlignment="Center">
+            </TextBlock>
+            
+            <TextBox x:Name="NombreText" 
+                     HorizontalAlignment="Center" 
+                     Margin="0,6,0,0" 
+                     Width="300" Height="39" 
+                     PlaceholderText="Nombre" 
+                     VerticalAlignment="Center" 
+                     MaxLength="100" 
+                     InputScope="EmailNameOrAddress" 
+                     Background="#4C000000"/>
+            <TextBlock x:Name="msNombre" 
+                       Margin="0,4,0,5" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" 
+                       Foreground="Red" >
+            </TextBlock>
+            
+            <TextBox x:Name="EmailText" 
+                     HorizontalAlignment="Center" 
+                     Margin="0,6,0,0"
+                     Width="300" 
+                     Height="39" 
+                     PlaceholderText="Email" 
+                     VerticalAlignment="Center"
+                     MaxLength="100" 
+                     InputScope="EmailNameOrAddress" 
+                     Background="#4C000000"/>
+            <TextBlock x:Name="msEmail"
+                       Margin="0,4,0,5"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       Foreground="Red" >
+            </TextBlock>
+
+            <PasswordBox x:Name="ContraseñaText" 
+                         Width="300" Height="39"
+                         VerticalAlignment="Center" 
+                         PasswordRevealMode="Peek" 
+                         MaxLength="16" Margin="0,6,0,0" 
+                         PlaceholderText="Contraseña" 
+                         InputScope="Password" 
+                         HorizontalAlignment="Stretch"
+                         Background="#4C000000" 
+                         Foreground="Black"/>
+            <TextBlock x:Name="msContraseña" 
+                       Margin="0,4,0,5" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" 
+                       Foreground="Red" >
+            </TextBlock>
+            
+            <Button x:Name="BotonSignin" 
+                    Content="Sign in" 
+                    FontSize="20" 
+                    Background="#FF008BFF" 
+                    Foreground="White" 
+                    Click="BotonRegistro" 
+                    Width="100" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20,0,0" 
+                    FocusVisualPrimaryBrush="Black"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Rectangle Fill="#FFB2B8C2" Height="950" Width="1" VerticalAlignment="Center" HorizontalAlignment="Center"></Rectangle>
+        </StackPanel>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="/Assets/SplashScreen.scale-200.png" Margin="40"></Image>
         </StackPanel>
     </Grid>
 </Page>
