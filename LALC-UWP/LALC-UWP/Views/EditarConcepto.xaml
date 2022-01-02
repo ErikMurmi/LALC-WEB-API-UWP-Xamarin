@@ -10,6 +10,7 @@
     <Page.Background>
         <ThemeResource ResourceKey="SystemControlAltHighAcrylicWindowBrush"/>
     </Page.Background>
+    
     <StackPanel Orientation="Vertical">
         <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,20,0,0" Click="Cancelar_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top">
             <Button.RenderTransform>

@@ -95,7 +95,7 @@ namespace LALC_UWP.Views
         private async void Cancelar_Click(object sender, RoutedEventArgs e)
         {
             MessageDialog dialog = new MessageDialog("¿Está seguro de salir sin crear la categoria?");
-            dialog.Title = "Eliminar";
+            dialog.Title = "Cancelar";
             dialog.Commands.Add(new UICommand("Si", null));
             dialog.Commands.Add(new UICommand("No", null));
             dialog.DefaultCommandIndex = 0;
