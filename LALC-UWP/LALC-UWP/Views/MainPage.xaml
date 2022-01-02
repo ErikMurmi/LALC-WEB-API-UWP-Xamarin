@@ -144,7 +144,7 @@
         </Border>
 
         <Border Grid.Column="0">
-            <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
+            <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Background="#FF252323">
                 <NavigationView.PaneFooter>
                     <StackPanel>
                         <NavigationViewItem x:Name="practica" Content="Prácticas" Icon="AllApps" Tapped="practica_Tapped"></NavigationViewItem>
