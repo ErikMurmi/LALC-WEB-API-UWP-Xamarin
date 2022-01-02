@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -70,7 +71,7 @@ namespace LALC_UWP
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
-            /*MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar el concepto " + categoria.Subcategorias.Where<Subcategoria>(p => p.CategoriaID == tappedConcepto).FirstOrDefault().Titulo + " ?");
+            MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar la subcategoria " + categoria.Subcategorias.Where<Subcategoria>(p => p.SubcategoriaID == tappedSubcategoria).FirstOrDefault().Nombre + " ?");
             dialog.Title = "Eliminar";
             dialog.Commands.Add(new UICommand("Si", null));
             dialog.Commands.Add(new UICommand("No", null));
@@ -92,8 +93,8 @@ namespace LALC_UWP
                 {
                     LoadSubcategorias();
                 }
-            }        */
-            var httpHandler = new HttpClientHandler();
+            }        
+            /*var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
             request.RequestUri = new Uri(subcategorias_url + "/" + tappedSubcategoria);
             request.Method = HttpMethod.Delete;
@@ -104,7 +105,7 @@ namespace LALC_UWP
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 LoadSubcategorias();
-            }
+            }*/
         }
 
         private  void Editar_Click(object sender, RoutedEventArgs e)
