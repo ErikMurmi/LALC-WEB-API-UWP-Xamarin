@@ -45,13 +45,7 @@
             <ColumnDefinition MinWidth="300" Width="300" MaxWidth="430"/>
             <ColumnDefinition MinWidth="900" MaxWidth="2000"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Column="1">
-            <Button Click="Button_Click" 
-                    HorizontalAlignment="Center" 
-                    Margin="0,20,20,0"
-                    Foreground="White" Background="White"
-                    Width="100" Height="50"/>
-
+        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" Margin="0,20,0,0">
             <TextBlock x:Name="TituloSubcategorias" 
                        Text="Subcategorias" HorizontalAlignment="Center" FontSize="50"/>
             <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500">
@@ -89,15 +83,23 @@
                 </controls:AdaptiveGridView.Resources>
             </controls:AdaptiveGridView> 
         </StackPanel>
-        <Border Grid.Column="0">
-            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False">
+        <StackPanel Grid.Column="0" >
+            <Border>
+                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,20,0,0" Click="Button_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top">
+                    <Button.RenderTransform>
+                        <CompositeTransform ScaleX="2" ScaleY="2" TranslateX="2.76" TranslateY="-32.76"/>
+                    </Button.RenderTransform>
+                </Button>
+            </Border>
+
+            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Margin="0,20,0,0" IsDoubleTapEnabled="False" PaneDisplayMode="Left" >
                 <NavigationView.MenuItemTemplate>
                     <DataTemplate x:DataType="models:Subcategoria">
                         <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>
                     </DataTemplate>
                 </NavigationView.MenuItemTemplate>
             </NavigationView>
-        </Border>
+        </StackPanel>
     </Grid>
     
     
