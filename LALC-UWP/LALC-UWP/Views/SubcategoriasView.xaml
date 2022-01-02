@@ -39,7 +39,7 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="300" Width="300" MaxWidth="430"/>
@@ -62,7 +62,7 @@
                             RequestedTheme="Dark" FocusVisualSecondaryBrush="White" 
                             FocusVisualPrimaryBrush="White"/>
             </Grid>
-            
+
             <controls:AdaptiveGridView Name="SubcategoriasGrid"
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
@@ -81,18 +81,18 @@
                         </MenuFlyout.Items>
                     </MenuFlyout>
                 </controls:AdaptiveGridView.Resources>
-            </controls:AdaptiveGridView> 
+            </controls:AdaptiveGridView>
         </StackPanel>
-        <StackPanel Grid.Column="0" >
-            <Border>
-                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,20,0,0" Click="Button_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top">
+        <StackPanel Grid.Column="0" Margin="0,6,0,-6" >
+            <Border Background="#FF252323" Height="65">
+                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,22,0,0" Click="Button_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top" Height="33" Width="44">
                     <Button.RenderTransform>
                         <CompositeTransform ScaleX="2" ScaleY="2" TranslateX="2.76" TranslateY="-32.76"/>
                     </Button.RenderTransform>
                 </Button>
             </Border>
 
-            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Margin="0,20,0,0" IsDoubleTapEnabled="False" PaneDisplayMode="Left" Height="1000" >
+            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Margin="0,0,0,0" IsDoubleTapEnabled="False" PaneDisplayMode="Left" Height="1000" Background="{ThemeResource AppBarItemBackgroundThemeBrush}" >
                 <NavigationView.MenuItemTemplate>
                     <DataTemplate x:DataType="models:Subcategoria">
                         <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>
@@ -101,6 +101,6 @@
             </NavigationView>
         </StackPanel>
     </Grid>
-    
-    
+
+
 </Page>

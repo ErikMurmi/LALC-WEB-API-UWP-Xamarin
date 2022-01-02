@@ -45,15 +45,15 @@
     </Page.Resources>
 
     <Grid>
-        <Button x:Name="backHP" Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,20,0,0" Click="Button_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top">
+        <Button x:Name="backHP" Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="9,26,0,0" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top" Click="backHP_Click">
             <Button.RenderTransform>
-                <CompositeTransform ScaleX="2" ScaleY="2" TranslateX="2.76" TranslateY="-32.76"/>
+                <CompositeTransform ScaleX="1.5" ScaleY="1.5" TranslateX="2.76" TranslateY="-32.76"/>
             </Button.RenderTransform>
         </Button>
         <StackPanel Orientation="Vertical">
             <TextBlock x:Name="TituloConceptos" Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,30,0,40" Text="Conceptos" HorizontalAlignment="Center" FontSize="55"/>
 
-            <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500">
+            <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500" Margin="15,0,0,30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="13*"/>
                     <ColumnDefinition Width="12*"/>
