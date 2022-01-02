@@ -69,7 +69,11 @@ namespace LALC_UWP.Views
                 msNombre.Text = "Campo Inválido (min 2 caracteres)";
                 return true;
             }
-            return false;
+            else
+            {
+                msEmail.Text = string.Empty;
+                return false;
+            }
         }
         private bool comprobacionEma()
         {
