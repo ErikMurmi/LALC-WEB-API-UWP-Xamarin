@@ -44,8 +44,11 @@ namespace LALC_UWP.Views
                         MainPage.actualUserId = i.UsuarioID;
                         Frame.Navigate(typeof(MainPage));
                     }
-                }             
-                msContraseñaR.Text = "Contraseña o email incorrecto";
+                }
+                if(MainPage.actualUserId == 0)
+                {
+                    msContraseñaR.Text = "Contraseña o email incorrecto";
+                }
             }
         }
 
