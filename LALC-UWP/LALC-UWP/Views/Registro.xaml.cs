@@ -36,7 +36,7 @@ namespace LALC_UWP.Views
 
         private async void BotonRegistro(object sender, RoutedEventArgs e)
         {
-            if (!comprobacionNom() || !comprobacionEma() || !comprobacionCon())
+            if (!comprobacionNom() && !comprobacionEma() && !comprobacionCon())
             {
                 var us = new Usuario
                 {
@@ -66,7 +66,7 @@ namespace LALC_UWP.Views
         {
             if (NombreText.Text.Length < 2)
             {
-                msNombre.Text = "Este campo no puede contener menos de 2 caracteres";
+                msNombre.Text = "Campo Inválido (min 2 caracteres)";
                 return true;
             }
             return false;
@@ -92,10 +92,7 @@ namespace LALC_UWP.Views
         }
         private bool comprobacionCon()
         {
-            if (ContraseñaText.Password == "Contraseña" 
-                || ContraseñaText.Password == "contraseña" 
-                || ContraseñaText.Password == "password" 
-                || ContraseñaText.Password == "Password")
+            if (ContraseñaText.Password.ToUpper() == "CONTRASEÑA" || ContraseñaText.Password.ToUpper() == "PASSWORD")
             {
                 msContraseña.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
                 return true;
@@ -104,7 +101,7 @@ namespace LALC_UWP.Views
                 || string.IsNullOrWhiteSpace(ContraseñaText.ToString()) 
                 || ContraseñaText.Password.Length < 8)
             {
-                msContraseña.Text = "La contraseña debe contener más de 8 caracteres y no debe contener espacios en blanco.";
+                msContraseña.Text = "Campo inválido (min 8 caracteres)";
                 return true;
             }
             else

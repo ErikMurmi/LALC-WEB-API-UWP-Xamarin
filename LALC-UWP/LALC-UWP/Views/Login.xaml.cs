@@ -37,10 +37,6 @@ namespace LALC_UWP.Views
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeObject<List<Usuario>>(content);
-                /*if (data.Count() == 0) 
-                {
-                    //abcd.Text = "vacio";
-                }*/
                 foreach (var i in data)
                 {
                     if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Password))
@@ -73,10 +69,7 @@ namespace LALC_UWP.Views
         }
         private bool comprobacionCon()
         {
-            if (ContraseñaText.Password == "Contraseña"
-                || ContraseñaText.Password == "contraseña"
-                || ContraseñaText.Password == "password"
-                || ContraseñaText.Password == "Password")
+            if (ContraseñaText.Password.ToUpper() == "CONTRASEÑA" || ContraseñaText.Password.ToUpper() == "PASSWORD")
             {
                 msContraseñaR.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
                 return true;
@@ -85,7 +78,7 @@ namespace LALC_UWP.Views
                 || string.IsNullOrWhiteSpace(ContraseñaText.ToString())
                 || ContraseñaText.Password.Length < 8)
             {
-                msContraseñaR.Text = "La contraseña debe contener más de 8 caracteres y no debe contener espacios en blanco.";
+                msContraseñaR.Text = "Campo inválido (min 8 caracteres)";
                 return true;
             }
             else
@@ -96,7 +89,7 @@ namespace LALC_UWP.Views
         }
         private void BotonInicioSesion(object sender, RoutedEventArgs e)
         {
-            if (!comprobacionEma() || !comprobacionCon())
+            if (!comprobacionEma() && !comprobacionCon())
             {
                 getData();
                 Frame.Navigate(typeof(MainPage));

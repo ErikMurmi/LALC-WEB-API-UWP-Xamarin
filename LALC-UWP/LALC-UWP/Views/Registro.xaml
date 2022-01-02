@@ -36,10 +36,10 @@
                     BorderBrush="#FF514D4D"
                     FocusVisualSecondaryBrush="White"
                     FocusVisualPrimaryBrush="#FF666262"
-                    Background="WhiteSmoke">
+                    Background="Black">
             <TextBlock Style="{ThemeResource HeaderTextBlockStyle}"
                        Text="Registro" 
-                       Foreground="Black" 
+                       Foreground="White" 
                        FontFamily="InriaSans-Light" 
                        FontSize="50" 
                        Margin="0,50,0,30" 
@@ -54,7 +54,7 @@
                      VerticalAlignment="Center" 
                      MaxLength="100" 
                      InputScope="EmailNameOrAddress" 
-                     Background="#4C000000"/>
+                     Background="#4CFFFFFF"/>
             <TextBlock x:Name="msNombre" 
                        Margin="0,4,0,5" 
                        VerticalAlignment="Center"
@@ -71,7 +71,7 @@
                      VerticalAlignment="Center"
                      MaxLength="100" 
                      InputScope="EmailNameOrAddress" 
-                     Background="#4C000000"/>
+                     Background="#4CFFFFFF"/>
             <TextBlock x:Name="msEmail"
                        Margin="0,4,0,5"
                        VerticalAlignment="Center" 
@@ -87,8 +87,8 @@
                          PlaceholderText="Contraseña" 
                          InputScope="Password" 
                          HorizontalAlignment="Stretch"
-                         Background="#4C000000" 
-                         Foreground="Black"/>
+                         Background="#4CFFFFFF" 
+                         Foreground="White"/>
             <TextBlock x:Name="msContraseña" 
                        Margin="0,4,0,5" 
                        VerticalAlignment="Center"
