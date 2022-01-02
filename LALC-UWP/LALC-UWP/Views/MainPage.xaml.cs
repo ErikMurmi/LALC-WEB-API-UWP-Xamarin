@@ -130,12 +130,12 @@ namespace LALC_UWP
         private void Cargar_Base()
         {
             ICollection<Categoria> cat = usuarioActual.Categorias;
-            var catnombres = new List<String>();
+            /*var catnombres = new List<String>();
             foreach (var i in cat)
             {
                 catnombres.Add(i.Nombre);
-            }
-            navegacion.MenuItemsSource = catnombres;
+            }*/
+            navegacion.MenuItemsSource = cat;
         }
 
         private void Crear_Click(object sender, RoutedEventArgs e)
@@ -157,6 +157,12 @@ namespace LALC_UWP
 
         private void navegacion_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
+            SubcategoriasView.categoria = (Categoria)args.SelectedItem;
+            Frame.Navigate(typeof(SubcategoriasView));
+        }
+
+        /*private void navegacion_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
             NavigationViewItem item = args.SelectedItem as NavigationViewItem;
             ICollection<Categoria> cate = usuarioActual.Categorias;
             var catenombres = new List<String>();
@@ -164,7 +170,7 @@ namespace LALC_UWP
             {
                 
             }
-        }
+        }*/
     }
 
 }

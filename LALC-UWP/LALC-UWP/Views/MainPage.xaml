@@ -153,6 +153,11 @@
 
         <Border Grid.Column="0">
             <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged">
+                <NavigationView.MenuItemTemplate>
+                    <DataTemplate x:DataType="models:Categoria">
+                        <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>
+                    </DataTemplate>
+                </NavigationView.MenuItemTemplate>
                 <!--<NavigationView.MenuItems Content ="Hola">
                 </NavigationView.MenuItems>-->
                 
