@@ -10,50 +10,62 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <RelativePanel>
 
-            <Button Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,20,0" Foreground="White" Background="White" Width="100" Height="50">
+        <Button Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,20,0" Foreground="White" Background="White" Width="100" Height="50" VerticalAlignment="Top">
 
-            </Button>
-            <ListView Name="ListaPracticas"
-                  SelectionMode="Single"
+        </Button>
+        <ListView Name="ListaPracticas"
+                  SelectionMode="None"
+                  RightTapped="ListaPracticas_RightTapped"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.IsVerticalRailEnabled="True"
                   ScrollViewer.VerticalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True"
-                  Margin="70">
-                <ListView.HeaderTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal"  >
-                            <TextBlock Text="ID" Margin="8,0" Width="50" Foreground="DarkRed" />
-                            <TextBlock Text="Categoría" Width="300" Foreground="DarkRed" />
-                            <TextBlock Text="Subcategoría" Width="200" Foreground="DarkRed" />
-                            <TextBlock Text="Conceptos" Width="80" Foreground="DarkRed" />
-                            <TextBlock Text="Fecha" Width="150" Foreground="DarkRed" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.HeaderTemplate>
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Practica">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Name="ItemId"
+                  Margin="70" HorizontalAlignment="Center">
+            <ListView.Resources>
+                <MenuFlyout x:Name="practicasMenuFlyout">
+                    <MenuFlyout.Items>
+                        <MenuFlyoutItem x:Name="Eliminar" Text="Eliminar" Icon="Delete" Click="Eliminar_Click"/>
+                    </MenuFlyout.Items>
+                </MenuFlyout>
+            </ListView.Resources>
+            <ListView.Background>
+                <AcrylicBrush TintColor="#CCFFFFFF"/>
+            </ListView.Background>
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"  >
+                        <StackPanel.Background>
+                            <AcrylicBrush TintColor="#4C769EA4"/>
+                        </StackPanel.Background>
+                        <TextBlock Text="ID" Margin="8,0" Width="50" Foreground="White" TextAlignment="Center" FocusVisualPrimaryBrush="White" FontWeight="Bold" FontSize="22" />
+                        <TextBlock Text="Conceptos" Width="200" Foreground="White" TextAlignment="Center" FocusVisualPrimaryBrush="White" FontWeight="Bold" FontSize="22"/>
+                        <TextBlock Text="Fecha" Width="200" Foreground="White" TextAlignment="Center" FontWeight="Bold" FontSize="22"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Practica">
+                    <StackPanel Orientation="Horizontal" BorderBrush="#FF3C83A4" >
+                        <TextBlock Name="ItemId"
                                     Text="{x:Bind PracticaID}"
-                                    Width="50" />
-                            <TextBlock Name="Categoría"
-                                    Text="{x:Bind SubcategoriaID}"
-                                    Width="300" />
-                            <TextBlock Text="{x:Bind SubcategoriaID}"
+                                    TextAlignment="Center"
+                                    Width="50" Foreground="Black" FontSize="18" />
+                        <TextBlock Text="{x:Bind CantidadConceptos}"
+                                       TextAlignment="Center"
+                                   Foreground="Black"
+                                   Width="200"
+                                   FontSize="18"/>
+                        <TextBlock Text="{x:Bind Fecha}"
+                                   Foreground="Black"
+                                       TextAlignment="Center"
+                                   FontSize="18"
                                    Width="200" />
-                            <TextBlock Text="{x:Bind CantidadConceptos}"
-                                   Width="80" />
-                            <TextBlock Text="{x:Bind Fecha}"
-                                   Width="150" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </RelativePanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

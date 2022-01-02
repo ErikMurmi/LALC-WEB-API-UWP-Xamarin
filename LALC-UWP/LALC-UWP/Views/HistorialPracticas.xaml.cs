@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Data.Json;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -28,6 +29,7 @@ namespace LALC_UWP.Views
     {
 
         public string practicas_url = "https://localhost:44318/API/Practicas";
+        public int tappedPractica;
         public HistorialPracticas()
         {
             this.InitializeComponent();
@@ -43,7 +45,61 @@ namespace LALC_UWP.Views
         {
             Frame.Navigate(typeof(MainPage));
         }
+
         public async void LoadPracticas()
+        {
+            var praticas = new List<Practica>();
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(practicas_url);
+
+            JsonArray jsonArray = JsonArray.Parse(response);
+
+            foreach (var jsonRow in jsonArray)
+            {
+                JsonObject jsonObject = jsonRow.GetObject();
+                var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
+                /*
+                string id = jsonObject["PracticaID"].ToString();
+                string subcatageoriaId = jsonObject["SubcategoriaID"].ToString();
+                string cantidadConceptos = jsonObject["CantidadConceptos"].ToString();
+                //string fecha = jsonObject["Fecha"].ToString();
+                praticas.Add(new Practica { 
+                    SubcategoriaID= Int32.Parse(subcatageoriaId),
+                    CantidadConceptos = Int32.Parse(cantidadConceptos),
+                    Fecha = DateTime.Now
+                });*/
+                praticas.Add(data);
+            }
+
+            ListaPracticas.ItemsSource = praticas;
+
+        }
+
+        private async void Eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri(practicas_url + "/" + tappedPractica);
+            request.Method = HttpMethod.Delete;
+            request.Headers.Add("Accept", "application/json");
+            var client = new HttpClient(httpHandler);
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                LoadPracticas();
+            }
+        }
+
+        private void ListaPracticas_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            ListView categorias = (ListView)sender;
+            practicasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
+            var tempPractica = ((FrameworkElement)e.OriginalSource).DataContext as Practica;
+            tappedPractica = tempPractica.PracticaID;
+        }
+
+        /*public async void LoadPracticas()
         {
             //ListaPracticas.ItemsSource = MainPage.usuarioActual.Practicas;
             var httpHandler = new HttpClientHandler();
@@ -56,19 +112,33 @@ namespace LALC_UWP.Views
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                string content = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<List<Practica>>(content);
                 var praticas = new List<Practica>();
-                foreach(var p in data)
-                {
-                    if(p.UsuarioID == MainPage.actualUserId)
-                    {
-                        praticas.Add(p);
-                    }
-                }
-                ListaPracticas.ItemsSource = data;
-                //ListaPracticas.ItemsSource = data;
+                string content = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<Practica>(content);
+                /*praticas.Add(data);
+                httpHandler = new HttpClientHandler();
+                request = new HttpRequestMessage();
+                request.RequestUri = new Uri(practicas_url1);
+                request.Method = HttpMethod.Get;
+                request.Headers.Add("Accept", "application/json");
+                client = new HttpClient(httpHandler);
+                response = await client.SendAsync(request);
+                content = await response.Content.ReadAsStringAsync();
+                data = JsonConvert.DeserializeObject<Practica>(content);
+                praticas.Add(data);*/
+        //var data = JsonConvert.DeserializeObject<List<Practica>>(content);
+
+        /*foreach(var p in data)
+        {
+            if(p.UsuarioID == MainPage.actualUserId)
+            {
+                praticas.Add(p);
             }
         }
+
+        ListaPracticas.ItemsSource = praticas;
+        //ListaPracticas.ItemsSource = data;
+    }
+}*/
     }
 }

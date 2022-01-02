@@ -28,7 +28,6 @@ namespace LALC_UWP
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
     /// 
-
     public sealed partial class MainPage : Page
     {
 
@@ -41,6 +40,7 @@ namespace LALC_UWP
         {
             this.InitializeComponent();
             loadUserInfo();
+            
         }
 
         public async void loadUserInfo()
@@ -58,6 +58,7 @@ namespace LALC_UWP
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Usuario>(content);
                 usuarioActual = resultado;
+                Cargar_Base();
                 EmailUsuario.Text = usuarioActual.email;
                 usuarioActual.Categorias = usuarioActual.Categorias.OrderBy(ct => ct.Nombre).ToList();
                 CategoriasGrid.ItemsSource = usuarioActual.Categorias;
@@ -69,7 +70,7 @@ namespace LALC_UWP
         {
             var filteredList = (List<Categoria>)usuarioActual.Categorias;
             filteredList = filteredList.FindAll(s => s.esPrioritaria);
-            PrioritariasList.ItemsSource = filteredList;
+            PrioritariasList.ItemsSource = filteredList;          
         }
         private void Cards_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -126,6 +127,17 @@ namespace LALC_UWP
             }
         }
 
+        private void Cargar_Base()
+        {
+            ICollection<Categoria> cat = usuarioActual.Categorias;
+            /*var catnombres = new List<String>();
+            foreach (var i in cat)
+            {
+                catnombres.Add(i.Nombre);
+            }*/
+            navegacion.MenuItemsSource = cat;
+        }
+
         private void Crear_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CrearCategoria));
@@ -142,6 +154,23 @@ namespace LALC_UWP
         {
             Frame.Navigate(typeof(HistorialPracticas));
         }
+
+        private void navegacion_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            SubcategoriasView.categoria = (Categoria)args.SelectedItem;
+            Frame.Navigate(typeof(SubcategoriasView));
+        }
+
+        /*private void navegacion_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+            ICollection<Categoria> cate = usuarioActual.Categorias;
+            var catenombres = new List<String>();
+            switch (item.Content.ToString())
+            {
+                
+            }
+        }*/
     }
 
 }
