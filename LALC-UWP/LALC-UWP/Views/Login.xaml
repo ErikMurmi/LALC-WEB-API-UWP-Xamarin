@@ -45,28 +45,27 @@
                          TextChanged="EmailText_TextChanged" 
                          Background="#4CFFFFFF" Width="237" Height="33"/>
                 </Viewbox>
-                <Viewbox Height="42">
-                    <TextBlock x:Name="msEmailR" 
+
+                <TextBlock x:Name="msEmailR" 
                            Margin="0,5,0,15"
                            Foreground="red" 
                            HorizontalAlignment="Center"
                            FontSize="14" />
-                </Viewbox>
-                
             </StackPanel>
 
             <StackPanel>
-                <PasswordBox x:Name="ContraseñaText" 
-                             Width="300" Height="39" 
+                <Viewbox Height="42">
+                    <PasswordBox x:Name="ContraseñaText" 
+          
                              VerticalAlignment="Center" 
                              PasswordRevealMode="Peek"
-                             MaxLength="16"
-                             Margin="0,0,0,0" 
+                             MaxLength="16" 
                              PlaceholderText="Contraseña" 
                              InputScope="Password" 
-                             HorizontalAlignment="Stretch" 
                              Background="#4CFFFFFF" 
-                             Foreground="Black"/>
+                             Foreground="Black" Width="225"/>
+                </Viewbox>
+
                 <TextBlock x:Name="msContraseñaR" 
                            Margin="10" 
                            HorizontalAlignment="Center" 
