@@ -57,6 +57,7 @@ namespace LALC_UWP.Views
             }
         }
 
+
         private void backRegistro_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));
