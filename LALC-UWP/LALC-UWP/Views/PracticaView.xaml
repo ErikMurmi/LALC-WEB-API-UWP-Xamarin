@@ -10,6 +10,7 @@
     <StackPanel>
         <Grid>
             <TextBlock Text="Práctica" 
+                       Style="{ThemeResource HeaderTextBlockStyle}"
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        FontSize="50" 
@@ -17,7 +18,7 @@
                        Margin="0,40,0,40"/>
             <Button Margin="50,0,0,0" Width="50" Height="50">
                 <StackPanel>
-                    <SymbolIcon Symbol="Cancel" RenderTransformOrigin="0.66,0.66" Tapped="SymbolIcon_Tapped">
+                    <SymbolIcon Symbol="Cancel" RenderTransformOrigin="0.66,0.66" Tapped="SymbolIcon_Tapped" Margin="0,0,4,0">
                         <SymbolIcon.RenderTransform>
                             <CompositeTransform ScaleX="1.7" ScaleY="1.7"/>
                         </SymbolIcon.RenderTransform>
@@ -29,7 +30,7 @@
             </Button>
             <Button Margin="0,0,50,0" HorizontalAlignment="Right" Height="70" Width="250">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,0,35,0" FontSize="40">Finalizar</TextBlock>
+                    <TextBlock Margin="0,0,35,0" FontSize="40" Style="{ThemeResource HeaderTextBlockStyle}">Finalizar</TextBlock>
                     <SymbolIcon Symbol="Save" RenderTransformOrigin="0.5,0.5" Tapped="GuardarPractica" Margin="0,0,10,0">
                         
                         <SymbolIcon.RenderTransform>
