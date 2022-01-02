@@ -66,18 +66,30 @@ namespace LALC_UWP.Views
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(practicas_url + "/" + tappedPractica);
-            request.Method = HttpMethod.Delete;
-            request.Headers.Add("Accept", "application/json");
-            var client = new HttpClient(httpHandler);
+            MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar la práctica?");
+            dialog.Title = "Eliminar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
 
-            HttpResponseMessage response = await client.SendAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (cmd.Label == "Si")
             {
-                LoadPracticas();
+                var httpHandler = new HttpClientHandler();
+                var request = new HttpRequestMessage();
+                request.RequestUri = new Uri(practicas_url + "/" + tappedPractica);
+                request.Method = HttpMethod.Delete;
+                request.Headers.Add("Accept", "application/json");
+                var client = new HttpClient(httpHandler);
+
+                HttpResponseMessage response = await client.SendAsync(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    LoadPracticas();
+                }
             }
+
         }
 
         private void ListaPracticas_RightTapped(object sender, RightTappedRoutedEventArgs e)
