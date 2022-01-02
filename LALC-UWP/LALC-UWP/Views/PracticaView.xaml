@@ -10,12 +10,17 @@
 
     <StackPanel>
         <Grid>
-            <TextBlock Text="A praticar " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" TextWrapping="Wrap" Margin="0,40,0,40"/>
-            <Button Margin="50,0,0,0">
+            <TextBlock Text="Práctica" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" 
+                       FontSize="50" 
+                       TextWrapping="Wrap" 
+                       Margin="0,40,0,40"/>
+            <Button Margin="50,0,0,0" Width="50" Height="50">
                 <StackPanel>
-                    <SymbolIcon Symbol="Cancel" RenderTransformOrigin="0.5,0.5" Tapped="SymbolIcon_Tapped">
+                    <SymbolIcon Symbol="Cancel" RenderTransformOrigin="0.66,0.66" Tapped="SymbolIcon_Tapped">
                         <SymbolIcon.RenderTransform>
-                            <CompositeTransform ScaleX="5" ScaleY="5"/>
+                            <CompositeTransform ScaleX="1.7" ScaleY="1.7"/>
                         </SymbolIcon.RenderTransform>
                         <SymbolIcon.Projection>
                             <PlaneProjection RotationX="0" RotationY="0" GlobalOffsetX="2" GlobalOffsetY="1"/>
@@ -23,13 +28,13 @@
                     </SymbolIcon>
                 </StackPanel>
             </Button>
-            <Button Margin="0,0,50,0" HorizontalAlignment="Right">
+            <Button Margin="0,0,50,0" HorizontalAlignment="Right" Height="70" Width="250">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,0,50,0" FontSize="40">Finalizar</TextBlock>
-                    <SymbolIcon Symbol="Save" RenderTransformOrigin="0.5,0.5" Tapped="GuardarPractica">
+                    <TextBlock Margin="0,0,35,0" FontSize="40">Finalizar</TextBlock>
+                    <SymbolIcon Symbol="Save" RenderTransformOrigin="0.5,0.5" Tapped="GuardarPractica" Margin="0,0,10,0">
                         
                         <SymbolIcon.RenderTransform>
-                            <CompositeTransform ScaleX="5" ScaleY="5"/>
+                            <CompositeTransform ScaleX="2" ScaleY="2"/>
                         </SymbolIcon.RenderTransform>
                         <SymbolIcon.Projection>
                             <PlaneProjection RotationX="0" RotationY="0" GlobalOffsetX="2" GlobalOffsetY="1"/>
@@ -48,7 +53,7 @@
         <Button x:Name="SiguienteConcepto" HorizontalAlignment="Center" Margin="0,70,0,0" Click="SiguienteConcepto_Click">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Siguiente" FontSize="48" Margin="15,15,15,15"/>
-                <SymbolIcon Symbol="Next" Margin="11,0,15,0" RenderTransformOrigin="0.5,0.5">
+                <SymbolIcon Symbol="Next" Margin="11,6,15,0" RenderTransformOrigin="0.5,0.5">
                     <SymbolIcon.RenderTransform>
                         <CompositeTransform ScaleX="2" ScaleY="2"/>
                     </SymbolIcon.RenderTransform>
