@@ -84,7 +84,9 @@ namespace LALC_UWP.Views
 
             if (httpResponse.Content != null)
             {
-                //Frame.Navigate(typeof(MainPage));
+                contadorConceptos = 1;
+                indexPractica = 0;
+                Frame.Navigate(typeof(ConceptosView));
             }
         }
 
@@ -111,7 +113,7 @@ namespace LALC_UWP.Views
                 if (cmd.Label == "Si y guardar")
                 {
                     guardarPractica();
-                    Frame.Navigate(typeof(ConceptosView));
+                    //Frame.Navigate(typeof(ConceptosView));
                 }
                 else if (cmd.Label == "Repetir")
                 {
@@ -124,11 +126,6 @@ namespace LALC_UWP.Views
         {
             TituloCn.Text = cn.Titulo;
             DefinicionCn.Text = cn.Definicion;
-        }
-
-        private void SymbolIcon_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(ConceptosView));
         }
 
 
@@ -152,5 +149,28 @@ namespace LALC_UWP.Views
                 Frame.Navigate(typeof(ConceptosView));
             }            
         }
+
+        private async void Finalizar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog dialog = new MessageDialog("¿Desea guardar la práctica antes de salir?");
+            dialog.Title = "Guardar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.Commands.Add(new UICommand("No salir", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 2;
+            var cmd = await dialog.ShowAsync();
+
+            if (cmd.Label == "Si")
+            {
+                guardarPractica();
+                Frame.Navigate(typeof(ConceptosView));
+            }
+            else if (cmd.Label == "No")
+            {
+                Frame.Navigate(typeof(ConceptosView));
+            }
+        }
+
     }
 }

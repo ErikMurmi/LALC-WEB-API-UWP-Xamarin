@@ -30,6 +30,7 @@ namespace LALC_UWP.Views
     {
 
         public string practicas_url = "https://localhost:44318/API/Practicas";
+        public string subcategorias_url = "https://localhost:44318/API/Subcategorias";
         public int tappedPractica;
         public HistorialPracticas()
         {
@@ -55,11 +56,12 @@ namespace LALC_UWP.Views
             {
                 JsonObject jsonObject = jsonRow.GetObject();
                 var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
-                if (data.Subcategoria.Categoria.UsuarioID == MainPage.actualUserId)
+                string sb = await client.GetStringAsync(subcategorias_url + "/" + data.SubcategoriaID);
+                var sb_dt = JsonConvert.DeserializeObject<Subcategoria>(sb);
+                if(sb_dt.Categoria.UsuarioID == MainPage.actualUserId)
                 {
                     praticas.Add(data);
                 }
-                
             }
              ListaPracticas.ItemsSource = praticas;
         }
