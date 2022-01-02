@@ -35,6 +35,7 @@ namespace LALC_UWP
         public static int actualUserId = 0;
         public string categorias_url = "https://localhost:44318/API/Categorias";
         public string usuarios_url = "https://localhost:44318/API/Usuarios";
+        public string nombre_usuario;
         public static Usuario usuarioActual;
         public int tappedCategoria;
         public MainPage()
@@ -60,10 +61,10 @@ namespace LALC_UWP
                 var resultado = JsonConvert.DeserializeObject<Usuario>(content);
                 usuarioActual = resultado;
                 Cargar_Base();
-                EmailUsuario.Text = usuarioActual.email;
                 usuarioActual.Categorias = usuarioActual.Categorias.OrderBy(ct => ct.Nombre).ToList();
                 CategoriasGrid.ItemsSource = usuarioActual.Categorias;
                 loadCategoriasPrioritarias();
+                username.Content = usuarioActual.nombre;
             }
         }
         
@@ -178,6 +179,18 @@ namespace LALC_UWP
         {
             SubcategoriasView.categoria = (Categoria)args.SelectedItem;
             Frame.Navigate(typeof(SubcategoriasView));
+        }
+
+        private void cerrar_sesion_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+            actualUserId = 0;
+            usuarioActual = null;
+        }
+
+        private void practica_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(HistorialPracticas));
         }
 
     }

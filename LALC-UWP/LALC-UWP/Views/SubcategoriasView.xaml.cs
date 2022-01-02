@@ -55,6 +55,7 @@ namespace LALC_UWP
                 var resultado = JsonConvert.DeserializeObject<Categoria>(content);
                 SubcategoriasGrid.ItemsSource = resultado.Subcategorias;
                 TituloSubcategorias.Text = resultado.Nombre;
+                username.Content = MainPage.usuarioActual.nombre;
             }
             Cargar_sub();
         }
@@ -157,6 +158,18 @@ namespace LALC_UWP
         {
             ConceptosView.subcategoria = (Subcategoria)args.SelectedItem;
             Frame.Navigate(typeof(ConceptosView));
+        }
+
+        private void practica_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(HistorialPracticas));
+        }
+
+        private void cerrar_sesion_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+            MainPage.actualUserId = 0;
+            MainPage.usuarioActual = null;
         }
     }
 }

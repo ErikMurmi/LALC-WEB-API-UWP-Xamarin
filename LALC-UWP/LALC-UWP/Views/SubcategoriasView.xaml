@@ -45,9 +45,13 @@
             <ColumnDefinition MinWidth="300" Width="300" MaxWidth="430"/>
             <ColumnDefinition MinWidth="900" MaxWidth="2000"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" Margin="0,20,0,0">
-            <TextBlock x:Name="TituloSubcategorias" 
-                       Text="Subcategorias" HorizontalAlignment="Center" FontSize="50"/>
+        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top">
+            <TextBlock x:Name="TituloSubcategorias"
+                       Style="{ThemeResource HeaderTextBlockStyle}"
+                       Margin="0,30,0,40"
+                       Text="Subcategorías" 
+                       HorizontalAlignment="Center" 
+                       FontSize="55"/>
             <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500">
                 <Button HorizontalAlignment="Left" Margin="50,0,100,0" x:Name="Crear" Click="Crear_Click" >
                     <StackPanel Orientation="Horizontal">
@@ -83,16 +87,30 @@
                 </controls:AdaptiveGridView.Resources>
             </controls:AdaptiveGridView>
         </StackPanel>
-        <StackPanel Grid.Column="0" Margin="0,6,0,-6" >
+        <StackPanel Grid.Column="0" Margin="0,0,0,0" Height="990">
             <Border Background="#FF252323" Height="65">
-                <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,22,0,0" Click="Button_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top" Height="33" Width="44">
+                <Button Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        Foreground="White" 
+                        Margin="20,22,0,0" 
+                        Click="Button_Click" 
+                        RenderTransformOrigin="0.569,-0.319" 
+                        VerticalAlignment="Top" 
+                        Height="33" 
+                        Width="44">
                     <Button.RenderTransform>
                         <CompositeTransform ScaleX="2" ScaleY="2" TranslateX="2.76" TranslateY="-32.76"/>
                     </Button.RenderTransform>
                 </Button>
             </Border>
 
-            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Margin="0,0,0,0" IsDoubleTapEnabled="False" PaneDisplayMode="Left" Height="1000" Background="{ThemeResource AppBarItemBackgroundThemeBrush}" >
+            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Margin="0,0,0,0" IsDoubleTapEnabled="False" PaneDisplayMode="Left" Height="929" Background="{ThemeResource AppBarItemBackgroundThemeBrush}" >
+                <NavigationView.PaneFooter>
+                    <StackPanel>
+                        <NavigationViewItem x:Name="practica" Content="Prácticas" Icon="AllApps" Tapped="practica_Tapped"></NavigationViewItem>
+                        <NavigationViewItem x:Name="username" Icon="Account" AllowFocusOnInteraction="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False"></NavigationViewItem>
+                        <NavigationViewItem x:Name="cerrar_sesion" Content="Cerrar Sesión" Foreground="White" Icon="Contact" Tapped="cerrar_sesion_Tapped"></NavigationViewItem>
+                    </StackPanel>
+                </NavigationView.PaneFooter>
                 <NavigationView.MenuItemTemplate>
                     <DataTemplate x:DataType="models:Subcategoria">
                         <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>
@@ -101,6 +119,4 @@
             </NavigationView>
         </StackPanel>
     </Grid>
-
-
 </Page>

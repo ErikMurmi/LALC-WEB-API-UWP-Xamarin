@@ -45,7 +45,13 @@
     </Page.Resources>
 
     <Grid>
-        <Button x:Name="backHP" Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="9,26,0,0" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top" Click="backHP_Click">
+        <Button x:Name="backHP" 
+                Style="{StaticResource NavigationBackButtonNormalStyle}" 
+                Foreground="White" 
+                Margin="9,26,0,0" 
+                RenderTransformOrigin="0.569,-0.319" 
+                VerticalAlignment="Top" 
+                Click="backHP_Click">
             <Button.RenderTransform>
                 <CompositeTransform ScaleX="1.5" ScaleY="1.5" TranslateX="2.76" TranslateY="-32.76"/>
             </Button.RenderTransform>
