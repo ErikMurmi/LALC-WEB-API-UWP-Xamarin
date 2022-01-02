@@ -152,7 +152,7 @@
         </Border>
 
         <Border Grid.Column="0">
-            <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged">
+            <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged" IsSettingsVisible="False">
                 <NavigationView.MenuItemTemplate>
                     <DataTemplate x:DataType="models:Categoria">
                         <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>

@@ -37,10 +37,6 @@ namespace LALC_UWP.Views
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeObject<List<Usuario>>(content);
-                /*if (data.Count() == 0) 
-                {
-                    //abcd.Text = "vacio";
-                }*/
                 foreach (var i in data)
                 {
                     if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Password))
@@ -52,39 +48,57 @@ namespace LALC_UWP.Views
             }
         }
 
+        private bool comprobacionEma()
+        {
+            if (string.IsNullOrEmpty(EmailText.Text))
+            {
+                msEmailR.Text = "Este campo no puede estar vacío";
+                return true;
+            }
+            else if (!Regex.IsMatch(EmailText.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
+            {
+                msEmailR.Text = "Correo inválido";
+                return true;
+            }
+            else
+            {
+                msEmailR.Text = string.Empty;
+                return false;
+            }
+
+        }
+        private bool comprobacionCon()
+        {
+            if (ContraseñaText.Password.ToUpper() == "CONTRASEÑA" || ContraseñaText.Password.ToUpper() == "PASSWORD")
+            {
+                msContraseñaR.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
+                return true;
+            }
+            else if (string.IsNullOrEmpty(ContraseñaText.ToString())
+                || string.IsNullOrWhiteSpace(ContraseñaText.ToString())
+                || ContraseñaText.Password.Length < 8)
+            {
+                msContraseñaR.Text = "Campo inválido (min 8 caracteres)";
+                return true;
+            }
+            else
+            {
+                msContraseñaR.Text = string.Empty;
+                return false;
+            }
+        }
         private void BotonInicioSesion(object sender, RoutedEventArgs e)
         {
-            if(!Regex.IsMatch(EmailText.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
+            if (!comprobacionEma() && !comprobacionCon())
             {
-                statusText.Text = "Correo inválido";
+                getData();
+                Frame.Navigate(typeof(MainPage));
             }
-            else if(string.IsNullOrEmpty(EmailText.Text))
-            {
-                statusText.Text = "Campos vacíos";
-            }
-            getData();
-            Frame.Navigate(typeof(MainPage));
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Registro));
-        }
-
-        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if (ContraseñaText.Password == "Contraseña" || ContraseñaText.Password == "contraseña" || ContraseñaText.Password == "password" || ContraseñaText.Password == "Password")
-            {
-                statusText.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
-            }
-            else if (string.IsNullOrEmpty(ContraseñaText.ToString()) || string.IsNullOrWhiteSpace(ContraseñaText.ToString()) || ContraseñaText.Password.Length<8)
-            {
-                statusText.Text = "La contraseña debe contener más de 8 caracteres y no debe contener espacios en blanco.";
-            }
-            else
-            {
-                statusText.Text = string.Empty;
-            }
         }
 
         private void EmailText_TextChanged(object sender, TextChangedEventArgs e)
