@@ -10,6 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Data.Json;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -36,10 +37,6 @@ namespace LALC_UWP.Views
             LoadPracticas();
         }
 
-        /*public  void LoadPracticas()
-        {
-            ListaPracticas.ItemsSource = MainPage.usuarioActual.Practicas;
-        }*/
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -58,21 +55,13 @@ namespace LALC_UWP.Views
             {
                 JsonObject jsonObject = jsonRow.GetObject();
                 var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
-                /*
-                string id = jsonObject["PracticaID"].ToString();
-                string subcatageoriaId = jsonObject["SubcategoriaID"].ToString();
-                string cantidadConceptos = jsonObject["CantidadConceptos"].ToString();
-                //string fecha = jsonObject["Fecha"].ToString();
-                praticas.Add(new Practica { 
-                    SubcategoriaID= Int32.Parse(subcatageoriaId),
-                    CantidadConceptos = Int32.Parse(cantidadConceptos),
-                    Fecha = DateTime.Now
-                });*/
-                praticas.Add(data);
+                if (data.Subcategoria.Categoria.UsuarioID == MainPage.actualUserId)
+                {
+                    praticas.Add(data);
+                }
+                
             }
-
-            ListaPracticas.ItemsSource = praticas;
-
+             ListaPracticas.ItemsSource = praticas;
         }
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)

@@ -11,9 +11,12 @@
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
-        <Button Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,20,0" Foreground="White" Background="White" Width="100" Height="50" VerticalAlignment="Top">
-
+        <Button x:Name="backHP" Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,20,0,0" Click="Button_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top">
+            <Button.RenderTransform>
+                <CompositeTransform ScaleX="2" ScaleY="2" TranslateX="2.76" TranslateY="-32.76"/>
+            </Button.RenderTransform>
         </Button>
+        <TextBlock Text="Historial de prácticas" Foreground="White" HorizontalAlignment="Center" FontSize="30" Margin="0,30,0,0" Width="282"></TextBlock>
         <ListView Name="ListaPracticas"
                   SelectionMode="None"
                   RightTapped="ListaPracticas_RightTapped"
@@ -23,7 +26,7 @@
                   ScrollViewer.HorizontalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True"
-                  Margin="70" HorizontalAlignment="Center">
+                  Margin="70,100,70,70" HorizontalAlignment="Center">
             <ListView.Resources>
                 <MenuFlyout x:Name="practicasMenuFlyout">
                     <MenuFlyout.Items>
