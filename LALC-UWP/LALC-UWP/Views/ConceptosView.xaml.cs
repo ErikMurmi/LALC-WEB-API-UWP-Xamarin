@@ -78,8 +78,7 @@ namespace LALC_UWP
             {
                 conceptosMenuFlyout.ShowAt(conceptos, e.GetPosition(conceptos));
                 tappedConcepto = tempConcepto.ConceptoID;
-            }
-            
+            } 
         }
 
 

@@ -122,9 +122,14 @@ namespace LALC_UWP
         private void Subcategories_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             AdaptiveGridView subcategorias = (AdaptiveGridView)sender;
-            subcategoriasMenuFlyout.ShowAt(subcategorias, e.GetPosition(subcategorias));
-            var tempCategoria = ((FrameworkElement)e.OriginalSource).DataContext as Subcategoria;
-            tappedSubcategoria = tempCategoria.SubcategoriaID;
+            var tempSubcategoria = ((FrameworkElement)e.OriginalSource).DataContext as Subcategoria;
+            if (tempSubcategoria != null)
+            {
+                subcategoriasMenuFlyout.ShowAt(subcategorias, e.GetPosition(subcategorias));
+
+                tappedSubcategoria = tempSubcategoria.SubcategoriaID;
+            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
