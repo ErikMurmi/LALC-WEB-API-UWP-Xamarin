@@ -11,6 +11,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -94,27 +95,56 @@ namespace LALC_UWP.Views
 
         private async void Editar_Click(object sender, RoutedEventArgs e)
         {
-            var categoriaEditada = new Categoria
-            {
-                Nombre = EditName.Text,
-                CategoriaID = seleccionada.CategoriaID,
-                UsuarioID = seleccionada.UsuarioID,
-                Descripcion = EditDescripcion.Text,
-                esPrioritaria = (bool)EditPriorotaria.IsChecked,
-                Color = Colorpick.Color.ToHex()
+            MessageDialog dialog = new MessageDialog("¿Está seguro de editar la categoría " + seleccionada.Nombre+" ?");
+            dialog.Title = "Editar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
 
-            };
-            var httpHandler = new HttpClientHandler();
-            var client = new HttpClient(httpHandler);
-            var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
-            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PutAsync(categorias_url +"/"+categoriaSeleccionada, dato);
+            if (cmd.Label == "Si")
+            {
+                var categoriaEditada = new Categoria
+                {
+                    Nombre = EditName.Text,
+                    CategoriaID = seleccionada.CategoriaID,
+                    UsuarioID = seleccionada.UsuarioID,
+                    Descripcion = EditDescripcion.Text,
+                    esPrioritaria = (bool)EditPriorotaria.IsChecked,
+                    Color = Colorpick.Color.ToHex()
+
+                };
+                var httpHandler = new HttpClientHandler();
+                var client = new HttpClient(httpHandler);
+                var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
+                var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
+                var httpResponse = await client.PutAsync(categorias_url + "/" + categoriaSeleccionada, dato);
+
+                if (httpResponse.Content != null)
+                {
+                    Frame.Navigate(typeof(MainPage));
+                }
+            }
+
             
-            if(httpResponse.Content != null)
+            
+        }
+
+        private async void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog dialog = new MessageDialog("¿Está seguro de salir sin editar la categoria " + seleccionada.Nombre + " ?");
+            dialog.Title = "Cancelar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
+
+            if (cmd.Label == "Si")
             {
                 Frame.Navigate(typeof(MainPage));
             }
-            
         }
     }
 }
