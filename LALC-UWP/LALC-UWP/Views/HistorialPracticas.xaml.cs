@@ -94,9 +94,13 @@ namespace LALC_UWP.Views
         private void ListaPracticas_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             ListView categorias = (ListView)sender;
-            practicasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
             var tempPractica = ((FrameworkElement)e.OriginalSource).DataContext as Practica;
-            tappedPractica = tempPractica.PracticaID;
+            if (tempPractica!=null)
+            {
+                practicasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
+                tappedPractica = tempPractica.PracticaID;
+            }
+           
         }
 
         /*public async void LoadPracticas()
