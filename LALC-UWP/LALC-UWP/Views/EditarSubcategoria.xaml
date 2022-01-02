@@ -11,11 +11,11 @@
         <ThemeResource ResourceKey="SystemControlAltHighAcrylicWindowBrush"/>
     </Page.Background>
     <StackPanel Orientation="Vertical">
-        <Button Click="Button_Click" 
-                    HorizontalAlignment="Center" 
-                    Margin="0,20,20,0"
-                    Foreground="White" Background="White"
-                    Width="100" Height="50"/>
+        <Button x:Name="backEditSubcategoria" Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="30,30,30,5" Click="Cancelar_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <CompositeTransform ScaleX="2" ScaleY="2"/>
+            </Button.RenderTransform>
+        </Button>
         <TextBlock Name="TituloEditSubcategoria" Text="Titulo" FontSize="48" Margin="50,20,0,0" />
         <Grid>
             <Grid.ColumnDefinitions>
@@ -23,41 +23,53 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Margin="50,23,0,0" HorizontalAlignment="Left" >
-                <TextBlock Text="Nombre" FontSize="24" Margin="0,23,0,0" />
-                <TextBox x:Name="EditName" Background="White" 
-                     Margin="0,10,0,0"
-                     MinWidth="300" MaxWidth="500" Foreground="Black" HorizontalAlignment="Left" PlaceholderText="" FontSize="18"/>
-                <TextBlock  Text="Descripción" FontSize="24" Margin="0,23,0,0"/>
-                <TextBox x:Name="EditDescripcion" Background="White" TextWrapping="Wrap"
-                     Margin="0,10,0,0"
-                     MinWidth="300" MaxWidth="200" FontSize="18" MinHeight="100" HorizontalAlignment="Left" Foreground="Black" />
+            <StackPanel Margin="80,20,0,0"  HorizontalAlignment="Left" Grid.Column="1" Width="700" >
 
-                <Button x:Name="Editar"
-                    Content="Editar"
-                    Click="Editar_Click" 
-                    HorizontalAlignment="Center" 
-                    Margin="0,100,20,0"
-                    Foreground="#FF65EA1A" Background="White"
-                    Width="100" Height="50" FontWeight="Bold">
-                    <Button.Projection>
-                        <PlaneProjection CenterOfRotationX="0.06"/>
-                    </Button.Projection>
-                </Button>
+                <TextBlock Text="Nombre" FontSize="30" Margin="10,20,0,0" Width="142" HorizontalAlignment="Left" FontWeight="Bold" />
+                <TextBox x:Name="EditName" Background="White" 
+                     Margin="0,15,0,0" TextWrapping="Wrap"
+                     MinWidth="300"  Width="600" Foreground="Black" HorizontalAlignment="Left" PlaceholderText="" FontSize="24"/>
+                <TextBlock  Text="Descripción" FontSize="30" Margin="10,23,0,0" Width="186" HorizontalAlignment="Left" FontWeight="Bold"/>
+                <TextBox x:Name="EditDescripcion" Background="White" TextWrapping="Wrap"
+                     Margin="0,15,0,0"
+                     MinWidth="300"  FontSize="20" MinHeight="100" HorizontalAlignment="Left" Foreground="Black" Height="204" Width="600" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,100,0,0">
+                    <Button x:Name="Editar"
+                            Content="Editar"
+                            Click="Editar_Click" 
+                            HorizontalAlignment="Left" 
+                            Margin="0,100,0,0"
+                            Foreground="White" Background="CadetBlue"
+                            FontSize="25"
+                            Width="150" Height="70" FontWeight="Bold">
+                    </Button>
+                    <Button x:Name="Cancelar"
+                            Content="Cancelar"
+                            Click="Cancelar_Click" 
+                            HorizontalAlignment="Right" 
+                            Margin="50,100,0,0"
+                            Foreground="White" Background="PaleVioletRed"
+                            FontSize="25"
+                            Width="150" Height="70" FontWeight="Bold">
+                    </Button>
+                </StackPanel>
 
             </StackPanel>
-            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="20,47,0,0">
-                <TextBlock Text="Color" FontSize="24"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0" >
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="50,35,0,0">
+                <TextBlock Text="Color" FontSize="30" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,15,0,0" Width="335" >
                     <Border x:Name="EditColor" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top"
                     HorizontalAlignment="Center" 
-                    Height="40" Margin="0,0,0,0" Width="60" Tapped="EditColor_Tapped" />
-                    <ColorPicker x:Name="Colorpick" HorizontalAlignment="Center" Margin="0,50,0,0"
-                         VerticalAlignment="Top" Width="100" ColorChanged="Colorpick_ColorChanged" Visibility="Collapsed" 
+                    Height="40" Margin="0,0,0,0" Width="60" />
+                    <Viewbox Height="337" Width="283">
+                        <ColorPicker x:Name="Colorpick" HorizontalAlignment="Center" Margin="0,50,0,0" Color="Aqua"
+                         VerticalAlignment="Top" Width="100" ColorChanged="Colorpick_ColorChanged" Visibility="Visible" 
                          ColorSpectrumShape="Ring"
                          IsColorPreviewVisible="False"
                          IsColorChannelTextInputVisible="False"
                          IsHexInputVisible="False"/>
+                    </Viewbox>
+
                 </StackPanel>
             </StackPanel>
 

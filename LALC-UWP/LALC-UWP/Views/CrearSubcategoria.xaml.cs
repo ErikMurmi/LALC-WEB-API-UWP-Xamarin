@@ -10,6 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -67,5 +68,20 @@ namespace LALC_UWP.Views
             NuevoColorSb.Background = new SolidColorBrush(args.NewColor);
         }
 
+        private async void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog dialog = new MessageDialog("¿Está seguro de salir sin crear la subcategoria?");
+            dialog.Title = "Cancelar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
+
+            if (cmd.Label == "Si")
+            {
+                Frame.Navigate(typeof(SubcategoriasView));
+            }
+        }
     }
 }
