@@ -14,21 +14,16 @@
                 <CompositeTransform ScaleX="2" ScaleY="2" TranslateX="2.76" TranslateY="-32.76"/>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="backCrearCategoria" Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="30,30,30,5" Click="Cancelar_Click" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <CompositeTransform ScaleX="2" ScaleY="2"/>
-            </Button.RenderTransform>
-        </Button>
         <TextBlock Text="Crea un nuevo concepto" FontSize="48" Margin="50,20,0,0" />
 
         <Grid>
             <StackPanel Margin="50,20,0,0"  HorizontalAlignment="Left" Grid.Column="0" Width="700" >
 
-                <TextBlock Text="Nombre" FontSize="30" Margin="10,20,0,0" Width="142" HorizontalAlignment="Left" FontWeight="Bold" />
+                <TextBlock Text="Título" FontSize="30" Margin="10,20,0,0" Width="142" HorizontalAlignment="Left" FontWeight="Bold" />
                 <TextBox x:Name="NombrenuevaCn" Background="White" 
                      Margin="0,15,0,0" TextWrapping="Wrap"
                      MinWidth="300"  Width="600" Foreground="Black" HorizontalAlignment="Left" PlaceholderText="" FontSize="24"/>
-                <TextBlock  Text="Descripción" FontSize="30" Margin="10,23,0,0" Width="186" HorizontalAlignment="Left" FontWeight="Bold"/>
+                <TextBlock  Text="Definición" FontSize="30" Margin="10,23,0,0" Width="186" HorizontalAlignment="Left" FontWeight="Bold"/>
                 <TextBox x:Name="DescripcionnuevaCn" Background="White" TextWrapping="Wrap"
                      Margin="0,15,0,0"
                      MinWidth="300"  FontSize="20" MinHeight="100" HorizontalAlignment="Left" Foreground="Black" Height="204" Width="600" />
