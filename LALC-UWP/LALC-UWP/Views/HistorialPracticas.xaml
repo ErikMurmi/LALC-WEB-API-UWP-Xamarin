@@ -15,7 +15,8 @@
 
         </Button>
         <ListView Name="ListaPracticas"
-                  SelectionMode="Single"
+                  SelectionMode="None"
+                  RightTapped="ListaPracticas_RightTapped"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.IsVerticalRailEnabled="True"
                   ScrollViewer.VerticalScrollMode="Enabled"
@@ -23,6 +24,13 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True"
                   Margin="70" HorizontalAlignment="Center">
+            <ListView.Resources>
+                <MenuFlyout x:Name="practicasMenuFlyout">
+                    <MenuFlyout.Items>
+                        <MenuFlyoutItem x:Name="Eliminar" Text="Eliminar" Icon="Delete" Click="Eliminar_Click"/>
+                    </MenuFlyout.Items>
+                </MenuFlyout>
+            </ListView.Resources>
             <ListView.Background>
                 <AcrylicBrush TintColor="#CCFFFFFF"/>
             </ListView.Background>

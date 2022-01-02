@@ -29,7 +29,7 @@ namespace LALC_UWP.Views
     {
 
         public string practicas_url = "https://localhost:44318/API/Practicas";
-        public string practicas_url1 = "https://localhost:44318/API/Practicas/2";
+        public int tappedPractica;
         public HistorialPracticas()
         {
             this.InitializeComponent();
@@ -73,6 +73,30 @@ namespace LALC_UWP.Views
 
             ListaPracticas.ItemsSource = praticas;
 
+        }
+
+        private async void Eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
+            request.RequestUri = new Uri(practicas_url + "/" + tappedPractica);
+            request.Method = HttpMethod.Delete;
+            request.Headers.Add("Accept", "application/json");
+            var client = new HttpClient(httpHandler);
+
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                LoadPracticas();
+            }
+        }
+
+        private void ListaPracticas_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            ListView categorias = (ListView)sender;
+            practicasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
+            var tempPractica = ((FrameworkElement)e.OriginalSource).DataContext as Practica;
+            tappedPractica = tempPractica.PracticaID;
         }
 
         /*public async void LoadPracticas()
