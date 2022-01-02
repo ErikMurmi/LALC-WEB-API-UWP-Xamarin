@@ -92,7 +92,7 @@
                 </Button>
             </Border>
 
-            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Margin="0,20,0,0" IsDoubleTapEnabled="False" PaneDisplayMode="Left" >
+            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Margin="0,20,0,0" IsDoubleTapEnabled="False" PaneDisplayMode="Left" Height="1000" >
                 <NavigationView.MenuItemTemplate>
                     <DataTemplate x:DataType="models:Subcategoria">
                         <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>
