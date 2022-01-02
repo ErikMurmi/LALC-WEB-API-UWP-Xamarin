@@ -78,7 +78,7 @@ namespace LALC_UWP.Views
                 msEmail.Text = "Este campo no puede estar vacío";
                 return true;
             }
-            else if (!Regex.IsMatch(EmailText.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
+            if (!Regex.IsMatch(EmailText.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
             {
                 msEmail.Text = "Correo inválido";
                 return true;
@@ -97,7 +97,7 @@ namespace LALC_UWP.Views
                 msContraseña.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
                 return true;
             }
-            else if (string.IsNullOrEmpty(ContraseñaText.ToString()) 
+            if (string.IsNullOrEmpty(ContraseñaText.ToString()) 
                 || string.IsNullOrWhiteSpace(ContraseñaText.ToString()) 
                 || ContraseñaText.Password.Length < 8)
             {

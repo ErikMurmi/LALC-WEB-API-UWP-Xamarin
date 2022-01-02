@@ -44,7 +44,8 @@ namespace LALC_UWP.Views
                         MainPage.actualUserId = i.UsuarioID;
                         Frame.Navigate(typeof(MainPage));
                     }
-                }
+                }             
+                msContraseñaR.Text = "Contraseña o email incorrecto";
             }
         }
 
@@ -55,7 +56,7 @@ namespace LALC_UWP.Views
                 msEmailR.Text = "Este campo no puede estar vacío";
                 return true;
             }
-            else if (!Regex.IsMatch(EmailText.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
+            if (!Regex.IsMatch(EmailText.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
             {
                 msEmailR.Text = "Correo inválido";
                 return true;
@@ -65,20 +66,19 @@ namespace LALC_UWP.Views
                 msEmailR.Text = string.Empty;
                 return false;
             }
-
         }
         private bool comprobacionCon()
         {
-            if (ContraseñaText.Password.ToUpper() == "CONTRASEÑA" || ContraseñaText.Password.ToUpper() == "PASSWORD")
-            {
-                msContraseñaR.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
-                return true;
-            }
-            else if (string.IsNullOrEmpty(ContraseñaText.ToString())
+            if (string.IsNullOrEmpty(ContraseñaText.ToString())
                 || string.IsNullOrWhiteSpace(ContraseñaText.ToString())
                 || ContraseñaText.Password.Length < 8)
             {
                 msContraseñaR.Text = "Campo inválido (min 8 caracteres)";
+                return true;
+            }
+            if (ContraseñaText.Password.ToUpper() == "CONTRASEÑA" || ContraseñaText.Password.ToUpper() == "PASSWORD")
+            {
+                msContraseñaR.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
                 return true;
             }
             else
@@ -92,7 +92,6 @@ namespace LALC_UWP.Views
             if (!comprobacionEma() && !comprobacionCon())
             {
                 getData();
-                Frame.Navigate(typeof(MainPage));
             }
         }
 
