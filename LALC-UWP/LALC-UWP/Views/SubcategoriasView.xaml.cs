@@ -56,6 +56,7 @@ namespace LALC_UWP
                 SubcategoriasGrid.ItemsSource = resultado.Subcategorias;
                 TituloSubcategorias.Text = resultado.Nombre;
             }
+            Cargar_sub();
         }
 
         public void Subcategorias_ItemClick(object sender  , ItemClickEventArgs e)
@@ -114,6 +115,11 @@ namespace LALC_UWP
             Frame.Navigate(typeof(EditarSubcategoria));
         }
 
+        private void Cargar_sub()
+        {
+            ICollection<Subcategoria> subcat = categoria.Subcategorias;
+            navegacionsub.MenuItemsSource = subcat;
+        }
         private void Crear_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CrearSubcategoria));
@@ -145,6 +151,12 @@ namespace LALC_UWP
                 filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
                 SubcategoriasGrid.ItemsSource = filteredList;
             }
+        }
+
+        private void navegacionsub_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            ConceptosView.subcategoria = (Subcategoria)args.SelectedItem;
+            Frame.Navigate(typeof(ConceptosView));
         }
     }
 }
