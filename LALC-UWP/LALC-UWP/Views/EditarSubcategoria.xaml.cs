@@ -93,25 +93,33 @@ namespace LALC_UWP.Views
 
         private async void Editar_Click(object sender, RoutedEventArgs e)
         {
-            var subcategoriaEditada = new Subcategoria
-            {
-                Nombre = EditName.Text,
-                SubcategoriaID = seleccionada.SubcategoriaID,
-                CategoriaID = seleccionada.CategoriaID,
-                Descripcion = EditDescripcion.Text,
-                Color = Colorpick.Color.ToHex()
-            };
-            var httpHandler = new HttpClientHandler();
-            var client = new HttpClient(httpHandler);
-            var serializedCategoria = JsonConvert.SerializeObject(subcategoriaEditada);
-            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PutAsync(subcategorias_url + "/" + subcategoriaSeleccionada, dato);
 
-            if (httpResponse.Content != null)
+            if (String.IsNullOrEmpty(EditName.Text))
             {
-                Frame.Navigate(typeof(SubcategoriasView));
+                await new MessageDialog("La subcategoría debe tener un nombre", "Nombre vacío").ShowAsync();
             }
+            else
+            {
+                var subcategoriaEditada = new Subcategoria
+                {
+                    Nombre = EditName.Text,
+                    SubcategoriaID = seleccionada.SubcategoriaID,
+                    CategoriaID = seleccionada.CategoriaID,
+                    Descripcion = EditDescripcion.Text,
+                    Color = Colorpick.Color.ToHex()
+                };
+                var httpHandler = new HttpClientHandler();
+                var client = new HttpClient(httpHandler);
+                var serializedCategoria = JsonConvert.SerializeObject(subcategoriaEditada);
+                var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
+                var httpResponse = await client.PutAsync(subcategorias_url + "/" + subcategoriaSeleccionada, dato);
 
+                if (httpResponse.Content != null)
+                {
+                    Frame.Navigate(typeof(SubcategoriasView));
+                }
+            }
+  
         }
 
 
