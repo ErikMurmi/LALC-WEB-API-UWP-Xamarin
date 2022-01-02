@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -55,6 +56,7 @@ namespace LALC_UWP
                 SubcategoriasGrid.ItemsSource = resultado.Subcategorias;
                 TituloSubcategorias.Text = resultado.Nombre;
             }
+            Cargar_sub();
         }
 
         public void Subcategorias_ItemClick(object sender  , ItemClickEventArgs e)
@@ -70,7 +72,7 @@ namespace LALC_UWP
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
-            /*MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar el concepto " + categoria.Subcategorias.Where<Subcategoria>(p => p.CategoriaID == tappedConcepto).FirstOrDefault().Titulo + " ?");
+            MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar la subcategoria " + categoria.Subcategorias.Where<Subcategoria>(p => p.SubcategoriaID == tappedSubcategoria).FirstOrDefault().Nombre + " ?");
             dialog.Title = "Eliminar";
             dialog.Commands.Add(new UICommand("Si", null));
             dialog.Commands.Add(new UICommand("No", null));
@@ -92,8 +94,8 @@ namespace LALC_UWP
                 {
                     LoadSubcategorias();
                 }
-            }        */
-            var httpHandler = new HttpClientHandler();
+            }        
+            /*var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
             request.RequestUri = new Uri(subcategorias_url + "/" + tappedSubcategoria);
             request.Method = HttpMethod.Delete;
@@ -104,7 +106,7 @@ namespace LALC_UWP
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 LoadSubcategorias();
-            }
+            }*/
         }
 
         private  void Editar_Click(object sender, RoutedEventArgs e)
@@ -113,6 +115,11 @@ namespace LALC_UWP
             Frame.Navigate(typeof(EditarSubcategoria));
         }
 
+        private void Cargar_sub()
+        {
+            ICollection<Subcategoria> subcat = categoria.Subcategorias;
+            navegacionsub.MenuItemsSource = subcat;
+        }
         private void Crear_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CrearSubcategoria));
@@ -121,9 +128,14 @@ namespace LALC_UWP
         private void Subcategories_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             AdaptiveGridView subcategorias = (AdaptiveGridView)sender;
-            subcategoriasMenuFlyout.ShowAt(subcategorias, e.GetPosition(subcategorias));
-            var tempCategoria = ((FrameworkElement)e.OriginalSource).DataContext as Subcategoria;
-            tappedSubcategoria = tempCategoria.SubcategoriaID;
+            var tempSubcategoria = ((FrameworkElement)e.OriginalSource).DataContext as Subcategoria;
+            if (tempSubcategoria != null)
+            {
+                subcategoriasMenuFlyout.ShowAt(subcategorias, e.GetPosition(subcategorias));
+
+                tappedSubcategoria = tempSubcategoria.SubcategoriaID;
+            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -139,6 +151,12 @@ namespace LALC_UWP
                 filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.Text.ToLower()));
                 SubcategoriasGrid.ItemsSource = filteredList;
             }
+        }
+
+        private void navegacionsub_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            ConceptosView.subcategoria = (Subcategoria)args.SelectedItem;
+            Frame.Navigate(typeof(ConceptosView));
         }
     }
 }

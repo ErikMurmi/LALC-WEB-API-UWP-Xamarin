@@ -41,7 +41,11 @@
     </Page.Resources>
     
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="300" Width="300" MaxWidth="430"/>
+            <ColumnDefinition MinWidth="900" MaxWidth="2000"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
             <Button Click="Button_Click" 
                     HorizontalAlignment="Center" 
                     Margin="0,20,20,0"
@@ -85,6 +89,15 @@
                 </controls:AdaptiveGridView.Resources>
             </controls:AdaptiveGridView> 
         </StackPanel>
+        <Border Grid.Column="0">
+            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False">
+                <NavigationView.MenuItemTemplate>
+                    <DataTemplate x:DataType="models:Subcategoria">
+                        <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>
+                    </DataTemplate>
+                </NavigationView.MenuItemTemplate>
+            </NavigationView>
+        </Border>
     </Grid>
     
     

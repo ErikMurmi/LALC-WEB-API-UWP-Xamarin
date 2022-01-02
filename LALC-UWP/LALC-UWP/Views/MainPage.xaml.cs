@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -100,10 +101,14 @@ namespace LALC_UWP
         private void CategoriasGrid_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             AdaptiveGridView categorias = (AdaptiveGridView)sender;
-            categoriasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
             var tempCategoria = ((FrameworkElement)e.OriginalSource).DataContext as Categoria;
-            tappedCategoria = tempCategoria.CategoriaID;
-            EditarCategoria.categoriaSeleccionada = tempCategoria.CategoriaID;
+            if (tempCategoria!=null)
+            {
+                categoriasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
+                tappedCategoria = tempCategoria.CategoriaID;
+                EditarCategoria.categoriaSeleccionada = tempCategoria.CategoriaID;
+            }
+            
         }
 
         private void Editar_Click(object sender, RoutedEventArgs e)
@@ -113,18 +118,32 @@ namespace LALC_UWP
 
         private async void Eliminar_Click(object sender, RoutedEventArgs e)
         {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(categorias_url+"/"+tappedCategoria);
-            request.Method = HttpMethod.Delete;
-            request.Headers.Add("Accept", "application/json");
-            var client = new HttpClient(httpHandler);
+            MessageDialog dialog = new MessageDialog("¿Está seguro de eliminar la subcategoria " + usuarioActual.Categorias.Where<Categoria>(p => p.CategoriaID == tappedCategoria).FirstOrDefault().Nombre + " ?");
+            dialog.Title = "Eliminar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
 
-            HttpResponseMessage response = await client.SendAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (cmd.Label == "Si")
             {
-                loadUserInfo();
+                var httpHandler = new HttpClientHandler();
+                var request = new HttpRequestMessage();
+                request.RequestUri = new Uri(categorias_url + "/" + tappedCategoria);
+                request.Method = HttpMethod.Delete;
+                request.Headers.Add("Accept", "application/json");
+                var client = new HttpClient(httpHandler);
+
+                HttpResponseMessage response = await client.SendAsync(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    loadUserInfo();
+                }
             }
+
+
+            
         }
 
         private void Cargar_Base()
@@ -161,16 +180,6 @@ namespace LALC_UWP
             Frame.Navigate(typeof(SubcategoriasView));
         }
 
-        /*private void navegacion_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
-            ICollection<Categoria> cate = usuarioActual.Categorias;
-            var catenombres = new List<String>();
-            switch (item.Content.ToString())
-            {
-                
-            }
-        }*/
     }
 
 }
