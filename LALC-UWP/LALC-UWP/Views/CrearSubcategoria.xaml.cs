@@ -43,23 +43,31 @@ namespace LALC_UWP.Views
 
         private async void Crear_ClickSb(object sender, RoutedEventArgs e)
         {
-            var subcategoriaCreada = new Subcategoria
+            if (String.IsNullOrEmpty(NombrenuevaSb.Text))
             {
-                Nombre = NombrenuevaSb.Text,
-                CategoriaID = SubcategoriasView.categoria.CategoriaID,
-                Descripcion = DescripcionnuevaSb.Text,
-                Color = CreaColorSb.Color.ToHex()
-            };
-            var httpHandler = new HttpClientHandler();
-            var client = new HttpClient(httpHandler);
-            var serializedSubcategoria = JsonConvert.SerializeObject(subcategoriaCreada);
-            var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PostAsync(subcategorias_url, dato);
-
-            if (httpResponse.Content != null)
-            {
-                Frame.Navigate(typeof(SubcategoriasView));
+                await new MessageDialog("La subcategoría debe tener un nombre", "Nombre vacío").ShowAsync();
             }
+            else
+            {
+                var subcategoriaCreada = new Subcategoria
+                {
+                    Nombre = NombrenuevaSb.Text,
+                    CategoriaID = SubcategoriasView.categoria.CategoriaID,
+                    Descripcion = DescripcionnuevaSb.Text,
+                    Color = CreaColorSb.Color.ToHex()
+                };
+                var httpHandler = new HttpClientHandler();
+                var client = new HttpClient(httpHandler);
+                var serializedSubcategoria = JsonConvert.SerializeObject(subcategoriaCreada);
+                var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
+                var httpResponse = await client.PostAsync(subcategorias_url, dato);
+
+                if (httpResponse.Content != null)
+                {
+                    Frame.Navigate(typeof(SubcategoriasView));
+                }
+            }
+
 
         }
 

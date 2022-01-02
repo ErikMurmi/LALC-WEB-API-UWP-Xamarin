@@ -47,25 +47,44 @@ namespace LALC_UWP.Views
 
         private async void Crear_Click(object sender, RoutedEventArgs e)
         {
-            var categoriaCreada = new Categoria
+
+            if (String.IsNullOrEmpty(Nombrenueva.Text))
             {
-                Nombre = Nombrenueva.Text,
-                UsuarioID = MainPage.actualUserId,
-                Descripcion = Descripcionnueva.Text,
-                esPrioritaria = (bool)Prioridadnueva.IsChecked,
-                Color = CreaColor.Color.ToHex()
-            };
-            var httpHandler = new HttpClientHandler();
-            var client = new HttpClient(httpHandler);
-            var serializedCategoria = JsonConvert.SerializeObject(categoriaCreada);
-            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PostAsync(categorias_url, dato);
-            
-            if(httpResponse.Content != null)
-            {
-                Frame.Navigate(typeof(MainPage));
+                await new MessageDialog("La categoría debe tener un nombre", "Nombre vacío").ShowAsync();
             }
-            
+            else {
+                MessageDialog dialog = new MessageDialog("¿Está seguro de crear la categoría?");
+                dialog.Title = "Crear";
+                dialog.Commands.Add(new UICommand("Si", null));
+                dialog.Commands.Add(new UICommand("No", null));
+                dialog.DefaultCommandIndex = 0;
+                dialog.CancelCommandIndex = 1;
+                var cmd = await dialog.ShowAsync();
+
+                if (cmd.Label == "Si")
+                {
+
+
+                    var categoriaCreada = new Categoria
+                    {
+                        Nombre = Nombrenueva.Text,
+                        UsuarioID = MainPage.actualUserId,
+                        Descripcion = Descripcionnueva.Text,
+                        esPrioritaria = (bool)Prioridadnueva.IsChecked,
+                        Color = CreaColor.Color.ToHex()
+                    };
+                    var httpHandler = new HttpClientHandler();
+                    var client = new HttpClient(httpHandler);
+                    var serializedCategoria = JsonConvert.SerializeObject(categoriaCreada);
+                    var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
+                    var httpResponse = await client.PostAsync(categorias_url, dato);
+
+                    if (httpResponse.Content != null)
+                    {
+                        Frame.Navigate(typeof(MainPage));
+                    }
+                }
+            } 
         }
 
         private void CreaColor_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)

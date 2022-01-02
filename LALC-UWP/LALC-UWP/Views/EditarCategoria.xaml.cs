@@ -95,40 +95,44 @@ namespace LALC_UWP.Views
 
         private async void Editar_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog dialog = new MessageDialog("¿Está seguro de editar la categoría " + seleccionada.Nombre+" ?");
-            dialog.Title = "Editar";
-            dialog.Commands.Add(new UICommand("Si", null));
-            dialog.Commands.Add(new UICommand("No", null));
-            dialog.DefaultCommandIndex = 0;
-            dialog.CancelCommandIndex = 1;
-            var cmd = await dialog.ShowAsync();
-
-            if (cmd.Label == "Si")
+            if (String.IsNullOrEmpty(EditName.Text))
             {
-                var categoriaEditada = new Categoria
-                {
-                    Nombre = EditName.Text,
-                    CategoriaID = seleccionada.CategoriaID,
-                    UsuarioID = seleccionada.UsuarioID,
-                    Descripcion = EditDescripcion.Text,
-                    esPrioritaria = (bool)EditPriorotaria.IsChecked,
-                    Color = Colorpick.Color.ToHex()
+                await new MessageDialog("La categoría debe tener un nombre", "Nombre vacío").ShowAsync();
+            }
+            else
+            {
+                MessageDialog dialog = new MessageDialog("¿Está seguro de editar la categoría " + seleccionada.Nombre + " ?");
+                dialog.Title = "Editar";
+                dialog.Commands.Add(new UICommand("Si", null));
+                dialog.Commands.Add(new UICommand("No", null));
+                dialog.DefaultCommandIndex = 0;
+                dialog.CancelCommandIndex = 1;
+                var cmd = await dialog.ShowAsync();
 
-                };
-                var httpHandler = new HttpClientHandler();
-                var client = new HttpClient(httpHandler);
-                var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
-                var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-                var httpResponse = await client.PutAsync(categorias_url + "/" + categoriaSeleccionada, dato);
-
-                if (httpResponse.Content != null)
+                if (cmd.Label == "Si")
                 {
-                    Frame.Navigate(typeof(MainPage));
+                    var categoriaEditada = new Categoria
+                    {
+                        Nombre = EditName.Text,
+                        CategoriaID = seleccionada.CategoriaID,
+                        UsuarioID = seleccionada.UsuarioID,
+                        Descripcion = EditDescripcion.Text,
+                        esPrioritaria = (bool)EditPriorotaria.IsChecked,
+                        Color = Colorpick.Color.ToHex()
+
+                    };
+                    var httpHandler = new HttpClientHandler();
+                    var client = new HttpClient(httpHandler);
+                    var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
+                    var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
+                    var httpResponse = await client.PutAsync(categorias_url + "/" + categoriaSeleccionada, dato);
+
+                    if (httpResponse.Content != null)
+                    {
+                        Frame.Navigate(typeof(MainPage));
+                    }
                 }
             }
-
-            
-            
         }
 
         private async void Cancelar_Click(object sender, RoutedEventArgs e)

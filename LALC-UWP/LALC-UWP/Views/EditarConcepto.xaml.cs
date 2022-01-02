@@ -73,24 +73,30 @@ namespace LALC_UWP.Views
 
         private async void Editar_Click(object sender, RoutedEventArgs e)
         {
-            var conceptoEditado = new Concepto
+            if (String.IsNullOrEmpty(EditTitulo.Text) || String.IsNullOrEmpty(EditDefinicion.Text))
             {
-                ConceptoID = conceptoSeleccionado,
-                Titulo = EditTitulo.Text,
-                SubcategoriaID = seleccionado.SubcategoriaID,
-                Definicion = EditDefinicion.Text,
-            };
-            var httpHandler = new HttpClientHandler();
-            var client = new HttpClient(httpHandler);
-            var serializedConcepto = JsonConvert.SerializeObject(conceptoEditado);
-            var dato = new StringContent(serializedConcepto, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PutAsync(conceptos_url + "/" + conceptoSeleccionado, dato);
-
-            if (httpResponse.Content != null)
-            {
-                Frame.Navigate(typeof(ConceptosView));
+                await new MessageDialog("El concepto debe tener un título y una definición", "Campos vacios").ShowAsync();
             }
+            else
+            {
+                var conceptoEditado = new Concepto
+                {
+                    ConceptoID = conceptoSeleccionado,
+                    Titulo = EditTitulo.Text,
+                    SubcategoriaID = seleccionado.SubcategoriaID,
+                    Definicion = EditDefinicion.Text,
+                };
+                var httpHandler = new HttpClientHandler();
+                var client = new HttpClient(httpHandler);
+                var serializedConcepto = JsonConvert.SerializeObject(conceptoEditado);
+                var dato = new StringContent(serializedConcepto, Encoding.UTF8, "application/json");
+                var httpResponse = await client.PutAsync(conceptos_url + "/" + conceptoSeleccionado, dato);
 
+                if (httpResponse.Content != null)
+                {
+                    Frame.Navigate(typeof(ConceptosView));
+                }
+            }
         }
 
         private async void Cancelar_Click(object sender, RoutedEventArgs e)
