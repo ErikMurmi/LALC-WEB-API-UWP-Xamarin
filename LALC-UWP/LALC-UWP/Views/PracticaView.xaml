@@ -44,7 +44,7 @@
             </Button>
         </Grid>
 
-        <Grid Height="600" Margin="350,0,350,0" BorderThickness="1" CornerRadius="25,25,25,25" Background="#FFC75858" VerticalAlignment="Center" HorizontalAlignment="Stretch" >
+        <Grid MinHeight="400" Height="600" MaxHeight="800" Margin="350,0,350,0" BorderThickness="1" CornerRadius="25,25,25,25" Background="#FFC75858" VerticalAlignment="Center" HorizontalAlignment="Stretch" >
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="40,40,40,40">
                 <TextBlock x:Name="TituloCn" Text="Titulo " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="80" TextWrapping="Wrap"/>
                 <TextBlock x:Name="DefinicionCn" Text="Definicion " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48" TextWrapping="Wrap"/>

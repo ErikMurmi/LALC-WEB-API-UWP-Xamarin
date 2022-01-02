@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -43,6 +44,7 @@ namespace LALC_UWP.Views
 
         public void generarListaPractica()
         {
+            contadorConceptos = 1;
             conceptosPractica = ConceptosView.subcategoria.Conceptos.ToList();
             conceptosPractica = Shuffle<Concepto>(conceptosPractica);
             TituloCn.Text = conceptosPractica.First<Concepto>().Titulo;
@@ -85,7 +87,7 @@ namespace LALC_UWP.Views
             }
         }
 
-        private void SiguienteConcepto_Click(object sender, RoutedEventArgs e)
+        private async void SiguienteConcepto_Click(object sender, RoutedEventArgs e)
         {
             
             if (indexPractica < conceptosPractica.Count() - 1)
@@ -93,6 +95,27 @@ namespace LALC_UWP.Views
                 contadorConceptos += 1;
                 indexPractica += 1;
                 cargarConcepto(conceptosPractica[indexPractica]);
+            }
+            else
+            {
+                MessageDialog dialog = new MessageDialog("¿Desea salir?");
+                dialog.Title = "Completaste todos los conceptos";
+                dialog.Commands.Add(new UICommand("Si y guardar", null));
+                dialog.Commands.Add(new UICommand("Repetir", null));
+                dialog.Commands.Add(new UICommand("No", null));
+                
+                dialog.DefaultCommandIndex = 0;
+                dialog.CancelCommandIndex = 2;
+                var cmd = await dialog.ShowAsync();
+                if (cmd.Label == "Si y guardar")
+                {
+                    guardarPractica();
+                    Frame.Navigate(typeof(ConceptosView));
+                }
+                else if (cmd.Label == "Repetir")
+                {
+                    generarListaPractica();
+                }
             }
         }
 
