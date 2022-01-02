@@ -73,9 +73,13 @@ namespace LALC_UWP
         private void Conceptos_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             AdaptiveGridView conceptos = (AdaptiveGridView)sender;
-            conceptosMenuFlyout.ShowAt(conceptos, e.GetPosition(conceptos));
             var tempConcepto = ((FrameworkElement)e.OriginalSource).DataContext as Concepto;
-            tappedConcepto = tempConcepto.ConceptoID;
+            if (tempConcepto != null)
+            {
+                conceptosMenuFlyout.ShowAt(conceptos, e.GetPosition(conceptos));
+                tappedConcepto = tempConcepto.ConceptoID;
+            }
+            
         }
 
 
