@@ -47,6 +47,10 @@
     </Page.Background>
 
     <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="127*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="300" Width="300" MaxWidth="430"/>
             <ColumnDefinition MinWidth="900" MaxWidth="2000" Width="323*"/>
@@ -60,13 +64,13 @@
             ResizeDirection="Auto"
             ResizeBehavior="BasedOnAlignment"
             CursorBehavior="ChangeOnSplitterHover"
-            Width="3" Height="100" Background="#7FFFFFFF" GripperForeground="White" Margin="0,450,0,450">
+            Width="3" Height="100" Background="#7FFFFFFF" GripperForeground="White" Margin="0,45,0,490" Grid.Row="1">
             <controls:GridSplitter.RenderTransform>
                 <TranslateTransform X="-8" />
             </controls:GridSplitter.RenderTransform>
 
         </controls:GridSplitter>
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
 
             <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500">
                 <Grid.RowDefinitions>
@@ -115,7 +119,7 @@
             </Border>
         </StackPanel>
 
-        <Border Grid.Column="3">
+        <Border Grid.Column="3" Grid.RowSpan="2">
             <Border.Background>
                 <AcrylicBrush TintColor="#F2191717" BackgroundSource="HostBackdrop" TintOpacity="5"/>
             </Border.Background>
@@ -143,8 +147,8 @@
 
         </Border>
 
-        <Border Grid.Column="0">
-            <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Background="#FF252323">
+        <Border Grid.Column="0" Grid.RowSpan="2">
+            <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged" IsSettingsVisible="False" IsBackButtonVisible="Collapsed" Background="#FF252323" PaneDisplayMode="Left">
                 <NavigationView.PaneFooter>
                     <StackPanel>
                         <NavigationViewItem x:Name="practica" Content="Prácticas" Icon="AllApps" Tapped="practica_Tapped"></NavigationViewItem>
