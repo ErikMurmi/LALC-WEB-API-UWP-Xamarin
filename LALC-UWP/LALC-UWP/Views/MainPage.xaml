@@ -48,13 +48,14 @@
 
     <Grid >
         <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="300" Width="300" MaxWidth="430"/>
             <ColumnDefinition MinWidth="900" MaxWidth="2000"/>
             <ColumnDefinition MinWidth="240" Width="240" MaxWidth="430"/>
         </Grid.ColumnDefinitions>
         <controls:GridSplitter
             GripperCursor="Default"
             HorizontalAlignment="Left"
-            Grid.Column="1"
+            Grid.Column="2"
             ResizeDirection="Auto"
             ResizeBehavior="BasedOnAlignment"
             CursorBehavior="ChangeOnSplitterHover"
@@ -64,8 +65,8 @@
             </controls:GridSplitter.RenderTransform>
 
         </controls:GridSplitter>
-        <StackPanel Orientation="Vertical" >
-
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+             
             <Grid   VerticalAlignment="Center" MinWidth="300" MaxWidth="1500">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -84,7 +85,8 @@
                 </Button>
 
             </Grid>
-            <Border Grid.Column="0">
+            
+            <Border Grid.Column="1">
                 <controls:AdaptiveGridView x:Name="CategoriasGrid" 
                                    StretchContentForSingleRow="False"
                                    OneRowModeEnabled="False"
@@ -107,7 +109,7 @@
             </Border>
         </StackPanel>
 
-        <Border Grid.Column="1">
+        <Border Grid.Column="2">
             <Border.Background>
                 <AcrylicBrush TintColor="#F2191717" BackgroundSource="HostBackdrop" TintOpacity="5"/>
             </Border.Background>
@@ -149,6 +151,18 @@
 
         </Border>
 
+        <Border Grid.Column="0">
+            <NavigationView x:Name="navegacion" SelectionChanged="navegacion_SelectionChanged">
+                <!--<NavigationView.MenuItems Content ="Hola">
+                </NavigationView.MenuItems>-->
+                
+                    <!--<NavigationView.MenuItemTemplate>
+                    <DataTemplate x:DataType= "models:Categoria">
+                       
+                    </DataTemplate>
+                </NavigationView.MenuItemTemplate>-->
+            </NavigationView>
+        </Border>
 
     </Grid>
 
