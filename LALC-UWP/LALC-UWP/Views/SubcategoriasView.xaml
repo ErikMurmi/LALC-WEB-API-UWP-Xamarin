@@ -90,7 +90,7 @@
             </controls:AdaptiveGridView> 
         </StackPanel>
         <Border Grid.Column="0">
-            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged">
+            <NavigationView x:Name="navegacionsub" SelectionChanged="navegacionsub_SelectionChanged" IsSettingsVisible="False">
                 <NavigationView.MenuItemTemplate>
                     <DataTemplate x:DataType="models:Subcategoria">
                         <NavigationViewItem Content="{x:Bind Nombre}"></NavigationViewItem>
