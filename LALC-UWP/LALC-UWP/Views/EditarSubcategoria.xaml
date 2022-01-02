@@ -31,7 +31,7 @@
                 <TextBlock  Text="Descripción" FontSize="24" Margin="0,23,0,0"/>
                 <TextBox x:Name="EditDescripcion" Background="White" TextWrapping="Wrap"
                      Margin="0,10,0,0"
-                     MinWidth="300" MaxWidth="200" FontSize="18" MinHeight="100" HorizontalAlignment="Left" />
+                     MinWidth="300" MaxWidth="200" FontSize="18" MinHeight="100" HorizontalAlignment="Left" Foreground="Black" />
 
                 <Button x:Name="Editar"
                     Content="Editar"
