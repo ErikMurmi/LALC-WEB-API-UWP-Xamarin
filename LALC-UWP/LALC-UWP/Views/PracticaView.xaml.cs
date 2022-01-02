@@ -46,6 +46,7 @@ namespace LALC_UWP.Views
             conceptosPractica = ConceptosView.subcategoria.Conceptos.ToList();
             conceptosPractica = Shuffle<Concepto>(conceptosPractica);
             TituloCn.Text = conceptosPractica.First<Concepto>().Titulo;
+            DefinicionCn.Text = conceptosPractica.First<Concepto>().Definicion;
         }
 
         public List<T> Shuffle<T>( List<T> list)
@@ -98,6 +99,7 @@ namespace LALC_UWP.Views
         public void cargarConcepto(Concepto cn)
         {
             TituloCn.Text = cn.Titulo;
+            DefinicionCn.Text = cn.Definicion;
         }
 
         private void SymbolIcon_Tapped(object sender, TappedRoutedEventArgs e)

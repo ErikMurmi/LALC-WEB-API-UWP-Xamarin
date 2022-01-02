@@ -40,35 +40,40 @@ namespace LALC_UWP.Views
 
         private async void Crear_ClickCn(object sender, RoutedEventArgs e)
         {
-            MessageDialog dialog = new MessageDialog("¿Está seguro de crear la subcategoria?");
-            dialog.Title = "Cancelar";
-            dialog.Commands.Add(new UICommand("Si", null));
-            dialog.Commands.Add(new UICommand("No", null));
-            dialog.DefaultCommandIndex = 0;
-            dialog.CancelCommandIndex = 1;
-            var cmd = await dialog.ShowAsync();
-
-            if (cmd.Label == "Si")
+            if (String.IsNullOrEmpty(NombrenuevaCn.Text) || String.IsNullOrEmpty(DescripcionnuevaCn.Text))
             {
-                var conceptoCreado = new Concepto
-                {
-                    Titulo = NombrenuevaCn.Text,
-                    SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
-                    Definicion = DescripcionnuevaCn.Text
-                };
-                var httpHandler = new HttpClientHandler();
-                var client = new HttpClient(httpHandler);
-                var serializedSubcategoria = JsonConvert.SerializeObject(conceptoCreado);
-                var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
-                var httpResponse = await client.PostAsync(conceptos_url, dato);
+                await new MessageDialog("El concepto debe tener un título y una definición", "Campos vacios").ShowAsync();
+            }
+            else
+            {
+                MessageDialog dialog = new MessageDialog("¿Está seguro de crear el concepto?");
+                dialog.Title = "Crear";
+                dialog.Commands.Add(new UICommand("Si", null));
+                dialog.Commands.Add(new UICommand("No", null));
+                dialog.DefaultCommandIndex = 0;
+                dialog.CancelCommandIndex = 1;
+                var cmd = await dialog.ShowAsync();
 
-                if (httpResponse.Content != null)
+                if (cmd.Label == "Si")
                 {
-                    Frame.Navigate(typeof(ConceptosView));
+                    var conceptoCreado = new Concepto
+                    {
+                        Titulo = NombrenuevaCn.Text,
+                        SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
+                        Definicion = DescripcionnuevaCn.Text
+                    };
+                    var httpHandler = new HttpClientHandler();
+                    var client = new HttpClient(httpHandler);
+                    var serializedSubcategoria = JsonConvert.SerializeObject(conceptoCreado);
+                    var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
+                    var httpResponse = await client.PostAsync(conceptos_url, dato);
+
+                    if (httpResponse.Content != null)
+                    {
+                        Frame.Navigate(typeof(ConceptosView));
+                    }
                 }
             }
-            
-
         }
 
         private async void Cancelar_Click(object sender, RoutedEventArgs e)
