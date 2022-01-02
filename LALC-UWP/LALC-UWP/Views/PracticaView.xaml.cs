@@ -45,6 +45,7 @@ namespace LALC_UWP.Views
         public void generarListaPractica()
         {
             contadorConceptos = 1;
+            indexPractica = 0;
             conceptosPractica = ConceptosView.subcategoria.Conceptos.ToList();
             conceptosPractica = Shuffle<Concepto>(conceptosPractica);
             TituloCn.Text = conceptosPractica.First<Concepto>().Titulo;
@@ -96,7 +97,7 @@ namespace LALC_UWP.Views
                 indexPractica += 1;
                 cargarConcepto(conceptosPractica[indexPractica]);
             }
-            else
+            else if(indexPractica<conceptosPractica.Count)
             {
                 MessageDialog dialog = new MessageDialog("¿Desea salir?");
                 dialog.Title = "Completaste todos los conceptos";
