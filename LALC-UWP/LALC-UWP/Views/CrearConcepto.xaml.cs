@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -39,23 +40,51 @@ namespace LALC_UWP.Views
 
         private async void Crear_ClickCn(object sender, RoutedEventArgs e)
         {
-            var conceptoCreado = new Concepto
-            {
-                Titulo = NombrenuevaCn.Text,
-                SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
-                Definicion = DescripcionnuevaCn.Text
-            };
-            var httpHandler = new HttpClientHandler();
-            var client = new HttpClient(httpHandler);
-            var serializedSubcategoria = JsonConvert.SerializeObject(conceptoCreado);
-            var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PostAsync(conceptos_url, dato);
+            MessageDialog dialog = new MessageDialog("¿Está seguro de crear la subcategoria?");
+            dialog.Title = "Cancelar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
 
-            if (httpResponse.Content != null)
+            if (cmd.Label == "Si")
+            {
+                var conceptoCreado = new Concepto
+                {
+                    Titulo = NombrenuevaCn.Text,
+                    SubcategoriaID = ConceptosView.subcategoria.SubcategoriaID,
+                    Definicion = DescripcionnuevaCn.Text
+                };
+                var httpHandler = new HttpClientHandler();
+                var client = new HttpClient(httpHandler);
+                var serializedSubcategoria = JsonConvert.SerializeObject(conceptoCreado);
+                var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
+                var httpResponse = await client.PostAsync(conceptos_url, dato);
+
+                if (httpResponse.Content != null)
+                {
+                    Frame.Navigate(typeof(ConceptosView));
+                }
+            }
+            
+
+        }
+
+        private async void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog dialog = new MessageDialog("¿Está seguro de salir sin crear la subcategoria?");
+            dialog.Title = "Cancelar";
+            dialog.Commands.Add(new UICommand("Si", null));
+            dialog.Commands.Add(new UICommand("No", null));
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+            var cmd = await dialog.ShowAsync();
+
+            if (cmd.Label == "Si")
             {
                 Frame.Navigate(typeof(ConceptosView));
             }
-
         }
     }
 }
