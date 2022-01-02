@@ -99,50 +99,8 @@ namespace LALC_UWP.Views
             {
                 practicasMenuFlyout.ShowAt(categorias, e.GetPosition(categorias));
                 tappedPractica = tempPractica.PracticaID;
-            }
-           
+            }   
         }
 
-        /*public async void LoadPracticas()
-        {
-            //ListaPracticas.ItemsSource = MainPage.usuarioActual.Practicas;
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(practicas_url);
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
-            var client = new HttpClient(httpHandler);
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var praticas = new List<Practica>();
-                string content = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<Practica>(content);
-                /*praticas.Add(data);
-                httpHandler = new HttpClientHandler();
-                request = new HttpRequestMessage();
-                request.RequestUri = new Uri(practicas_url1);
-                request.Method = HttpMethod.Get;
-                request.Headers.Add("Accept", "application/json");
-                client = new HttpClient(httpHandler);
-                response = await client.SendAsync(request);
-                content = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<Practica>(content);
-                praticas.Add(data);*/
-        //var data = JsonConvert.DeserializeObject<List<Practica>>(content);
-
-        /*foreach(var p in data)
-        {
-            if(p.UsuarioID == MainPage.actualUserId)
-            {
-                praticas.Add(p);
-            }
-        }
-
-        ListaPracticas.ItemsSource = praticas;
-        //ListaPracticas.ItemsSource = data;
-    }
-}*/
     }
 }

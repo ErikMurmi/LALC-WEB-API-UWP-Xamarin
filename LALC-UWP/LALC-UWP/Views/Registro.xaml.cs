@@ -71,7 +71,7 @@ namespace LALC_UWP.Views
             }
             else
             {
-                msEmail.Text = string.Empty;
+                msNombre.Text = string.Empty;
                 return false;
             }
         }
