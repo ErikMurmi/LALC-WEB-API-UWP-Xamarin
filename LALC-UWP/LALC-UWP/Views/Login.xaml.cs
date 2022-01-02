@@ -2,20 +2,12 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Text.RegularExpressions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,31 +23,7 @@ namespace LALC_UWP.Views
         {
             this.InitializeComponent();
         }
-        private void PassportSignInButton_Click(object sender, RoutedEventArgs e)
-        {
-            MensajeError.Text = "";
-        }
-        private void RegisterButtonTextBlock_OnPointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            MensajeError.Text = "";
-        }
-        async void getData()
-        {
-            HttpClient client = new HttpClient();
-            string response = await client.GetStringAsync(usuarios_url);
-            var data = JsonConvert.DeserializeObject<List<Usuario>>(response);
-            foreach(var i in data)
-            {
-                if (i.email.Equals(EmailText.Text) && i.password.Equals(ContraseñaText.Password))
-                {
-                    MainPage.actualUserId = i.UsuarioID;
-                    Frame.Navigate(typeof(MainPage));
-                }
-            }
-            
-        }
-
-        public async void getData2()
+        public async void getData()
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
@@ -86,9 +54,16 @@ namespace LALC_UWP.Views
 
         private void BotonInicioSesion(object sender, RoutedEventArgs e)
         {
-            abcd.Text = "lleno1";
-            getData2();
-            //Frame.Navigate(typeof(MainPage));
+            if(!Regex.IsMatch(EmailText.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
+            {
+                statusText.Text = "Correo inválido";
+            }
+            else if(string.IsNullOrEmpty(EmailText.Text))
+            {
+                statusText.Text = "Campos vacíos";
+            }
+            getData();
+            Frame.Navigate(typeof(MainPage));
         }
 
         private void RegisterButtonTextBlock_OnPointerPressed(object sender, RoutedEventArgs e)
@@ -98,14 +73,23 @@ namespace LALC_UWP.Views
 
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (ContraseñaText.Password == "Contraseña")
+            if (ContraseñaText.Password == "Contraseña" || ContraseñaText.Password == "contraseña" || ContraseñaText.Password == "password" || ContraseñaText.Password == "Password")
             {
-                statusText.Text = "'Contraseña' no es una contraseña válida.";
+                statusText.Text = "'" + ContraseñaText + "'" + " no es una contraseña válida.";
+            }
+            else if (string.IsNullOrEmpty(ContraseñaText.ToString()) || string.IsNullOrWhiteSpace(ContraseñaText.ToString()) || ContraseñaText.Password.Length<8)
+            {
+                statusText.Text = "La contraseña debe contener más de 8 caracteres y no debe contener espacios en blanco.";
             }
             else
             {
                 statusText.Text = string.Empty;
             }
+        }
+
+        private void EmailText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
