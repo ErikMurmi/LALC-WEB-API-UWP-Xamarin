@@ -157,6 +157,11 @@ namespace LALC_UWP
             toast.ExpirationTime = DateTime.Now.AddSeconds(4);
             ToastNotifier.Show(toast);
         }
+
+        private void backHP_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SubcategoriasView));
+        }
     }
 
 }
