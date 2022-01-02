@@ -11,11 +11,11 @@
         <ThemeResource ResourceKey="SystemControlAltHighAcrylicWindowBrush"/>
     </Page.Background>
     <StackPanel Orientation="Vertical">
-        <Button Click="Button_Click" 
-                    HorizontalAlignment="Center" 
-                    Margin="0,20,20,0"
-                    Foreground="White" Background="White"
-                    Width="100" Height="50"/>
+        <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,20,0,0" Click="Button_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top">
+            <Button.RenderTransform>
+                <CompositeTransform ScaleX="2" ScaleY="2" TranslateX="2.76" TranslateY="-32.76"/>
+            </Button.RenderTransform>
+        </Button>
         <TextBlock Name="TituloEditConcepto" Text="Titulo" FontSize="48" Margin="50,20,0,0" />
         <Grid>
             <StackPanel Margin="50,23,0,0" HorizontalAlignment="Left" >
