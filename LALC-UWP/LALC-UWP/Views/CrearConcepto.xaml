@@ -5,8 +5,7 @@
     xmlns:local="using:LALC_UWP.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical">
         <Button Style="{StaticResource NavigationBackButtonNormalStyle}" Foreground="White" Margin="20,20,0,0" Click="Cancelar_Click" RenderTransformOrigin="0.569,-0.319" VerticalAlignment="Top">
@@ -53,4 +52,8 @@
 
         </Grid>
     </StackPanel>
+
+    <Page.Background>
+        <ThemeResource ResourceKey="SystemControlAltHighAcrylicWindowBrush"/>
+    </Page.Background>
 </Page>
