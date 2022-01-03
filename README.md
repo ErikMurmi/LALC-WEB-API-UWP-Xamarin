@@ -1,5 +1,9 @@
+
+## Usuarios 
+- email: user@gmail.com clave: 12345678
+- email: udla@gmail.com clave: udla1234
+
 # LALC-API-UWP
-Progreso2
 PROCEDIMIENTO PARA LA EJECUCIÓN DE LA SOLUCIÓN
 
 a. Clonar el repositorio del proyecto LALC, de GitHub, que se va a vincular mediante el enlace en Visual Studio 2019. 
