@@ -5,11 +5,16 @@ using Xamarin.Forms.Xaml;
 
 namespace LALCXamarin.Views
 {
-    public partial class AboutPage : ContentPage
+    public partial class Categorias : ContentPage
     {
-        public AboutPage()
+        public Categorias()
+        {
+        }
+
+        public Categorias(NavigationPage MainPage)
         {
             InitializeComponent();
         }
+
     }
 }
