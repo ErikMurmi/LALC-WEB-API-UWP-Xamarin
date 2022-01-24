@@ -44,8 +44,8 @@ namespace LALCXamarin.Views
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
                 ListaDemo.ItemsSource = resultado;
-            }
 
+            }
         }
     }
 }
