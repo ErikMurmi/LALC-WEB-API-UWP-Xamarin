@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SkiaSharp;
+using SkiaSharp.Views.Forms;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,8 +18,9 @@ namespace LALCXamarin.Views
         {
             InitializeComponent();
         }
+       
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void CrearNuevaCategoria(object sender, EventArgs e)
         {
            // var rendererAssemblies = ColorPicker.UWP.ColorPickerEffects.GetRendererAssemblies();
             //Xamarin.Forms.Forms.Init(e, rendererAssemblies);
