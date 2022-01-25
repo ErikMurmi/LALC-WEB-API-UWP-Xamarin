@@ -1,4 +1,5 @@
-﻿using LALCXamarin.Services;
+﻿using LALC_UWP.Models;
+using LALCXamarin.Services;
 using LALCXamarin.Views;
 using System;
 using Xamarin.Forms;
@@ -8,7 +9,8 @@ namespace LALCXamarin
 {
     public partial class App : Application
     {
-
+        public static int actualUserId = 0;
+        public static Usuario usuarioActual;
         public App()
         {
             InitializeComponent();

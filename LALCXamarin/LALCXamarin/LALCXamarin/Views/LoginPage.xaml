@@ -8,16 +8,15 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text="Iniciar Sesión" FontSize="Title"></Label>
+            <Label Text="Email"></Label>
+            <Entry x:Name="campoEmail" ></Entry>
+            <Label x:Name="msEmail"></Label>
+            <Label Text="Contraseña"></Label>
+            <Entry x:Name="campoContraseña" IsPassword="True" ></Entry>
+            <Label x:Name="msContraseña"></Label>
             <Button VerticalOptions="Center" Text="Login" Clicked="Button_Clicked"/>
-            <StackLayout>
-                <ListView x:Name="ListaDemo">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="" Detail="{Binding nombre}"/>
-                        </DataTemplate>
-                      </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
+            <Button x:Name="IreRegistro" Text="Regístrate" Clicked="IreRegistro_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
