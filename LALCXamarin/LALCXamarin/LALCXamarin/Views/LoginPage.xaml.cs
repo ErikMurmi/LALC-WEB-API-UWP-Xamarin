@@ -103,7 +103,7 @@ namespace LALCXamarin.Views
                 getData();
             }
         }
-        private async Task IreRegistro_ClickedAsync(object sender, EventArgs e)
+        private async void IreRegistro_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Registro());
         }
