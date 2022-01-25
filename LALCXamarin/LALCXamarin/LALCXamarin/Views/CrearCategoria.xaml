@@ -18,6 +18,7 @@
             <Editor x:Name="Descripcion" Text="" AutoSize="TextChanges"/>
             <Label Text="Color" FontSize="20"/>
             <Button Text="Crear" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="CrearNuevaCategoria"/>
+            <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
