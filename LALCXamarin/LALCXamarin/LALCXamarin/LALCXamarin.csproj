@@ -13,8 +13,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Registro.xaml">
+    <EmbeddedResource Update="Views\Conceptos\CrearConcepto.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditarCategoria.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Categorias\" />
+    <Folder Include="Views\Subcategorias\" />
+    <Folder Include="Views\Practicas\" />
   </ItemGroup>
 </Project>
