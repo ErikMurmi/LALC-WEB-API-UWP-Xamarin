@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LALCXamarin.Views.CrearCategoria">
+             x:Class="LALCXamarin.ViewModels.Conceptos.CrearConcepto">
     <ContentPage.Content>
         <StackLayout Margin="20,0,20,0">
             <Label Text="Prioritaria"
@@ -11,12 +11,12 @@
                 <Label Text="Si/No"
                 HorizontalOptions="Start" Margin="6" FontSize="18"/>
             </StackLayout>
-            <Label Text="Nombre" FontSize="20"/>
-            <Editor x:Name="Nombre" Text="" AutoSize="TextChanges"/>
-            <Label Text="Descripcion" FontSize="20"/>
-            <Editor x:Name="Descripcion" Text="" AutoSize="TextChanges"/>
+            <Label Text="Título" FontSize="20"/>
+            <Editor x:Name="Titulo" Text="" AutoSize="TextChanges"/>
+            <Label Text="Definición" FontSize="20"/>
+            <Editor x:Name="Definicion" Text="" AutoSize="TextChanges"/>
             <Label Text="Color" FontSize="20"/>
-            <Button Text="Crear" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="CrearNuevaCategoria"/>
+            <Button Text="Crear" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="CrearConcepto"/>
             <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
         </StackLayout>
     </ContentPage.Content>

@@ -30,21 +30,13 @@ namespace LALCXamarin.Views
 
         private async void CrearNuevaCategoria(object sender, EventArgs e)
         {
-            /*Categoria nueva = new Categoria
-            {
-                UsuarioID = 0,
-                Nombre = Nombre.Text,
-                Descripcion = Descripcion.Text,
-                esPrioritaria = EsPrioritaria.IsChecked,
-                Color = "#4287f5"
-            };*/
+
             if (String.IsNullOrEmpty(Nombre.Text))
             {
                 await DisplayAlert("Nombre vacío", "La categoría debe tener un nombre", "OK");
             }
             else {
                 bool answer = await DisplayAlert("Crear", "¿Está seguro de crear la categoría?", "Si", "No");
-               
                 if (answer)
                 {
                     Categoria categoriaCreada = new Categoria
@@ -67,8 +59,6 @@ namespace LALCXamarin.Views
                     }
                 }
             } 
-               
-  
         }
 
         private async void CancelarCrear(object sender, EventArgs e)

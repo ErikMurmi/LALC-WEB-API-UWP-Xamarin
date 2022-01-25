@@ -33,5 +33,10 @@ namespace LALCXamarin.Views
         {
             await Navigation.PushAsync(new CrearCategoria());
         }
+
+        private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditarCategoria());
+        }
     }
 }
