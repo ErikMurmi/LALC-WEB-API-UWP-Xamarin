@@ -10,6 +10,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked" />
         <ToolbarItem Text="Editar" Clicked="ToolbarItem_Clicked_1" />
+        <ToolbarItem Text="Concepto" Clicked="ToolbarItem_Clicked_2" />
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
