@@ -8,9 +8,10 @@
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked" />
-        <ToolbarItem Text="Editar" Clicked="ToolbarItem_Clicked_1" />
-        <ToolbarItem Text="Concepto" Clicked="ToolbarItem_Clicked_2" />
+        <ToolbarItem Text="AddCat" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="EdCat" Clicked="ToolbarItem_Clicked_1" />
+        <ToolbarItem Text="AddCon" Clicked="ToolbarItem_Clicked_2" />
+        <ToolbarItem Text="EdCon" Clicked="ToolbarItem_Clicked_3" />
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.

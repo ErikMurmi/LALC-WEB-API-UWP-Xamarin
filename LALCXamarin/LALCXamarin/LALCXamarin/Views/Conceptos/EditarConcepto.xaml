@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LALCXamarin.ViewModels.Conceptos.CrearConcepto"
-             Title="Crear Concepto">
+             x:Class="LALCXamarin.Views.Conceptos.EditarConcepto"
+             Title="Editar Concepto">
     <ContentPage.Content>
         <StackLayout Margin="20,0,20,0" >
             <Label Text="Título" FontSize="20"/>
             <Editor x:Name="Titulo" Text="" AutoSize="TextChanges"/>
             <Label Text="Definición" FontSize="20"/>
             <Editor x:Name="Definicion" Text="" AutoSize="TextChanges"/>
-            <Button Text="Crear" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="CrearNuevoConcepto"/>
-            <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
+            <Button Text="Editar" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="Editar"/>
+            <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" BackgroundColor="PaleVioletRed" Clicked="Cancelar"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

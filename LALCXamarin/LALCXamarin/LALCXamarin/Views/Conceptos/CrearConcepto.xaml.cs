@@ -18,7 +18,7 @@ namespace LALCXamarin.ViewModels.Conceptos
 
     public partial class CrearConcepto : ContentPage
     {
-        public string conceptos_url = "https://10.0.2.2:44318/API/Categorias";
+        public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
         public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, Boolean> ServerCertificateCustomValidationCallback { get; set; }
 
         public CrearConcepto()

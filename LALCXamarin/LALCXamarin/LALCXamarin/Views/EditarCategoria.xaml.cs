@@ -45,7 +45,7 @@ namespace LALCXamarin.Views
                 string content = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Categoria>(content);
                 seleccionada = resultado;
-                Nombre.Text = "Editar " + seleccionada.Nombre;
+                //Nombre.Text = "Editar " + seleccionada.Nombre;
                 Nombre.Text = resultado.Nombre;
                 if (resultado.Descripcion != null)
                 {

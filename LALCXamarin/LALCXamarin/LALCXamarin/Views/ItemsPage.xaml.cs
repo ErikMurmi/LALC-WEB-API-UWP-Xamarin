@@ -2,6 +2,7 @@
 using LALCXamarin.ViewModels;
 using LALCXamarin.ViewModels.Conceptos;
 using LALCXamarin.Views;
+using LALCXamarin.Views.Conceptos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,11 @@ namespace LALCXamarin.Views
         private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CrearConcepto());
+        }
+
+        private async void ToolbarItem_Clicked_3(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditarConcepto());
         }
     }
 }
