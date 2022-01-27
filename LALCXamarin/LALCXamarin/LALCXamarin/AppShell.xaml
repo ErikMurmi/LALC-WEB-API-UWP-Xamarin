@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:LALCXamarin.Views"
+       xmlns:pr ="clr-namespace:LALCXamarin.Views.Practicas"
        Title="LALCXamarin"
        x:Class="LALCXamarin.AppShell">
 
@@ -83,6 +84,9 @@
     </FlyoutItem>
     <FlyoutItem x:Name="Browse" Title="Browse" Icon="icon_feed.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+    </FlyoutItem>
+    <FlyoutItem x:Name="Practicas" Title="Practicas" Icon="icon_feed.png">
+        <ShellContent Route="Practicas" ContentTemplate="{DataTemplate pr:Practicas}" />
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

@@ -18,7 +18,7 @@ namespace LALCXamarin.Services
         private const string categorias_url = "https://10.0.2.2:44318/API/Categorias";
         private const string subcategorias_url = "https://10.0.2.2:44318/API/Subcategorias";
         public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
-        public string practicas_url = "https://localhost:44318/API/Practicas";
+        public string practicas_url = "https://10.0.2.2:44318/API/Practicas";
         public LalcAPI()
         {
             httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
@@ -155,27 +155,44 @@ namespace LALCXamarin.Services
             throw new Exception(httpResponse.ReasonPhrase);
         }
 
-        /*
-        public async Task<List<Practica>> GetPracticas(){
-            var praticas = new List<Practica>();
-            string response = await client.GetStringAsync(practicas_url);
-            JsonArray jsonArray = JsonArray.Parse(response);
+        public async Task<List<Practica>> GetPracticas()
+        {
 
-            foreach (var jsonRow in jsonArray)
+            HttpResponseMessage httpResponse = await client.GetAsync(practicas_url);
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
             {
-                JsonObject jsonObject = jsonRow.GetObject();
-                var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
-                string sb = await client.GetStringAsync(subcategorias_url + "/" + data.SubcategoriaID);
-                var sb_dt = JsonConvert.DeserializeObject<Subcategoria>(sb);
-                if (sb_dt.Categoria.UsuarioID == MainPage.actualUserId)
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<List<Practica>>(content);
+                if (resultado != null)
                 {
-                    praticas.Add(data);
+                    return resultado;
                 }
             }
-            return praticas;
-        }*/
+            throw new Exception(httpResponse.ReasonPhrase);
+
+
+            /*
+            public async Task<List<Practica>> GetPracticas(){
+                var praticas = new List<Practica>();
+                string response = await client.GetStringAsync(practicas_url);
+                JsonArray jsonArray = JsonArray.Parse(response);
+
+                foreach (var jsonRow in jsonArray)
+                {
+                    JsonObject jsonObject = jsonRow.GetObject();
+                    var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
+                    string sb = await client.GetStringAsync(subcategorias_url + "/" + data.SubcategoriaID);
+                    var sb_dt = JsonConvert.DeserializeObject<Subcategoria>(sb);
+                    if (sb_dt.Categoria.UsuarioID == MainPage.actualUserId)
+                    {
+                        praticas.Add(data);
+                    }
+                }
+                return praticas;
+            }*/
+        }
+
+
+
     }
-
-
-
 }
