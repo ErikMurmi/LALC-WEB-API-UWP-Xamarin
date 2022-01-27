@@ -18,7 +18,6 @@ namespace LALCXamarin.Services
         private const string categorias_url = "https://10.0.2.2:44318/API/Categorias";
         private const string subcategorias_url = "https://10.0.2.2:44318/API/Subcategorias";
         public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
-        Dictionary<string, string> urls = new Dictionary<string, string>();
 
         public LalcAPI()
         {
@@ -84,6 +83,22 @@ namespace LALCXamarin.Services
         }
 
 
+        public async Task<Concepto> GetConcepto(int id)
+        {
+
+            HttpResponseMessage httpResponse = await client.GetAsync($"{conceptos_url}/{id}");
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Concepto>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
+
         public async Task<Boolean> CrearConcepto(Concepto Nconcepto)
         {
             var serializedConcepto = JsonConvert.SerializeObject(Nconcepto);
@@ -97,35 +112,21 @@ namespace LALCXamarin.Services
             }
             throw new Exception(httpResponse.ReasonPhrase);
         }
-        /*
-        public async Task<Categoria> GetCategoria(int id)
-        {
+        
+        
 
-            HttpResponseMessage httpResponse = await client.GetAsync($"{categorias_url}/{id}");
-            if (httpResponse.StatusCode == HttpStatusCode.OK)
-            {
-                string content = await httpResponse.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<Categoria>(content);
-                if (resultado != null)
-                {
-                    return resultado;
-                }
-            }
-            throw new Exception(httpResponse.ReasonPhrase);
-        }
-
-        public async Task<Boolean> EditarCategoria(int id, Categoria categoriaEditada)
+        public async Task<Boolean> EditarConcepto(int id, Concepto conceptoEditado)
         {
-            var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
-            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PutAsync(categorias_url + "/" + id, dato);
+            var serializedConcepto = JsonConvert.SerializeObject(conceptoEditado);
+            var dato = new StringContent(serializedConcepto, Encoding.UTF8, "application/json");
+            var httpResponse = await client.PutAsync(conceptos_url + "/" + id, dato);
 
             if (httpResponse.Content != null)
             {
                 return true;
             }
             throw new Exception(httpResponse.ReasonPhrase);
-        }*/
+        }
     }
 
 

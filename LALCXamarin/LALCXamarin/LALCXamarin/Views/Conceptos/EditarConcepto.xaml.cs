@@ -1,4 +1,5 @@
 ﻿using LALC_UWP.Models;
+using LALCXamarin.ViewModels.Categorias;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,35 +20,33 @@ namespace LALCXamarin.Views.Conceptos
         public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
         public static int ConceptoSeleccionado = 1;
         public static Concepto seleccionado;
+
+        EditarConceptoViewModel _viewModel;
+
         public EditarConcepto()
         {
             InitializeComponent();
-            cargarConceptoInfo();
+            BindingContext = _viewModel = new EditarConceptoViewModel();
+            //cargarConceptoInfo();
         }
 
 
-        public async void cargarConceptoInfo()
+        protected async override void OnAppearing()
         {
-            var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(conceptos_url + "/" + ConceptoSeleccionado);
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
-            var client = new HttpClient(httpHandler);
+            base.OnAppearing();
+            seleccionado = await _viewModel.OnAppearing(ConceptoSeleccionado);
+            cargarConceptoInfo();
+        }
 
-            HttpResponseMessage response = await client.SendAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK)
+        public void cargarConceptoInfo()
+        {
+
+            //Titulo.Text = "Editar " + seleccionado.Titulo;
+            Titulo.Text = seleccionado.Titulo;
+            if (seleccionado.Definicion != null)
             {
-                string content = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<Concepto>(content);
-                seleccionado = resultado;
-                //Titulo.Text = "Editar " + seleccionado.Titulo;
-                Titulo.Text = resultado.Titulo;
-                if (resultado.Definicion != null)
-                {
-                    Definicion.Text = resultado.Definicion;
-                }
-            }
+                Definicion.Text = seleccionado.Definicion;
+             }
         }
 
 
@@ -56,7 +55,7 @@ namespace LALCXamarin.Views.Conceptos
 
             if (String.IsNullOrEmpty(Titulo.Text))
             {
-                await DisplayAlert("Título vacío", "La categoría debe tener un título", "OK");
+                await DisplayAlert("Título vacío", "El concepto debe tener un título", "OK");
             }
             else
             {
@@ -71,13 +70,7 @@ namespace LALCXamarin.Views.Conceptos
                         SubcategoriaID = seleccionado.SubcategoriaID,
                         Definicion = Definicion.Text,
                     };
-                    var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-                    var client = new HttpClient(httpHandler);
-                    var serializedConcepto = JsonConvert.SerializeObject(conceptoEditado);
-                    var dato = new StringContent(serializedConcepto, Encoding.UTF8, "application/json");
-                    var httpResponse = await client.PutAsync(conceptos_url + "/" + ConceptoSeleccionado, dato);
-
-                    if (httpResponse.Content != null)
+                    if (await _viewModel.EditarConcepto(ConceptoSeleccionado, conceptoEditado))
                     {
                         await Navigation.PopAsync();
                     }
