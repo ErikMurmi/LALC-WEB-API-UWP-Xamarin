@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +26,41 @@ namespace LALCXamarin.Services
             client = new HttpClient(httpHandler);
         }
 
+        public async Task<Categoria> GetCategoria(int id)
+        {
+
+            HttpResponseMessage httpResponse = await client.GetAsync($"{categorias_url}/{id}");
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Categoria>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
+
         public async Task<Boolean> CrearCategoria(Categoria Ncategoria)
         {
             Ncategoria.UsuarioID = App.actualUserId;
             var serializedCategoria = JsonConvert.SerializeObject(Ncategoria);
             var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
             var httpResponse = await client.PostAsync(categorias_url, dato);
+
+            if (httpResponse.Content != null)
+            {
+                return true;
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
+
+        public async Task<Boolean> EditarCategoria(int id, Categoria categoriaEditada)
+        {
+            var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
+            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
+            var httpResponse = await client.PutAsync(categorias_url + "/" + id, dato);
 
             if (httpResponse.Content != null)
             {
@@ -67,6 +97,35 @@ namespace LALCXamarin.Services
             }
             throw new Exception(httpResponse.ReasonPhrase);
         }
+        /*
+        public async Task<Categoria> GetCategoria(int id)
+        {
+
+            HttpResponseMessage httpResponse = await client.GetAsync($"{categorias_url}/{id}");
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Categoria>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
+
+        public async Task<Boolean> EditarCategoria(int id, Categoria categoriaEditada)
+        {
+            var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
+            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
+            var httpResponse = await client.PutAsync(categorias_url + "/" + id, dato);
+
+            if (httpResponse.Content != null)
+            {
+                return true;
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }*/
     }
 
 

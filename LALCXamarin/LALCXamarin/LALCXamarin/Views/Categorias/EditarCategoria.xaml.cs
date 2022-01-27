@@ -12,6 +12,7 @@ using System.Net.Security;
 using System.Net;
 using Newtonsoft.Json;
 using LALC_UWP.Models;
+using LALCXamarin.ViewModels.Categorias;
 
 namespace LALCXamarin.Views
 {
@@ -23,42 +24,35 @@ namespace LALCXamarin.Views
         public static Categoria seleccionada;
         public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, Boolean> ServerCertificateCustomValidationCallback { get; set; }
 
-
+        public EditarCategoriaViewModel _viewModel;
         public EditarCategoria()
         {
             InitializeComponent();
+            //cargarCategoriaInfo();
+            BindingContext = _viewModel = new EditarCategoriaViewModel();
+        }
+
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            seleccionada =  await _viewModel.OnAppearing(categoriaSeleccionada);
             cargarCategoriaInfo();
         }
 
-        public async void cargarCategoriaInfo()
+        public void cargarCategoriaInfo()
         {
-            var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri(categorias_url + "/" + categoriaSeleccionada);
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
-            var client = new HttpClient(httpHandler);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK)
+            //Nombre.Text = "Editar " + seleccionada.Nombre;
+            Nombre.Text = seleccionada.Nombre;
+            if (seleccionada.Descripcion != null)
             {
-                string content = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<Categoria>(content);
-                seleccionada = resultado;
-                //Nombre.Text = "Editar " + seleccionada.Nombre;
-                Nombre.Text = resultado.Nombre;
-                if (resultado.Descripcion != null)
-                {
-                    Descripcion.Text = resultado.Descripcion;
-                }
-
-                EsPrioritaria.IsChecked = resultado.esPrioritaria;
-                //EditColor.Background = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
-                //Colorpick.Color = ColorHelper.ToColor(resultado.Color);
+                Descripcion.Text = seleccionada.Descripcion;
             }
+
+            EsPrioritaria.IsChecked = seleccionada.esPrioritaria;
+            //EditColor.Background = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
+            //Colorpick.Color = ColorHelper.ToColor(resultado.Color);
         }
-
-
 
 
         private async void GuardarEdit(object sender, EventArgs e)
@@ -76,28 +70,20 @@ namespace LALCXamarin.Views
                 {
                     var categoriaEditada = new Categoria
                     {
-                        CategoriaID=1,
-                        UsuarioID = 1,
+                        CategoriaID = categoriaSeleccionada,
+                        UsuarioID = App.actualUserId,
                         Nombre = Nombre.Text,
                         Descripcion = Descripcion.Text,
                         esPrioritaria = EsPrioritaria.IsChecked,
                         Color = "#4287f5"
-
                     };
-                    var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-                    var client = new HttpClient(httpHandler);
-                    var serializedCategoria = JsonConvert.SerializeObject(categoriaEditada);
-                    var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-                    var httpResponse = await client.PutAsync(categorias_url + "/" + categoriaSeleccionada, dato);
-
-                    if (httpResponse.Content != null)
+                    if (await _viewModel.EditarCategoria(categoriaSeleccionada, categoriaEditada))
                     {
                         await Navigation.PopAsync();
                     }
                 }
             }
         }
-
 
         private async void CancelarEditar(object sender, EventArgs e)
         {
