@@ -21,12 +21,15 @@ namespace LALCXamarin.ViewModels.Conceptos
         public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
         public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, Boolean> ServerCertificateCustomValidationCallback { get; set; }
 
+        CrearConceptoViewModel _viewModel;
+        
         public CrearConcepto()
         {
             InitializeComponent();
+            BindingContext = _viewModel = new CrearConceptoViewModel();
         }
 
-        private async void CrearNuevoConcepto(object sender, EventArgs e)
+        /*private async void CrearNuevoConcepto(object sender, EventArgs e)
         {
 
             if (String.IsNullOrEmpty(Titulo.Text))
@@ -56,8 +59,30 @@ namespace LALCXamarin.ViewModels.Conceptos
                     }
                 }
             }
-        }
+        }*/
 
+        private async void CrearNuevoConcepto(object sender, EventArgs e)
+        {
+
+            if (String.IsNullOrEmpty(Titulo.Text))
+            {
+                await DisplayAlert("Nombre vacío", "El concepto debe tener un titulo", "OK");
+            }
+            else
+            {
+                bool answer = await DisplayAlert("Crear", "¿Está seguro de crear el concepto?", "Si", "No");
+                if (answer)
+                {
+                    var conceptoCreado = new Concepto
+                    {
+                        Titulo = Titulo.Text,
+                        SubcategoriaID = 1,
+                        Definicion = Definicion.Text
+                    };
+                    _viewModel.OnCrearConcepto(conceptoCreado);
+                }
+            }
+        }
 
         private async void CancelarCrear(object sender, EventArgs e)
         {

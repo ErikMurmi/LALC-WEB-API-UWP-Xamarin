@@ -18,14 +18,15 @@
     <EmbeddedResource Update="Views\Conceptos\EditarConcepto.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EditarCategoria.xaml">
+    <EmbeddedResource Update="Views\Categorias\EditarCategoria.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Subcategorias\CrearSubcategoria.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Categorias\" />
-    <Folder Include="Views\Subcategorias\" />
     <Folder Include="Views\Practicas\" />
   </ItemGroup>
 </Project>

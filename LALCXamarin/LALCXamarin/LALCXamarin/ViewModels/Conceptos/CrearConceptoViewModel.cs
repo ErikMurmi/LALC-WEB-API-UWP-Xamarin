@@ -9,20 +9,20 @@ using LALCXamarin.Services;
 
 namespace LALCXamarin.ViewModels
 {
-    public class CrearCategoriaViewModel : Categoria
+    public class CrearConceptoViewModel : Concepto
     {
 
         public LalcAPI lalcAPI { get; set; }
         public String Title {get;set;}
-        public CrearCategoriaViewModel()
+        public CrearConceptoViewModel()
         {
-            Title = "Crear categoría";
+            Title = "Crear Concepto";
             lalcAPI = new LalcAPI();
         }
 
-        public async void OnCrearCategoria(Categoria ct)
+        public async void OnCrearConcepto(Concepto Nconcepto)
         {
-            var creada = await lalcAPI.CrearCategoria(ct);
+            var creada = await lalcAPI.CrearConcepto(Nconcepto);
             if (creada)
             {
                 await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");

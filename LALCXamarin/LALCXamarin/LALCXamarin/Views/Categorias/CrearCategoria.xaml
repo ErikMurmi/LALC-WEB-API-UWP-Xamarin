@@ -13,7 +13,7 @@
                 HorizontalOptions="Start" Margin="6" FontSize="18"/>
             </StackLayout>
             <Label Text="Nombre" FontSize="20"/>
-            <Editor x:Name="Nombre" Text="{Binding Nombre}" AutoSize="TextChanges"/>
+            <Editor x:Name="Nombre" Text="" AutoSize="TextChanges"/>
             <Label Text="Descripcion" FontSize="20"/>
             <Editor x:Name="Descripcion" Text="" AutoSize="TextChanges"/>
             <Label Text="Color" FontSize="20"/>

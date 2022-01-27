@@ -19,7 +19,7 @@ namespace LALCXamarin.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "Browse";
+            //Title = "Browse";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
