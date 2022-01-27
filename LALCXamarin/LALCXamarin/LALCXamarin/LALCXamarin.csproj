@@ -29,4 +29,10 @@
   <ItemGroup>
     <Folder Include="Views\Practicas\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Subcategorias\EditarSubcategoria.xaml.cs">
+      <DependentUpon>EditarSubcategoria.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

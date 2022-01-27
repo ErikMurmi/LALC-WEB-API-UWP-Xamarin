@@ -18,7 +18,7 @@ namespace LALCXamarin.Services
         private const string categorias_url = "https://10.0.2.2:44318/API/Categorias";
         private const string subcategorias_url = "https://10.0.2.2:44318/API/Subcategorias";
         public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
-
+        public string practicas_url = "https://localhost:44318/API/Practicas";
         public LalcAPI()
         {
             httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
@@ -68,12 +68,39 @@ namespace LALCXamarin.Services
             throw new Exception(httpResponse.ReasonPhrase);
         }
 
+        public async Task<Subcategoria> GetSubcategoria(int id)
+        {
+            HttpResponseMessage httpResponse = await client.GetAsync($"{subcategorias_url}/{id}");
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Subcategoria>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
 
         public async Task<Boolean> CrearSubcategoria(Subcategoria NSubCategoria)
         {
             var serializedSubcategoria = JsonConvert.SerializeObject(NSubCategoria);
             var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
             var httpResponse = await client.PostAsync(subcategorias_url, dato);
+
+            if (httpResponse.Content != null)
+            {
+                return true;
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
+
+        public async Task<Boolean> EditarSubcategoria(int id, Subcategoria subcategoriaEditada)
+        {
+            var serializedSubcategoria = JsonConvert.SerializeObject(subcategoriaEditada);
+            var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
+            var httpResponse = await client.PutAsync(subcategorias_url + "/" + id, dato);
 
             if (httpResponse.Content != null)
             {
@@ -112,8 +139,8 @@ namespace LALCXamarin.Services
             }
             throw new Exception(httpResponse.ReasonPhrase);
         }
-        
-        
+
+
 
         public async Task<Boolean> EditarConcepto(int id, Concepto conceptoEditado)
         {
@@ -127,6 +154,26 @@ namespace LALCXamarin.Services
             }
             throw new Exception(httpResponse.ReasonPhrase);
         }
+
+        /*
+        public async Task<List<Practica>> GetPracticas(){
+            var praticas = new List<Practica>();
+            string response = await client.GetStringAsync(practicas_url);
+            JsonArray jsonArray = JsonArray.Parse(response);
+
+            foreach (var jsonRow in jsonArray)
+            {
+                JsonObject jsonObject = jsonRow.GetObject();
+                var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
+                string sb = await client.GetStringAsync(subcategorias_url + "/" + data.SubcategoriaID);
+                var sb_dt = JsonConvert.DeserializeObject<Subcategoria>(sb);
+                if (sb_dt.Categoria.UsuarioID == MainPage.actualUserId)
+                {
+                    praticas.Add(data);
+                }
+            }
+            return praticas;
+        }*/
     }
 
 

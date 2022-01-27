@@ -27,7 +27,6 @@ namespace LALCXamarin.Views.Conceptos
         {
             InitializeComponent();
             BindingContext = _viewModel = new EditarConceptoViewModel();
-            //cargarConceptoInfo();
         }
 
 
