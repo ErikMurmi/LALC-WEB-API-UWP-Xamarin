@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LALCXamarin.Views.CrearCategoria">
+             x:Class="LALCXamarin.Views.CrearCategoria"
+             Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Margin="20,0,20,0">
             <Label Text="Prioritaria"
@@ -12,7 +13,7 @@
                 HorizontalOptions="Start" Margin="6" FontSize="18"/>
             </StackLayout>
             <Label Text="Nombre" FontSize="20"/>
-            <Editor x:Name="Nombre" Text="" AutoSize="TextChanges"/>
+            <Editor x:Name="Nombre" Text="{Binding Nombre}" AutoSize="TextChanges"/>
             <Label Text="Descripcion" FontSize="20"/>
             <Editor x:Name="Descripcion" Text="" AutoSize="TextChanges"/>
             <Label Text="Color" FontSize="20"/>

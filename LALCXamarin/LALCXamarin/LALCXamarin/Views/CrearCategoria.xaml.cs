@@ -11,6 +11,7 @@ using LALC_UWP.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Security;
+using LALCXamarin.ViewModels;
 
 namespace LALCXamarin.Views
 {
@@ -20,13 +21,20 @@ namespace LALCXamarin.Views
         public string categorias_url = "https://10.0.2.2:44318/API/Categorias";
         public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, Boolean> ServerCertificateCustomValidationCallback { get; set; }
 
+        CrearCategoriaViewModel _viewModel;
+
         public CrearCategoria()
         {
             InitializeComponent();
+            BindingContext = _viewModel = new CrearCategoriaViewModel();
         }
-       
 
-        private async void CrearNuevaCategoria(object sender, EventArgs e)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+        /*private async void CrearNuevaCategoria(object sender, EventArgs e)
         {
 
             if (String.IsNullOrEmpty(Nombre.Text))
@@ -45,6 +53,7 @@ namespace LALCXamarin.Views
                         esPrioritaria = EsPrioritaria.IsChecked,
                         Color = "#4287f5"
                     };
+                    _viewModel.onCrearCategoria(categoriaCreada);
                     var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
                     var client = new HttpClient(httpHandler);
                     var serializedCategoria = JsonConvert.SerializeObject(categoriaCreada);
@@ -57,6 +66,30 @@ namespace LALCXamarin.Views
                     }
                 }
             } 
+        }*/
+        private async void CrearNuevaCategoria(object sender, EventArgs e)
+        {
+
+            if (String.IsNullOrEmpty(Nombre.Text))
+            {
+                await DisplayAlert("Nombre vacío", "La categoría debe tener un nombre", "OK");
+            }
+            else
+            {
+                bool answer = await DisplayAlert("Crear", "¿Está seguro de crear la categoría?", "Si", "No");
+                if (answer)
+                {
+                    Categoria categoriaCreada = new Categoria
+                    {
+                        UsuarioID = 1,
+                        Nombre = Nombre.Text,
+                        Descripcion = Descripcion.Text,
+                        esPrioritaria = EsPrioritaria.IsChecked,
+                        Color = "#4287f5"
+                    };
+                    _viewModel.OnCrearCategoria(categoriaCreada);
+                }
+            }
         }
 
         private async void CancelarCrear(object sender, EventArgs e)
