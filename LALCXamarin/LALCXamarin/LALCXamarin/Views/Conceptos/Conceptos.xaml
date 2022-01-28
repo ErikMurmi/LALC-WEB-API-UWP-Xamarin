@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:LALC_UWP.Models"
              x:Class="LALCXamarin.Views.Conceptos.Conceptos">
 
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="A practicar!" Clicked="IrPractica_Clicked" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <ScrollView>
             <ListView x:Name="ConceptosVista" Margin="20" HasUnevenRows="True">
@@ -11,10 +14,18 @@
                     <DataTemplate>
                         <ViewCell >
                             <SwipeView x:DataType="models:Concepto">
+
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Edit" BackgroundColor="Green"
+                                           CommandParameter="{Binding ConceptoID}" Invoked="ModificarConcepto_Invoked"></SwipeItem>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Delete" BackgroundColor="Red"
-                                           CommandParameter="{Binding ConceptoID}"></SwipeItem>
+                                           CommandParameter="{Binding ConceptoID}" Invoked="EliminarConcepto_Invoked"></SwipeItem>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
 

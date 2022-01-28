@@ -12,10 +12,17 @@
                     <DataTemplate>
                         <ViewCell >
                             <SwipeView x:DataType="models:Categoria">
+
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Edit" BackgroundColor="Green"
+                                           CommandParameter="{Binding CategoriaID}" Invoked="ModificarCategoria_Invoked"></SwipeItem>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Delete" BackgroundColor="Red"
-                                           CommandParameter="{Binding CategoriaID}"></SwipeItem>
+                                           CommandParameter="{Binding CategoriaID}" Invoked="EliminarCategoria_Invoked"></SwipeItem>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 
