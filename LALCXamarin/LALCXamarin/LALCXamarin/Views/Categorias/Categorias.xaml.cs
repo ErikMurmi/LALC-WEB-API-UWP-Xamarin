@@ -34,7 +34,7 @@ namespace LALCXamarin.Views
         private async void CategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Subcategorias.Subcategorias.cate = (Categoria)e.Item;
-            await Shell.Current.GoToAsync($"//{nameof(Subcategorias)}");
+            await Navigation.PushAsync(new Subcategorias.Subcategorias());
         }
     }
 }

@@ -7,7 +7,7 @@
         <ListView.ItemTemplate>
             <DataTemplate >
                 <ViewCell >
-                    <SwipeView x:DataType="models:Practica">
+                    <SwipeView x:DataType="models:Practica" Margin="10">
                         <SwipeView.RightItems>
                             <SwipeItems>
                                 <SwipeItem Text="Delete" BackgroundColor="Red"
