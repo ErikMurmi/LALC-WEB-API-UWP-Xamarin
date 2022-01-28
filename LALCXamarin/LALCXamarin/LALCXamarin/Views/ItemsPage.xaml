@@ -8,12 +8,14 @@
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Pra" Clicked="ToolbarItem_Clicked_7" />
         <ToolbarItem Text="AdCt" Clicked="ToolbarItem_Clicked" />
         <ToolbarItem Text="EdCt" Clicked="ToolbarItem_Clicked_1" />
         <ToolbarItem Text="AddS" Clicked="ToolbarItem_Clicked_4" />
         <ToolbarItem Text="EdS" Clicked="ToolbarItem_Clicked_5" />
         <ToolbarItem Text="AdCn" Clicked="ToolbarItem_Clicked_2" />
         <ToolbarItem Text="EdCn" Clicked="ToolbarItem_Clicked_3" />
+        
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -26,6 +28,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10" x:DataType="models:Practica">
+                        
                         <Label Text="{Binding PracticaID}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 

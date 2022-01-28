@@ -66,5 +66,10 @@ namespace LALCXamarin.Views
         {
             await Navigation.PushAsync(new Categorias());
         }
+
+        private async void ToolbarItem_Clicked_7(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PantPractica());
+        }
     }
 }
