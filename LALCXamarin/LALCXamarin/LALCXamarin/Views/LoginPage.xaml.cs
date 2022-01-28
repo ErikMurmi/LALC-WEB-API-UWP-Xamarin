@@ -23,6 +23,10 @@ namespace LALCXamarin.Views
         {
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
+            App.actualUserId = 0;
+            App.usuarioActual = null;
+            campoContraseña.Text ="";
+            campoEmail.Text = "";
         }
 
         public static string CancionesUrl = $"https://10.0.2.2:44318/api/usuarios";
