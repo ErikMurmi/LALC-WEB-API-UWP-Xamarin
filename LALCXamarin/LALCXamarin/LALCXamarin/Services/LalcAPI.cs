@@ -172,6 +172,19 @@ namespace LALCXamarin.Services
 
         }
 
+        public async Task<Boolean> CrearPractica(Practica NPractica)
+        {
+            var serializedPractica = JsonConvert.SerializeObject(NPractica);
+            var dato = new StringContent(serializedPractica, Encoding.UTF8, "application/json");
+            var httpResponse = await client.PostAsync(practicas_url, dato);
+
+            if (httpResponse.Content != null)
+            {
+                return true;
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
+
         public async Task<Boolean> EliminarPractica(String id)
         {
             HttpResponseMessage response = await client.DeleteAsync($"{practicas_url}/{id}");
