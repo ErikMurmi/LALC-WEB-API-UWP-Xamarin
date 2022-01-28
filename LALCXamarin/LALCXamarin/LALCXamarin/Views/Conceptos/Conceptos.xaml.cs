@@ -15,6 +15,7 @@ namespace LALCXamarin.Views.Conceptos
     {
         LalcAPI lalc;
         public static Subcategoria sub = new Subcategoria();
+        public static string color;
         public List<Concepto> Con { get; set; }
         public Conceptos()
         {
@@ -27,6 +28,7 @@ namespace LALCXamarin.Views.Conceptos
         {
             base.OnAppearing();
             sub = await lalc.GetSubcategoria(sub.SubcategoriaID);
+            color = sub.Color;
             Con = (List<Concepto>)sub.Conceptos;
             ConceptosVista.ItemsSource = Con;
         }

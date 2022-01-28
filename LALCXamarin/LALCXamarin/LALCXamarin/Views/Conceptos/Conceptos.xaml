@@ -29,7 +29,7 @@
                                     </SwipeItems>
                                 </SwipeView.RightItems>
 
-                                <StackLayout Orientation="Vertical" BackgroundColor="{Binding Color}"
+                                <StackLayout Orientation="Vertical" BackgroundColor="{Binding local:Conceptos.color, Mode=OneWay}"
                                      Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{Binding Titulo}" TextColor="Black"/>
