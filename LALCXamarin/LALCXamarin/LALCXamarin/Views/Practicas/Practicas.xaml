@@ -17,7 +17,7 @@
 
                         </SwipeView.RightItems>
                         <StackLayout Orientation="Vertical" BackgroundColor="LightGray"
-                                     Margin="0,0,0,20" HeightRequest="100" WidthRequest="300">
+                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="ID: " TextColor="Black"/>
                                 <Label Text="{Binding PracticaID}" TextColor="Black"/>

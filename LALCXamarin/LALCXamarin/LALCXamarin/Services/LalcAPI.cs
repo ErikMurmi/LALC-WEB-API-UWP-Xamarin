@@ -172,6 +172,16 @@ namespace LALCXamarin.Services
 
         }
 
+        public async Task<Boolean> EliminarPractica(String id)
+        {
+            HttpResponseMessage response = await client.DeleteAsync($"{practicas_url}/{id}");
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
 
 
     }

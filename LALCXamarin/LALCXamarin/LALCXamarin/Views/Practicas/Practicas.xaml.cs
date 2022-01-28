@@ -33,9 +33,19 @@ namespace LALCXamarin.Views.Practicas
             MyListView.ItemsSource = Items;
         }
 
-        private void EliminarPractica_Invoked(object sender, EventArgs e)
+        private async void EliminarPractica_Invoked(object sender, EventArgs e)
         {
-            string id = ((MenuItem)sender).CommandParameter.ToString();
+            bool answer = await DisplayAlert("Eliminar", "¿Está seguro de eliminar la práctica?", "Si", "No");
+            if (answer)
+            {
+                string id = ((MenuItem)sender).CommandParameter.ToString();
+                if (await _viewModel.eliminar(id))
+                {
+                    this.OnAppearing();
+                }
+            }
+
+            
         }
     }
 }

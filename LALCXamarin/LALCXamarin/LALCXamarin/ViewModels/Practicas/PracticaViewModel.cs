@@ -13,6 +13,8 @@ namespace LALCXamarin.ViewModels.Practicas
         public LalcAPI lalcAPI { get; set; }
         public String Title { get; set; }
 
+        //public List<Practica> practicas { get; set; }
+
         public PracticaViewModel()
         {
             Title = "Historial de prácticas";
@@ -24,6 +26,11 @@ namespace LALCXamarin.ViewModels.Practicas
             return await lalcAPI.GetPracticas();
         }
 
+
+        public async Task<Boolean> eliminar(String id)
+        {
+            return await lalcAPI.EliminarPractica(id);
+        }
 
     }
 }
