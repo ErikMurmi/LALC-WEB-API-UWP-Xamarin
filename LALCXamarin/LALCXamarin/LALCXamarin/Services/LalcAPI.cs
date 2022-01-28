@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -274,6 +275,19 @@ namespace LALCXamarin.Services
             }
             throw new Exception(httpResponse.ReasonPhrase);
         }
-
+        public async Task<Usuario> getUsuarioActual()
+        {
+            HttpResponseMessage httpResponse = await client.GetAsync(usuario_url);
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
+                if (resultado != null)
+                {
+                    return resultado.Last();
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
     }
 }

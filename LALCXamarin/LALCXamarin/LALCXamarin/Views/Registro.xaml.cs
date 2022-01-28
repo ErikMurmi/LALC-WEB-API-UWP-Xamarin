@@ -91,18 +91,20 @@ namespace LALCXamarin.Views
         {
             if (!comprobacionNom() && !comprobacionEma() && !comprobacionCon())
             {
-                var us = new Usuario
+                Usuario nuevoUsuario = new Usuario
                 {
                     nombre = campoNombreR.Text,
                     email = campoEmailR.Text,
                     password = campoContraseñaR.Text
                 };
-                 var usu = a.CrearUsuario(us);
+                var usu = a.CrearUsuario(nuevoUsuario);
                 if(usu != null)
                 {
-                    App.actualUserId = usu.Id;
-                    Navigation.InsertPageBefore(new AppShell(), this);
-                    await Navigation.PopAsync();
+                    Usuario usuario = await a.getUsuarioActual();
+                    App.actualUserId = usuario.UsuarioID;
+                    /*Navigation.InsertPageBefore(new AppShell(), this);
+                    await Navigation.PopAsync();*/
+                    await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
                 }
                 else
                 {
@@ -111,5 +113,6 @@ namespace LALCXamarin.Views
                  
             }
         }
+
     }
 }
