@@ -51,20 +51,21 @@ namespace LALCXamarin.Views
             return list;
         }
 
-        private void CarruselConceptos_PositionChanged(object sender, PositionChangedEventArgs e)
+        private async void CarruselConceptos_PositionChanged(object sender, PositionChangedEventArgs e)
         {
             contadorConceptos++;
             int pos = e.CurrentPosition;
             if(pos == conceptosPractica.Count - 1)
             {
+                await DisplayAlert("Fin", "Haz finalizado la práctica", "OK");
                 CarruselConceptos.IsSwipeEnabled = false;
             }
         }
 
         private async void GuardarPractica_Clicked(object sender, EventArgs e)
         {
-            bool answer = await DisplayAlert("Guardar", "¿Desea guardar esta práctica?", "Si", "No");
-            if (answer)
+            bool answer = await DisplayAlert("Guardar", "¿Desea guardar esta práctica?", "No", "Si");
+            if (!answer)
             {
                 var nuevaPractica = new Practica
                 {

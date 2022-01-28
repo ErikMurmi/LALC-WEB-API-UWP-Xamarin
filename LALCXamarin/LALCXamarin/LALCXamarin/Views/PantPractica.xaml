@@ -20,7 +20,6 @@
                             <Label x:Name="Concepto" 
                                    HorizontalTextAlignment="Start"
                                    Text="{Binding Definicion}"/>
-                            
                         </StackLayout>
                     </Frame>
                 </DataTemplate>
