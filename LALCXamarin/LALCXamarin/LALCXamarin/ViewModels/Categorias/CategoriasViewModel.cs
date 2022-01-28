@@ -14,16 +14,17 @@ namespace LALCXamarin.ViewModels
 
         public LalcAPI lalcAPI { get; set; }
         public String Title { get; set; }
+        public List<Categoria> cts;
         public CategoriasViewModel()
         {
             Title = "Categorías";
             lalcAPI = new LalcAPI();
         }
 
-       /* public async  List<Categoria> OnAppearing()
+        public async void OnAppearing()
         {
             var us = await lalcAPI.GetUsuario(App.actualUserId);
-            return us.Categorias;
-        }*/
+            cts = (List<Categoria>)us.Categorias;
+        }
     }
 }
