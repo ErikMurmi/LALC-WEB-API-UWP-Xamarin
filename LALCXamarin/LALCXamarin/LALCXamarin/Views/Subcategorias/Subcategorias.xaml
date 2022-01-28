@@ -1,33 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LALCXamarin.Views.Categorias"
-             xmlns:vm="clr-namespace:LALCXamarin.ViewModels" xmlns:models="clr-namespace:LALC_UWP.Models">
-
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:LALC_UWP.Models"
+             x:Class="LALCXamarin.Views.Subcategorias.Subcategorias">
 
     <ContentPage.Content>
         <ScrollView>
-            <ListView x:Name="CategoriasVista" Margin="20" HasUnevenRows="True" ItemTapped="CategoriasVista_ItemTapped">
+            <ListView x:Name="SubcategoriasVista" Margin="20" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-                            <SwipeView x:DataType="models:Categoria">
+                            <SwipeView x:DataType="models:Subcategoria">
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Delete" BackgroundColor="Red"
-                                           CommandParameter="{Binding CategoriaID}"></SwipeItem>
+                                           CommandParameter="{Binding SubcategoriaID}"></SwipeItem>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
-                                
+
                                 <StackLayout Orientation="Vertical" BackgroundColor="LightGray"
-                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
+                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300">
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{Binding Nombre}" TextColor="Black"/>
                                         <Label Text="{Binding Descripcion}" TextColor="Black"/>
                                     </StackLayout>
                                 </StackLayout>
-                                
-                                
+
+
                             </SwipeView>
                         </ViewCell>
 
@@ -36,7 +34,6 @@
             </ListView>
         </ScrollView>
     </ContentPage.Content>
-
 
 
 </ContentPage>

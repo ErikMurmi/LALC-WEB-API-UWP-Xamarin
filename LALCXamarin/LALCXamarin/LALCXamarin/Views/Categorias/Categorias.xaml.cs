@@ -4,6 +4,7 @@ using LALCXamarin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,31 +14,27 @@ namespace LALCXamarin.Views
     {
         LalcAPI lalc;
         public List<Categoria> Items { get; set; }
-        //CategoriasViewModel _viewModel;
         public Categorias()
         {
             InitializeComponent();
             lalc = new LalcAPI();
-            Items = new List<Categoria>();
-            //BindingContext = _viewModel = new CategoriasViewModel();
+            Items = new List<Categoria>();            
         }
-
-        /*public Categorias(NavigationPage MainPage)
-        {
-            
-            lalc = new LalcAPI();
-            Items = new List<Categoria>();
-        }*/
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //_viewModel.OnAppearing();
-            //CategoriasVista.ItemsSource = _viewModel.cts;
             Usuario usuarioac = await lalc.GetUsuario(App.actualUserId);
             Items = (List<Categoria>)usuarioac.Categorias;
             CategoriasVista.ItemsSource = Items;
         }
 
+       
+
+        private async void CategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Subcategorias.Subcategorias.cate = (Categoria)e.Item;
+            await Shell.Current.GoToAsync($"//{nameof(Subcategorias)}");
+        }
     }
 }
