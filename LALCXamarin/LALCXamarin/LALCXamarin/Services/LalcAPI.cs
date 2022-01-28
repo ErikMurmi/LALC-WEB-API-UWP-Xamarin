@@ -221,7 +221,7 @@ namespace LALCXamarin.Services
 
         public async Task<List<Practica>> GetPracticas(int id)
         {
-
+            var praticas = new List<Practica>();
             HttpResponseMessage httpResponse = await client.GetAsync(practicas_url);
             if (httpResponse.StatusCode == HttpStatusCode.OK)
             {
@@ -229,10 +229,38 @@ namespace LALCXamarin.Services
                 var resultado = JsonConvert.DeserializeObject<List<Practica>>(content);
                 if (resultado != null)
                 {
+                    foreach (Practica data in resultado)
+                    {
+                        if (data.Subcategoria.Categoria.UsuarioID == App.actualUserId)
+                        {
+                            praticas.Add(data);
+                        }
+                    }
                     return resultado;
                 }
             }
             throw new Exception(httpResponse.ReasonPhrase);
+            /*
+            var praticas = new List<Practica>();
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(practicas_url);
+
+            JsonArray jsonArray = JsonArray.Parse(response);
+
+            foreach (var jsonRow in jsonArray)
+            {
+                JsonObject jsonObject = jsonRow.GetObject();
+                var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
+                string sb = await client.GetStringAsync(subcategorias_url + "/" + data.SubcategoriaID);
+                var sb_dt = JsonConvert.DeserializeObject<Subcategoria>(sb);
+                if (sb_dt.Categoria.UsuarioID == MainPage.actualUserId)
+                {
+                    praticas.Add(data);
+                }
+            }
+            ListaPracticas.ItemsSource = praticas;*/
+
+
 
         }
 
