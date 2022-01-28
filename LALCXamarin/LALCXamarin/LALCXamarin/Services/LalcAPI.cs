@@ -218,6 +218,23 @@ namespace LALCXamarin.Services
 
         }
 
+        public async Task<List<Practica>> GetPracticas(int id)
+        {
+
+            HttpResponseMessage httpResponse = await client.GetAsync(practicas_url);
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<List<Practica>>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+
+        }
+
         public async Task<Boolean> CrearPractica(Practica NPractica)
         {
             var serializedPractica = JsonConvert.SerializeObject(NPractica);

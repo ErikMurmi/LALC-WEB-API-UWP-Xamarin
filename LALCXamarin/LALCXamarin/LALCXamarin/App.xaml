@@ -8,6 +8,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">black</Color>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Dongle_Bold" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">

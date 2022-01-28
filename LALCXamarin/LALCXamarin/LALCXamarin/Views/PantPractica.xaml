@@ -4,16 +4,20 @@
              x:Class="LALCXamarin.Views.PantPractica"
              Title="Práctica">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20,180,20,180">
             <CarouselView x:Name="CarruselConceptos"
-                      PositionChanged="CarruselConceptos_PositionChanged">
+                      PositionChanged="CarruselConceptos_PositionChanged"
+                          VerticalOptions="Center"
+                          HeightRequest="500"
+                          >
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="#6e625b"
                            CornerRadius="8"
                            HorizontalOptions="Center"
+                           Margin="20"
                            VerticalOptions="CenterAndExpand"
-                               HeightRequest="500">
+                               >
                             <StackLayout>
                                 <Label x:Name="TituloConce"
                                    HorizontalOptions="CenterAndExpand"
@@ -24,6 +28,7 @@
                                         HorizontalTextAlignment="Start"
                                         Text="{Binding Definicion}"
                                         FontSize="Small"
+                                       MaxLines="10"
                                         LineBreakMode="TailTruncation"/>
                             </StackLayout>
                         </Frame>
