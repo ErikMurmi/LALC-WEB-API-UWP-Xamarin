@@ -5,18 +5,11 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <ListView x:Name="SubcategoriasVista" Margin="20" HasUnevenRows="True">
+            <ListView x:Name="SubcategoriasVista" Margin="20" HasUnevenRows="True" ItemTapped="SubcategoriasVista_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
                             <SwipeView x:DataType="models:Subcategoria">
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem Text="Delete" BackgroundColor="Red"
-                                           CommandParameter="{Binding SubcategoriaID}"></SwipeItem>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-
                                 <StackLayout Orientation="Vertical" BackgroundColor="LightGray"
                                      Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300">
                                     <StackLayout Orientation="Horizontal">
@@ -24,11 +17,8 @@
                                         <Label Text="{Binding Descripcion}" TextColor="Black"/>
                                     </StackLayout>
                                 </StackLayout>
-
-
                             </SwipeView>
                         </ViewCell>
-
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

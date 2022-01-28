@@ -2,5 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:LALC_UWP.Models"
              x:Class="LALCXamarin.Views.Conceptos.Conceptos">
-    
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <ListView x:Name="ConceptosVista" Margin="20" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <SwipeView x:DataType="models:Concepto">
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete" BackgroundColor="Red"
+                                           CommandParameter="{Binding ConceptoID}"></SwipeItem>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <StackLayout Orientation="Vertical" BackgroundColor="LightGray"
+                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Titulo}" TextColor="Black"/>
+                                        <Label Text="{Binding Definicion}" TextColor="Black"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+
+                            </SwipeView>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
