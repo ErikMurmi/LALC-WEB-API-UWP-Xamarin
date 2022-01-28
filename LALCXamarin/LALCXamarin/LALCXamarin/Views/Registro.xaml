@@ -4,16 +4,14 @@
              x:Class="LALCXamarin.Views.Registro">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Registro"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="NombreR"></Label>
+            <Label Text="Registro" HorizontalTextAlignment="Center"/>
+            <Label Text="Nombre"></Label>
             <Entry x:Name="campoNombreR" ></Entry>
             <Label x:Name="msNombreR"></Label>
-            <Label Text="EmailR"></Label>
+            <Label Text="Email"></Label>
             <Entry x:Name="campoEmailR" ></Entry>
             <Label x:Name="msEmailR"></Label>
-            <Label Text="ContraseñaR"></Label>
+            <Label Text="Contraseña"></Label>
             <Entry x:Name="campoContraseñaR" IsPassword="True" ></Entry>
             <Label x:Name="msContraseñaR"></Label>
             <Button VerticalOptions="Center" Text="Login" Clicked="Button_Clicked"/>
