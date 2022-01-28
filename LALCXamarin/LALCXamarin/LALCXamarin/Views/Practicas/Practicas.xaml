@@ -15,19 +15,19 @@
                             </SwipeItems>
 
                         </SwipeView.RightItems>
-                        <StackLayout Orientation="Vertical" BackgroundColor="LightGray"
-                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300">
+                        <StackLayout Orientation="Vertical" BackgroundColor="#1a5aad"
+                                     Margin="0,0,0,0" Padding="20" HeightRequest="80" WidthRequest="300">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="ID: " TextColor="Black"/>
-                                <Label Text="{Binding PracticaID}" TextColor="Black"/>
+                                <Label Text="ID: " TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                                <Label Text="{Binding PracticaID}" TextColor="White" FontSize="18"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Subcategoria: " TextColor="Black"/>
-                                <Label Text="{x:Binding Subcategoria.Nombre}" TextColor="Black"/>
+                                <Label Text="Subcategoria: " TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                                <Label Text="{x:Binding Subcategoria.Nombre}" TextColor="White" FontSize="18"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="ID: " TextColor="Black"/>
-                                <Label Text="{x:Binding Fecha}" TextColor="Black"/>
+                                <Label Text="Fecha " TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                                <Label Text="{x:Binding Fecha}" TextColor="White" FontSize="18"/>
                             </StackLayout>
                         </StackLayout>
                     </SwipeView>
