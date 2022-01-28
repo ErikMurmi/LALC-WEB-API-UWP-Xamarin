@@ -4,11 +4,12 @@
              x:Class="LALCXamarin.Views.CrearCategoria"
              xmlns:colorPicker="clr-namespace:Spillman.Xamarin.Forms.ColorPicker;assembly=Spillman.Xamarin.Forms.ColorPicker"
              Title="{Binding Title}">
-    <ContentPage.BindingContext>
-        <colorPicker:ColorPickerViewModel />
-    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout Margin="20,0,20,0">
+            <StackLayout.BindingContext>
+                <colorPicker:ColorPickerViewModel />
+            </StackLayout.BindingContext>
             <Label Text="Prioritaria"
                 HorizontalOptions="StartAndExpand" FontSize="20"/>
             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
@@ -22,12 +23,15 @@
             <Editor x:Name="Descripcion" Text="" AutoSize="TextChanges"/>
             <Label Text="Color" FontSize="20"/>
             <colorPicker:ColorPickerView
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="Start" 
                             HorizontalOptions="CenterAndExpand"
-               x:Name="colorx"/>
-
-            <Button Text="Crear" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="CrearNuevaCategoria"/>
-            <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
+               x:Name="ColorPick"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Crear" FontSize="20" FontAttributes="Bold" Margin="0,20,10,10" WidthRequest="120"
+                    BackgroundColor="CadetBlue" Clicked="CrearNuevaCategoria" />
+                <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" WidthRequest="130" Margin="0,20,0,10"
+                        BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -28,7 +28,7 @@ namespace LALCXamarin.Views.Subcategorias
         }
 
 
-        private async void CrearNuevaCategoria(object sender, EventArgs e)
+        private async void CrearNuevaSubcategoria(object sender, EventArgs e)
         {
 
             if (String.IsNullOrEmpty(Nombre.Text))
@@ -45,7 +45,7 @@ namespace LALCXamarin.Views.Subcategorias
                         Nombre = Nombre.Text,
                         CategoriaID = 1,
                         Descripcion = Descripcion.Text,
-                        Color = "#4287f5"
+                        Color = "#" + ColorPick.ViewModel.Hex.ToString()
                     };
                     _viewModel.OnCrearSubcategoria(subcategoriaCreada);
                 }

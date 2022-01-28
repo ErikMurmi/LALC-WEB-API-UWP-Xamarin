@@ -19,10 +19,8 @@ namespace LALCXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditarCategoria : ContentPage
     {
-        public string categorias_url = "https://10.0.2.2:44318/API/Categorias";
         public static int categoriaSeleccionada=1;
         public static Categoria seleccionada;
-        public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, Boolean> ServerCertificateCustomValidationCallback { get; set; }
 
         public EditarCategoriaViewModel _viewModel;
         public EditarCategoria()
@@ -50,8 +48,9 @@ namespace LALCXamarin.Views
             }
 
             EsPrioritaria.IsChecked = seleccionada.esPrioritaria;
-            //EditColor.Background = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
-            //Colorpick.Color = ColorHelper.ToColor(resultado.Color);
+            ColorPick.ViewModel.Color = Color.FromHex(seleccionada.Color);
+            ColorPick.ViewModel.Hex = seleccionada.Color;
+                
         }
 
 

@@ -46,8 +46,8 @@ namespace LALCXamarin.Views
             {
                 Descripcion.Text = seleccionada.Descripcion;
             }
-            //EditColor.Background = new SolidColorBrush(ColorHelper.ToColor(resultado.Color));
-            //Colorpick.Color = ColorHelper.ToColor(resultado.Color);
+            ColorPick.ViewModel.Color = Color.FromHex(seleccionada.Color);
+            ColorPick.ViewModel.Hex = seleccionada.Color;
         }
 
 
@@ -70,7 +70,7 @@ namespace LALCXamarin.Views
                         SubcategoriaID = subcategoriaSeleccionada,
                         CategoriaID = seleccionada.CategoriaID,
                         Descripcion = Descripcion.Text,
-                        Color = "#4287f5"
+                        Color = "#" + ColorPick.ViewModel.Hex.ToString()
                     };
                     if (await _viewModel.EditarSubcategoria(subcategoriaSeleccionada, subcategoriaEditada))
                     {
