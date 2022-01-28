@@ -61,5 +61,10 @@ namespace LALCXamarin.Views
         {
             await Navigation.PushAsync(new EditarSubcategoria());
         }
+
+        private async void ToolbarItem_Clicked_6(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Categorias());
+        }
     }
 }
