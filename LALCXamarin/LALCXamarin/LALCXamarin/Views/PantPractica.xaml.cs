@@ -24,6 +24,7 @@ namespace LALCXamarin.Views
         {
             InitializeComponent();
              a = new LalcAPI();
+            generarListaPractica();
         }
         public async void generarListaPractica()
         {
