@@ -15,7 +15,7 @@
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Delete" BackgroundColor="Red"
-                                           CommandParameter="{Binding CategoriaID}" Invoked="EliminarCategoria_Invoked"></SwipeItem>
+                                           CommandParameter="{Binding CategoriaID}"></SwipeItem>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
                                 
