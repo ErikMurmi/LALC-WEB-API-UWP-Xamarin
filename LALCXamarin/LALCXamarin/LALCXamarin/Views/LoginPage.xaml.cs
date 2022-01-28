@@ -23,9 +23,15 @@ namespace LALCXamarin.Views
         {
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
+            
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             App.actualUserId = 0;
             App.usuarioActual = null;
-            campoContraseña.Text ="";
+            campoContraseña.Text = "";
             campoEmail.Text = "";
         }
 
