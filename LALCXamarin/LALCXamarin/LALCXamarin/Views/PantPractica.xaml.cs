@@ -17,6 +17,7 @@ namespace LALCXamarin.Views
         private List<Concepto> conceptosPractica;
         private static Random rng = new Random();
         public int contadorConceptos = 1;
+        private int indexPractica = 0;
         LalcAPI a;
 
 
@@ -28,6 +29,7 @@ namespace LALCXamarin.Views
         }
         public async void generarListaPractica()
         {
+            CarruselConceptos.IsSwipeEnabled = true;
             var sub = await a.GetSubcategoria(1);
             contadorConceptos = 1;
             conceptosPractica = sub.Conceptos.ToList();
@@ -47,6 +49,36 @@ namespace LALCXamarin.Views
                 list[n] = value;
             }
             return list;
+        }
+
+        private void CarruselConceptos_PositionChanged(object sender, PositionChangedEventArgs e)
+        {
+            contadorConceptos++;
+            int pos = e.CurrentPosition;
+            if(pos == conceptosPractica.Count - 1)
+            {
+                CarruselConceptos.IsSwipeEnabled = false;
+            }
+        }
+
+        private async void GuardarPractica_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Guardar", "¿Desea guardar esta práctica?", "Si", "No");
+            if (answer)
+            {
+                var nuevaPractica = new Practica
+                {
+                    SubcategoriaID = 1,
+                    CantidadConceptos = contadorConceptos,
+                    Fecha = DateTime.UtcNow
+                };
+                var pra = a.CrearPractica(nuevaPractica);
+                await Shell.Current.GoToAsync($"//{nameof(Practicas)}");
+            }
+            else
+            {
+                await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+            }
         }
     }
 }
