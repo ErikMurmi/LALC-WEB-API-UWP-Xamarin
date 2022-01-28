@@ -4,9 +4,19 @@
              x:Class="LALCXamarin.Views.Registro">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Registro"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Label Text="NombreR"></Label>
+            <Entry x:Name="campoNombreR" ></Entry>
+            <Label x:Name="msNombreR"></Label>
+            <Label Text="EmailR"></Label>
+            <Entry x:Name="campoEmailR" ></Entry>
+            <Label x:Name="msEmailR"></Label>
+            <Label Text="ContraseñaR"></Label>
+            <Entry x:Name="campoContraseñaR" IsPassword="True" ></Entry>
+            <Label x:Name="msContraseñaR"></Label>
+            <Button VerticalOptions="Center" Text="Login" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
