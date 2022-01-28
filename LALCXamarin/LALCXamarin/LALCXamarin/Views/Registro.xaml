@@ -14,7 +14,8 @@
             <Label Text="Contraseña"></Label>
             <Entry x:Name="campoContraseñaR" IsPassword="True" ></Entry>
             <Label x:Name="msContraseñaR"></Label>
-            <Button VerticalOptions="Center" Text="Login" Clicked="Button_Clicked"/>
+            <Button VerticalOptions="Center" Text="Registro" Clicked="Button_ClickedR"/>
+            <Label x:Name="msRegistro"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

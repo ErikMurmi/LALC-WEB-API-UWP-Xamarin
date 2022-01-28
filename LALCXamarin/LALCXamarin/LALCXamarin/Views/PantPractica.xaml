@@ -9,7 +9,7 @@
                       PositionChanged="CarruselConceptos_PositionChanged"
                           VerticalOptions="Center"
                           HeightRequest="500"
-                          >
+                          FlowDirection="RightToLeft">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="#6e625b"

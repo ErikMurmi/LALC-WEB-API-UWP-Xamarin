@@ -87,7 +87,7 @@ namespace LALCXamarin.Views
             }
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void Button_ClickedR(object sender, EventArgs e)
         {
             if (!comprobacionNom() && !comprobacionEma() && !comprobacionCon())
             {
@@ -98,8 +98,17 @@ namespace LALCXamarin.Views
                     password = campoContraseñaR.Text
                 };
                  var usu = a.CrearUsuario(us);
-                 App.actualUserId = usu.Id;
-                 await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+                if(usu != null)
+                {
+                    App.actualUserId = usu.Id;
+                    Navigation.InsertPageBefore(new AppShell(), this);
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    msRegistro.Text = "Error de registro";
+                }
+                 
             }
         }
     }

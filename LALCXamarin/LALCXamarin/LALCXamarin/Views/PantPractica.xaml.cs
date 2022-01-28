@@ -56,7 +56,8 @@ namespace LALCXamarin.Views
             contadorConceptos++;
 
             int pos = e.CurrentPosition;
-            if(pos == conceptosPractica.Count)
+             
+            if(pos == conceptosPractica.Count-1)
             {
                 await DisplayAlert("Fin", "Haz finalizado la práctica", "OK");
                 CarruselConceptos.IsSwipeEnabled = false;
