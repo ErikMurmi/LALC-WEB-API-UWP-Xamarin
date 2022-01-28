@@ -13,20 +13,25 @@ namespace LALCXamarin.Views.Subcategorias
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Subcategorias : ContentPage
     {
-        public static Categoria cate;
-        public List<Subcategoria> Items { get; set; }
+        public static Categoria cate = new Categoria();
+        public List<Subcategoria> Elemen { get; set; }
         public Subcategorias()
         {
-            InitializeComponent();
-            cate = new Categoria();
-            Items = new List<Subcategoria>();
+            InitializeComponent();         
+            Elemen = new List<Subcategoria>();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Items = (List<Subcategoria>)cate.Subcategorias;
-            SubcategoriasVista.ItemsSource = Items;
+            Elemen = (List<Subcategoria>)cate.Subcategorias;
+            SubcategoriasVista.ItemsSource = Elemen;
+        }
+
+        private async void SubcategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Conceptos.Conceptos.sub = (Subcategoria)e.Item;
+            await Navigation.PushAsync(new Conceptos.Conceptos());
         }
     }
 }
