@@ -23,9 +23,10 @@ namespace LALCXamarin.Views.Conceptos
             lalc = new LalcAPI();   
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+            sub = await lalc.GetSubcategoria(sub.SubcategoriaID);
             Con = (List<Concepto>)sub.Conceptos;
             ConceptosVista.ItemsSource = Con;
         }
@@ -37,8 +38,7 @@ namespace LALCXamarin.Views.Conceptos
             {
                 string id = ((MenuItem)sender).CommandParameter.ToString();
                 if (await lalc.EliminarConcepto(id))
-                {
-                    await DisplayAlert("Alert", "Entra al IF", "OK");
+                {                    
                     this.OnAppearing();
                 }
                 
