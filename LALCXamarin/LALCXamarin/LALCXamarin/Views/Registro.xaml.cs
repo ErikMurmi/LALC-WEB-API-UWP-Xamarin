@@ -1,4 +1,5 @@
 ﻿using LALC_UWP.Models;
+using LALCXamarin.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace LALCXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registro : ContentPage
     {
+        LalcAPI a = new LalcAPI();
+
         public Registro()
         {
             InitializeComponent();
@@ -82,7 +85,7 @@ namespace LALCXamarin.Views
             }
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
             if (!comprobacionNom() && !comprobacionEma() && !comprobacionCon())
             {
@@ -92,49 +95,8 @@ namespace LALCXamarin.Views
                     email = campoEmailR.Text,
                     password = campoContraseñaR.Text
                 };
-                var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-                HttpClient client = new HttpClient(httpHandler);
-
-                HttpRequestMessage request = new HttpRequestMessage();
-                request.RequestUri = new Uri(CancionesUrl);
-                request.Method = HttpMethod.Get;
-                request.Headers.Add("Accept", "application/json");
-                HttpResponseMessage response = await client.SendAsync(request);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    string content = await response.Content.ReadAsStringAsync();
-                    var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
-                    App.actualUserId = 
-                }
-            }
-        }
-
-        private async void getData()
-        {
-            var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-            HttpClient client = new HttpClient(httpHandler);
-
-            HttpRequestMessage request = new HttpRequestMessage();
-            request.RequestUri = new Uri(CancionesUrl);
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
-            HttpResponseMessage response = await client.SendAsync(request);
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
-                foreach (var i in resultado)
-                {
-                    if (i.email.Equals(campoEmail.Text) && i.password.Equals(campoContraseña.Text))
-                    {
-                        App.actualUserId = i.UsuarioID;
-                        await Navigation.PushAsync(new AppShell());
-                    }
-                }
-                if (App.actualUserId == 0)
-                {
-                    msContraseña.Text = "Contraseña o email incorrecto";
-                }
+                 var usu = a.CrearUsuario(us);
+                 App.actualUserId = usu.Id;
             }
         }
     }

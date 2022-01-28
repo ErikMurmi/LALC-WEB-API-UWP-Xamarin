@@ -241,7 +241,22 @@ namespace LALCXamarin.Services
             throw new Exception(response.ReasonPhrase);
         }
 
-
+        public async Task<Usuario> CrearUsuario(Usuario usuario)
+        {
+            var serializedUser = JsonConvert.SerializeObject(usuario);
+            var dato = new StringContent(serializedUser, Encoding.UTF8, "application/json");
+            var httpResponse = await client.PostAsync(usuario_url, dato);
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Usuario>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
 
     }
 }
