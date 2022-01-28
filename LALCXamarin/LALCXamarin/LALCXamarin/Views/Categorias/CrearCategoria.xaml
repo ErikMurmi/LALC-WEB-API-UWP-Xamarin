@@ -2,7 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LALCXamarin.Views.CrearCategoria"
+             xmlns:colorPicker="clr-namespace:Spillman.Xamarin.Forms.ColorPicker;assembly=Spillman.Xamarin.Forms.ColorPicker"
              Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <colorPicker:ColorPickerViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Margin="20,0,20,0">
             <Label Text="Prioritaria"
@@ -17,6 +21,11 @@
             <Label Text="Descripcion" FontSize="20"/>
             <Editor x:Name="Descripcion" Text="" AutoSize="TextChanges"/>
             <Label Text="Color" FontSize="20"/>
+            <colorPicker:ColorPickerView
+                VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="CenterAndExpand"
+               x:Name="colorx"/>
+
             <Button Text="Crear" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="CrearNuevaCategoria"/>
             <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
         </StackLayout>

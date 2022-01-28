@@ -18,15 +18,13 @@ namespace LALCXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CrearCategoria : ContentPage
     {
-        public string categorias_url = "https://10.0.2.2:44318/API/Categorias";
-        public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, Boolean> ServerCertificateCustomValidationCallback { get; set; }
-
-        CrearCategoriaViewModel _viewModel;
+        CrearCategoriaViewModel _viewModel { get; set; }
 
         public CrearCategoria()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new CrearCategoriaViewModel();
+            _viewModel = new CrearCategoriaViewModel();
+            //BindingContext = _viewModel = new CrearCategoriaViewModel();
         }
 
         protected override void OnAppearing()
@@ -85,7 +83,7 @@ namespace LALCXamarin.Views
                         Nombre = Nombre.Text,
                         Descripcion = Descripcion.Text,
                         esPrioritaria = EsPrioritaria.IsChecked,
-                        Color = "#4287f5"
+                        Color = "#"+colorx.ViewModel.Hex.ToString()
                     };
                     _viewModel.OnCrearCategoria(categoriaCreada);
                 }
