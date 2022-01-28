@@ -38,8 +38,10 @@ namespace LALCXamarin.Views.Conceptos
                 string id = ((MenuItem)sender).CommandParameter.ToString();
                 if (await lalc.EliminarConcepto(id))
                 {
+                    await DisplayAlert("Alert", "Entra al IF", "OK");
                     this.OnAppearing();
                 }
+                
             }
         }
 

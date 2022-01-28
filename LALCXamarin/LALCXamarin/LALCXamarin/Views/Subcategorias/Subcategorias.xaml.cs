@@ -43,8 +43,9 @@ namespace LALCXamarin.Views.Subcategorias
             if (answer)
             {
                 string id = ((MenuItem)sender).CommandParameter.ToString();
-                if (await lalc.EliminarSubcategoria(id))
+                await lalc.EliminarSubcategoria(id))
                 {
+                    await DisplayAlert("Alert", "Entra al IF", "OK");
                     this.OnAppearing();
                 }
             }
