@@ -20,11 +20,13 @@ namespace LALCXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registro : ContentPage
     {
-        LalcAPI a = new LalcAPI();
+        LalcAPI a;
+        
 
         public Registro()
         {
             InitializeComponent();
+            a = new LalcAPI();
         }
 
         public static string CancionesUrl = $"https://10.0.2.2:44318/api/usuarios";
@@ -85,7 +87,7 @@ namespace LALCXamarin.Views
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             if (!comprobacionNom() && !comprobacionEma() && !comprobacionCon())
             {
@@ -97,6 +99,7 @@ namespace LALCXamarin.Views
                 };
                  var usu = a.CrearUsuario(us);
                  App.actualUserId = usu.Id;
+                 await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
             }
         }
     }
