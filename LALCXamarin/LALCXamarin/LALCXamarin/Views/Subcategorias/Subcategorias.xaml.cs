@@ -27,6 +27,7 @@ namespace LALCXamarin.Views.Subcategorias
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            //lalc api obtner la categoria 
             Elemen = (List<Subcategoria>)cate.Subcategorias;
             SubcategoriasVista.ItemsSource = Elemen;
         }
@@ -43,7 +44,7 @@ namespace LALCXamarin.Views.Subcategorias
             if (answer)
             {
                 string id = ((MenuItem)sender).CommandParameter.ToString();
-                await lalc.EliminarSubcategoria(id))
+                if(await lalc.EliminarSubcategoria(id))
                 {
                     await DisplayAlert("Alert", "Entra al IF", "OK");
                     this.OnAppearing();
