@@ -36,5 +36,26 @@ namespace LALCXamarin.Views
             Subcategorias.Subcategorias.cate = (Categoria)e.Item;
             await Navigation.PushAsync(new Subcategorias.Subcategorias());
         }
+
+        private async void EliminarCategoria_Invoked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Eliminar", "¿Está seguro de eliminar la categoria?", "Si", "No");
+            if (answer)
+            {
+                string id = ((MenuItem)sender).CommandParameter.ToString();
+                if (await lalc.EliminarCategoria(id))
+                {
+                    this.OnAppearing();
+                }
+            }
+        }
+
+        private async void ModificarCategoria_Invoked(object sender, EventArgs e)
+        {
+            string id = ((MenuItem)sender).CommandParameter.ToString();
+            int pas = Int16.Parse(id);
+            EditarCategoria.categoriaSeleccionada = pas;
+            await Navigation.PushAsync(new EditarCategoria());
+        }
     }
 }
