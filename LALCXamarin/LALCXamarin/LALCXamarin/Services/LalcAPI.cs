@@ -19,10 +19,26 @@ namespace LALCXamarin.Services
         private const string subcategorias_url = "https://10.0.2.2:44318/API/Subcategorias";
         public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
         public string practicas_url = "https://10.0.2.2:44318/API/Practicas";
+        public string usuario_url = "https://10.0.2.2:44318/API/Usuarios";
         public LalcAPI()
         {
             httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
             client = new HttpClient(httpHandler);
+        }
+
+        public async Task<Usuario> GetUsuario(int id)
+        {
+            HttpResponseMessage httpResponse = await client.GetAsync($"{usuario_url}/{id}");
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Usuario>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
         }
 
         public async Task<Categoria> GetCategoria(int id)
@@ -225,7 +241,22 @@ namespace LALCXamarin.Services
             throw new Exception(response.ReasonPhrase);
         }
 
-
+        public async Task<Usuario> CrearUsuario(Usuario usuario)
+        {
+            var serializedUser = JsonConvert.SerializeObject(usuario);
+            var dato = new StringContent(serializedUser, Encoding.UTF8, "application/json");
+            var httpResponse = await client.PostAsync(usuario_url, dato);
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await httpResponse.Content.ReadAsStringAsync();
+                var resultado = JsonConvert.DeserializeObject<Usuario>(content);
+                if (resultado != null)
+                {
+                    return resultado;
+                }
+            }
+            throw new Exception(httpResponse.ReasonPhrase);
+        }
 
     }
 }
