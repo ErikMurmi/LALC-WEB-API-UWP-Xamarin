@@ -3,30 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:LALC_UWP.Models"
              x:Class="LALCXamarin.Views.Practicas.Practicas"
              Title="{Binding Title}">
-  <ListView x:Name="MyListView"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate x:DataType="models:Practica">
-            <TextCell Text="{Binding PracticaID}" TextColor="Black" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
-  </ListView>
+    <ListView x:Name="MyListView" Margin="20" HasUnevenRows="True"
+>
+        <ListView.ItemTemplate>
+            <DataTemplate >
+                <ViewCell >
+                    <SwipeView x:DataType="models:Practica">
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete" BackgroundColor="Red"
+                                           CommandParameter="{Binding PracticaID}" Invoked="EliminarPractica_Invoked"></SwipeItem>
+                            </SwipeItems>
+
+                        </SwipeView.RightItems>
+                        <StackLayout Orientation="Vertical" BackgroundColor="LightGray"
+                                     Margin="0,0,0,20" HeightRequest="100" WidthRequest="300">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="ID: " TextColor="Black"/>
+                                <Label Text="{Binding PracticaID}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Subcategoria: " TextColor="Black"/>
+                                <Label Text="{x:Binding Subcategoria.Nombre}" TextColor="Black"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="ID: " TextColor="Black"/>
+                                <Label Text="{x:Binding Fecha}" TextColor="Black"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </SwipeView>
+                </ViewCell>
+
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>

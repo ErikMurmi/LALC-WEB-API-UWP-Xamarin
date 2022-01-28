@@ -33,17 +33,9 @@ namespace LALCXamarin.Views.Practicas
             MyListView.ItemsSource = Items;
         }
 
-       
-
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void EliminarPractica_Invoked(object sender, EventArgs e)
         {
-            if (e.Item == null)
-                return;
-
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            string id = ((MenuItem)sender).CommandParameter.ToString();
         }
     }
 }

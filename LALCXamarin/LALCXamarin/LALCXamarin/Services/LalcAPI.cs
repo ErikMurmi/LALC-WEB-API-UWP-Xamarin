@@ -170,26 +170,6 @@ namespace LALCXamarin.Services
             }
             throw new Exception(httpResponse.ReasonPhrase);
 
-
-            /*
-            public async Task<List<Practica>> GetPracticas(){
-                var praticas = new List<Practica>();
-                string response = await client.GetStringAsync(practicas_url);
-                JsonArray jsonArray = JsonArray.Parse(response);
-
-                foreach (var jsonRow in jsonArray)
-                {
-                    JsonObject jsonObject = jsonRow.GetObject();
-                    var data = JsonConvert.DeserializeObject<Practica>(jsonObject.ToString());
-                    string sb = await client.GetStringAsync(subcategorias_url + "/" + data.SubcategoriaID);
-                    var sb_dt = JsonConvert.DeserializeObject<Subcategoria>(sb);
-                    if (sb_dt.Categoria.UsuarioID == MainPage.actualUserId)
-                    {
-                        praticas.Add(data);
-                    }
-                }
-                return praticas;
-            }*/
         }
 
 
