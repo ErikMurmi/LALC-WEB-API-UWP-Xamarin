@@ -68,6 +68,17 @@ namespace LALCXamarin.Services
             throw new Exception(httpResponse.ReasonPhrase);
         }
 
+
+        public async Task<Boolean> EliminarCategoria(String id)
+        {
+            HttpResponseMessage response = await client.DeleteAsync($"{categorias_url}/{id}");
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
         public async Task<Subcategoria> GetSubcategoria(int id)
         {
             HttpResponseMessage httpResponse = await client.GetAsync($"{subcategorias_url}/{id}");
@@ -109,6 +120,15 @@ namespace LALCXamarin.Services
             throw new Exception(httpResponse.ReasonPhrase);
         }
 
+        public async Task<Boolean> EliminarSubcategoria(String id)
+        {
+            HttpResponseMessage response = await client.DeleteAsync($"{subcategorias_url}/{id}");
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
 
         public async Task<Concepto> GetConcepto(int id)
         {
@@ -153,6 +173,16 @@ namespace LALCXamarin.Services
                 return true;
             }
             throw new Exception(httpResponse.ReasonPhrase);
+        }
+
+        public async Task<Boolean> EliminarConcepto(String id)
+        {
+            HttpResponseMessage response = await client.DeleteAsync($"{conceptos_url}/{id}");
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            throw new Exception(response.ReasonPhrase);
         }
 
         public async Task<List<Practica>> GetPracticas()
