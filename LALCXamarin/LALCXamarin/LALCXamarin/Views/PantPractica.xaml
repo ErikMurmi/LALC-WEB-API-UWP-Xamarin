@@ -4,7 +4,7 @@
              x:Class="LALCXamarin.Views.PantPractica"
              Title="Práctica">
     <ContentPage.Content>
-        <StackLayout Margin="25,45,25,0">
+        <StackLayout Margin="25,80,25,0">
             <CarouselView x:Name="CarruselConceptos"
                       PositionChanged="CarruselConceptos_PositionChanged"
                           VerticalOptions="Center"
@@ -22,9 +22,9 @@
                                    HorizontalOptions="Center"
                                    Text="{Binding Titulo}}"
                                    FontAttributes="Bold"
-                                   FontSize="Subtitle"/>
+                                   FontSize="60"/>
                                 <Label x:Name="Concepto" 
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         Text="{Binding Definicion}"
                                         FontSize="Small"
                                        MaxLines="10"
@@ -34,7 +34,7 @@
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
-            <Button x:Name="GuardarPractica" Text="Guardar" Clicked="GuardarPractica_Clicked" Margin="30,30,30,30"></Button>
+            <Button x:Name="GuardarPractica" Text="Guardar" Clicked="GuardarPractica_Clicked" Margin="50,30,50,30"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
