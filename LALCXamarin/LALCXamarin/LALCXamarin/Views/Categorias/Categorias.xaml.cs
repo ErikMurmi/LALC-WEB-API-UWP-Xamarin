@@ -60,10 +60,11 @@ namespace LALCXamarin.Views
 
         private async void BarraBusqueda_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Usuario usuarioact = await lalc.GetUsuario(App.actualUserId);           
-            var filteredList = (List<Categoria>)usuarioact.Categorias;
-            filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.ToString()));
-            CategoriasVista.ItemsSource = filteredList;
+            Usuario usuarioact = await lalc.GetUsuario(App.actualUserId); 
+            
+            List<Categoria> lista = (List<Categoria>)usuarioact.Categorias;
+            var searchresult = lista.FindAll(s => s.Nombre.Contains(Barrabus.Text));
+            CategoriasVista.ItemsSource = searchresult;
         }
     }
 }
