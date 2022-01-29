@@ -17,5 +17,7 @@ namespace LALC_UWP.Models
 
         public string Titulo { get; set; }
 
+        public virtual Subcategoria Subcategoria { get; set; }
+
     }
 }
