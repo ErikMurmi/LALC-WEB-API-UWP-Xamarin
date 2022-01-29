@@ -4,14 +4,14 @@
              x:Class="LALCXamarin.Views.Categorias"
              xmlns:vm="clr-namespace:LALCXamarin.ViewModels" xmlns:models="clr-namespace:LALC_UWP.Models">
 
-
+    
     <ContentPage.Content>
         <ScrollView>
             <ListView x:Name="CategoriasVista" Margin="20" HasUnevenRows="True" ItemTapped="CategoriasVista_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-                            <SwipeView x:DataType="models:Categoria" >
+                            <SwipeView x:DataType="models:Categoria">
 
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
@@ -27,14 +27,14 @@
                                 </SwipeView.RightItems>
 
                                 <StackLayout Orientation="Vertical" BackgroundColor="{Binding Color}"
-                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                                        <Label Text="{Binding Nombre}" TextColor="Black"/>
-                                        <Label Text="{Binding Descripcion}" TextColor="Black"/>
+                                     Margin="0,0,0,20" Padding="0,45,0,10" VerticalOptions="Center" WidthRequest="300" >
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" HeightRequest="100" VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion}" TextColor="Black" HorizontalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
-                                
-                                
+
+
                             </SwipeView>
                         </ViewCell>
 
