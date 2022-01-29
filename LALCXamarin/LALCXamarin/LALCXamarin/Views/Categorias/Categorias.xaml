@@ -6,7 +6,7 @@
 
     <StackLayout>
         <Frame>
-            <SearchBar x:Name="Barrabus" HorizontalTextAlignment="Start" Placeholder="Busqueda....." TextChanged="BarraBusqueda_TextChanged"/>
+            <SearchBar x:Name="Barrabus" HorizontalTextAlignment="Start" Placeholder="Buscar categoria...." TextChanged="BarraBusqueda_TextChanged"/>
         </Frame>
         <ScrollView>
             <ListView x:Name="CategoriasVista" Margin="20" HasUnevenRows="True" ItemTapped="CategoriasVista_ItemTapped">
