@@ -5,6 +5,11 @@
              xmlns:colorPicker="clr-namespace:Spillman.Xamarin.Forms.ColorPicker;assembly=Spillman.Xamarin.Forms.ColorPicker"
              Title="{Binding Title}">
 
+    <ContentPage.Resources>
+        <Style x:Key="defaultLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Dongle-Bold" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="20,0,20,0">
             <StackLayout.BindingContext>
