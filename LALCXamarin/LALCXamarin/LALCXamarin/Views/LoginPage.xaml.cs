@@ -97,7 +97,7 @@ namespace LALCXamarin.Views
                     if (i.email.Equals(campoEmail.Text) && i.password.Equals(campoContraseña.Text))
                     {
                         App.actualUserId = i.UsuarioID;
-                        await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+                        await Shell.Current.GoToAsync($"//{nameof(Categorias)}");
                     }
                 }
                 if (App.actualUserId == 0)

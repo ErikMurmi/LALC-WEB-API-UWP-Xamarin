@@ -13,9 +13,21 @@ namespace LALCXamarin
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
-
-            CurrentItem = Browse;
+            CurrentItem = CategoriasIt;
         }
+
+       /* protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (App.actualUserId == 0)
+            {
+                await Shell.Current.GoToAsync("//LoginPage");
+            }
+            else
+            {
+                CurrentItem = CategoriasIt;
+            }
+        }*/
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {

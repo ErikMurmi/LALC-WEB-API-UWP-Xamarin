@@ -9,7 +9,7 @@ namespace LALCXamarin
 {
     public partial class App : Application
     {
-        public static int actualUserId = 1;
+        public static int actualUserId = 0;
         public static Usuario usuarioActual;
         public App()
         {
