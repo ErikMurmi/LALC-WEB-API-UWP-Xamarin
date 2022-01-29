@@ -4,38 +4,14 @@
              x:Class="LALCXamarin.Views.Categorias"
              xmlns:vm="clr-namespace:LALCXamarin.ViewModels" xmlns:models="clr-namespace:LALC_UWP.Models">
 
-    <StackLayout>
-        <StackLayout.Padding>
-            <OnPlatform x:TypeArguments="Thickness">
-                <On Platform="Android" Value="20,60,20,60"/>
-                <On Platform="iOS" Value="20,40,20,60"/>
-                <On Platform="UWP" Value="20,60,20,20"/>
-            </OnPlatform>
-        </StackLayout.Padding>
-        <Frame Padding="20,5">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="40"/>
-                </Grid.ColumnDefinitions>
-
-                <Label HorizontalOptions="Start" Text="{StaticResource search}" FontFamily="fontello" VerticalOptions="Center"/>
-                <Label Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" Text="Ingresa tu categoria aqui"/>
-                <Label Grid.Column="2" HorizontalOptions="End" Text="{StaticResource mic}" FontFamily="fontello" VerticalOptions="Center"/>
-            </Grid>
-        </Frame>
-    </StackLayout>
+    
     <ContentPage.Content>
         <ScrollView>
             <ListView x:Name="CategoriasVista" Margin="20" HasUnevenRows="True" ItemTapped="CategoriasVista_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-                            <SwipeView x:DataType="models:Categoria" >
+                            <SwipeView x:DataType="models:Categoria">
 
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
@@ -51,14 +27,14 @@
                                 </SwipeView.RightItems>
 
                                 <StackLayout Orientation="Vertical" BackgroundColor="{Binding Color}"
-                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                                        <Label Text="{Binding Nombre}" TextColor="Black"/>
-                                        <Label Text="{Binding Descripcion}" TextColor="Black"/>
+                                     Margin="0,0,0,20" Padding="0,45,0,10" VerticalOptions="Center" WidthRequest="300" >
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" HeightRequest="100" VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding Nombre}" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion}" TextColor="Black" HorizontalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
-                                
-                                
+
+
                             </SwipeView>
                         </ViewCell>
 
