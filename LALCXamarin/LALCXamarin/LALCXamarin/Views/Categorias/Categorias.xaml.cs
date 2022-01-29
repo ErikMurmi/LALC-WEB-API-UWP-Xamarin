@@ -58,7 +58,7 @@ namespace LALCXamarin.Views
             await Navigation.PushAsync(new EditarCategoria());
         }
 
-        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        private async void BarraBusqueda_TextChanged(object sender, TextChangedEventArgs e)
         {
             Usuario usuarioact = await lalc.GetUsuario(App.actualUserId);           
             var filteredList = (List<Categoria>)usuarioact.Categorias;
