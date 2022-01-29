@@ -16,8 +16,10 @@ namespace LALCXamarin.Views
     {
         private List<Concepto> conceptosPractica;
         private static Random rng = new Random();
+        public static int subcategoria = 0;
         public int contadorConceptos = 1;
         private int indexPractica = 0;
+        Subcategoria sub = new Subcategoria();
         LalcAPI a;
 
 
@@ -27,10 +29,10 @@ namespace LALCXamarin.Views
              a = new LalcAPI();
             generarListaPractica();
         }
-        public async void generarListaPractica()
+        public void generarListaPractica()
         {
             CarruselConceptos.IsSwipeEnabled = true;
-            var sub = await a.GetSubcategoria(1);
+            sub = Conceptos.Conceptos.sub;
             contadorConceptos = 1;
             conceptosPractica = sub.Conceptos.ToList();
             conceptosPractica = Shuffle<Concepto>(conceptosPractica);
@@ -71,7 +73,7 @@ namespace LALCXamarin.Views
             {
                 var nuevaPractica = new Practica
                 {
-                    SubcategoriaID = 1,
+                    SubcategoriaID = sub.SubcategoriaID,
                     CantidadConceptos = contadorConceptos,
                     Fecha = DateTime.UtcNow
                 };

@@ -17,6 +17,7 @@ namespace LALCXamarin.Views.Subcategorias
         LalcAPI lalc;
         public static Categoria cate = new Categoria();
         public List<Subcategoria> Elemen { get; set; }
+        
         public Subcategorias()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace LALCXamarin.Views.Subcategorias
         private async void SubcategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Conceptos.Conceptos.sub = (Subcategoria)e.Item;
+            
             await Navigation.PushAsync(new Conceptos.Conceptos());
         }
 
