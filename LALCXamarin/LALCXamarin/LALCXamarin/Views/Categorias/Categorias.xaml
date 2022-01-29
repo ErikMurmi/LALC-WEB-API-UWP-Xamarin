@@ -8,8 +8,6 @@
         <Frame>
             <SearchBar HorizontalTextAlignment="Start" Placeholder="Busqueda....." TextChanged="BarraBusqueda_TextChanged"/>
         </Frame>
-    </StackLayout>
-    <ContentPage.Content>
         <ScrollView>
             <ListView x:Name="CategoriasVista" Margin="20" HasUnevenRows="True" ItemTapped="CategoriasVista_ItemTapped">
                 <ListView.ItemTemplate>
