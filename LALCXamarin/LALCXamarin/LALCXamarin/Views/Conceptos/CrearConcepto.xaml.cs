@@ -14,10 +14,12 @@ using Xamarin.Forms.Xaml;
 
 namespace LALCXamarin.ViewModels.Conceptos
 {
+    
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
+    
     public partial class CrearConcepto : ContentPage
     {
+        public static int subid = new int();
         public string conceptos_url = "https://10.0.2.2:44318/API/Conceptoes";
         public Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, Boolean> ServerCertificateCustomValidationCallback { get; set; }
 
@@ -76,7 +78,7 @@ namespace LALCXamarin.ViewModels.Conceptos
                     var conceptoCreado = new Concepto
                     {
                         Titulo = Titulo.Text,
-                        SubcategoriaID = 1,
+                        SubcategoriaID = subid,
                         Definicion = Definicion.Text
                     };
                     _viewModel.OnCrearConcepto(conceptoCreado);

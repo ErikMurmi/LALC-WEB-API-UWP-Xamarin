@@ -35,8 +35,7 @@ namespace LALCXamarin.Views.Subcategorias
 
         private async void SubcategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Conceptos.Conceptos.sub = (Subcategoria)e.Item;
-            
+            Conceptos.Conceptos.sub = (Subcategoria)e.Item;           
             await Navigation.PushAsync(new Conceptos.Conceptos());
         }
 
@@ -59,6 +58,19 @@ namespace LALCXamarin.Views.Subcategorias
             int pas = Int16.Parse(id);
             EditarSubcategoria.subcategoriaSeleccionada = pas;
             await Navigation.PushAsync(new EditarSubcategoria());
+        }
+
+        private async void Barrabus2_TextChanged(object sender, TextChangedEventArgs e)
+        {          
+            List<Subcategoria> lista = (List<Subcategoria>)cate.Subcategorias;
+            var searchresult = lista.FindAll(s => s.Nombre.ToLower().Contains(Barrabus2.Text.ToLower()));
+            SubcategoriasVista.ItemsSource = searchresult;
+        }
+
+        private async void CrearSubcategoria_Clicked(object sender, EventArgs e)
+        {
+            CrearSubcategoria.categoriaid = cate.CategoriaID;
+            await Navigation.PushAsync(new CrearSubcategoria());
         }
     }
 }

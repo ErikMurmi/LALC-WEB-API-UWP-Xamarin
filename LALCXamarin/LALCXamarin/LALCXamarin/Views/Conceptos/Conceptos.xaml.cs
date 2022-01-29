@@ -1,5 +1,6 @@
 ﻿using LALC_UWP.Models;
 using LALCXamarin.Services;
+using LALCXamarin.ViewModels.Conceptos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,19 @@ namespace LALCXamarin.Views.Conceptos
         private async void IrPractica_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PantPractica());
+        }
+
+        private void Barrabus3_TextChanged(object sender, TextChangedEventArgs e)
+        {           
+            List<Concepto> lista = (List<Concepto>)sub.Conceptos;
+            var searchresult = lista.FindAll(s => s.Titulo.ToLower().Contains(Barrabus3.Text.ToLower()));
+            ConceptosVista.ItemsSource = searchresult;
+        }
+
+        private async void CrearConcepto_Clicked(object sender, EventArgs e)
+        {
+            CrearConcepto.subid = sub.SubcategoriaID;
+            await Navigation.PushAsync(new CrearConcepto());
         }
     }
 }
