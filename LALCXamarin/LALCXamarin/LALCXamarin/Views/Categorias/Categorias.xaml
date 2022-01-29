@@ -11,7 +11,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-                            <SwipeView x:DataType="models:Categoria">
+                            <SwipeView x:DataType="models:Categoria" >
 
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
@@ -28,7 +28,7 @@
 
                                 <StackLayout Orientation="Vertical" BackgroundColor="{Binding Color}"
                                      Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                                         <Label Text="{Binding Nombre}" TextColor="Black"/>
                                         <Label Text="{Binding Descripcion}" TextColor="Black"/>
                                     </StackLayout>
