@@ -57,5 +57,13 @@ namespace LALCXamarin.Views
             EditarCategoria.categoriaSeleccionada = pas;
             await Navigation.PushAsync(new EditarCategoria());
         }
+
+        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Usuario usuarioact = await lalc.GetUsuario(App.actualUserId);           
+            var filteredList = (List<Categoria>)usuarioact.Categorias;
+            filteredList = filteredList.FindAll(s => s.Nombre.ToLower().Contains(sender.ToString()));
+            CategoriasVista.ItemsSource = filteredList;
+        }
     }
 }
