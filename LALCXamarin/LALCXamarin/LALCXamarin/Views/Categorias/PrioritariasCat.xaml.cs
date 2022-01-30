@@ -29,7 +29,7 @@ namespace LALCXamarin.Views
             CategoriasPrioVista.ItemsSource = ItemsPriocat;
         }
 
-        private async void Barrabusprio_TextChanged(object sender, TextChangedEventArgs e)
+        private void Barrabusprio_TextChanged(object sender, TextChangedEventArgs e)
         {           
             List<Categoria> lista = ItemsPriocat;
             var searchresult = lista.FindAll(s => s.Nombre.ToLower().Contains(Barrabusprio.Text.ToLower()));
