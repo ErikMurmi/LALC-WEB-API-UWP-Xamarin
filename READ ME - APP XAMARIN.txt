@@ -1,0 +1,23 @@
+**********************************************************************************************
+Para el correcto funcionamiento de la App en Xamarin, es necesario seguir los siguientes pasos:
+
+   1. Ejecutar la Api Web.
+
+   2. Dirigirse al archivo "applicationhost.config" que se encuentra dentro 
+      de la ruta oculta "/.vs" del proyecto.
+
+   3. Abrir con un editor de archivos (se sugiere usar Bloc de Notas) y buscar 
+      la etiqueta "<Sites .../>"
+
+   4. Al encontrarla, es necesario identificar la etiqueta con en "id=2"
+
+   5. En esta, modifitcar de la propiedad de la siguiente forma "bindingInformation="*:44386:127.0.0.1".
+      Es decir, se cambia "localhost" por "127.0.0.1"
+
+   6. Guardar el archivo modificado.
+
+   7. Volver a ejecutar la Api Web
+
+   8. Ejecutar la App en Xamarin.
+
+**********************************************************************************************
