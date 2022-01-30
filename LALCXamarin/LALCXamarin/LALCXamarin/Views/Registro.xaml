@@ -4,10 +4,7 @@
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
              x:Class="LALCXamarin.Views.Registro">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem></ToolbarItem>
-        <ToolbarItem Text="Login" Clicked="ToolbarItem_Clicked"/>
-    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout >
             <ImageButton Source="back_icon.png" Padding="10,10,0,0" HeightRequest="40"
@@ -28,7 +25,7 @@
                 <Label x:Name="msEmailR" TextColor="Red" FontSize="Small" Margin="30,0,20,5"></Label>
                 <Label Text="Contraseña" Margin="35,0,20,0"></Label>
                 <Entry x:Name="campoContraseñaR" Margin="20,0,20,0" IsPassword="True" ></Entry>
-                <Label x:Name="msContraseñaR"TextColor="Red" FontSize="Small" Margin="30,0,20,5"></Label>
+                <Label x:Name="msContraseñaR" TextColor="Red" FontSize="Small" Margin="30,0,20,5"></Label>
                 <Button VerticalOptions="Center" 
                         Text="Registro" 
                         Clicked="Button_ClickedR" 

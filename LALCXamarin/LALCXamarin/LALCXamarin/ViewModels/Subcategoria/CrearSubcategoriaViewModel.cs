@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 using LALCXamarin.Views;
 using LALCXamarin.Services;
+using LALCXamarin.Views.Subcategorias;
 
 namespace LALCXamarin.ViewModels
 {
@@ -25,7 +26,7 @@ namespace LALCXamarin.ViewModels
             var creada = await lalcAPI.CrearSubcategoria(NSubCategoria);
             if (creada)
             {
-                await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+                await Shell.Current.GoToAsync($"//{nameof(SubcategoriasView)}");
             }
 
         }

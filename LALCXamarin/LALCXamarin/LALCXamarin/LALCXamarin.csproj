@@ -50,7 +50,7 @@
     <EmbeddedResource Update="Views\Subcategorias\CrearSubcategoria.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Subcategorias\Subcategorias.xaml">
+    <EmbeddedResource Update="Views\Subcategorias\SubcategoriasView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -61,6 +61,9 @@
     </Compile>
     <Compile Update="Views\Subcategorias\EditarSubcategoria.xaml.cs">
       <DependentUpon>EditarSubcategoria.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Subcategorias\SubcategoriasView.xaml.cs">
+      <DependentUpon>SubcategoriasView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

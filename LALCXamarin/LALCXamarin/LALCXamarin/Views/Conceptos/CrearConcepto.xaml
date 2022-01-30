@@ -4,7 +4,7 @@
              x:Class="LALCXamarin.ViewModels.Conceptos.CrearConcepto"
              Title="Crear Concepto">
     <ContentPage.Content>
-        <StackLayout Margin="20,0,20,0" >
+        <StackLayout Margin="20,20,20,0" >
             <Label Text="Título" FontSize="20"/>
             <Editor x:Name="Titulo" Text="" AutoSize="TextChanges"/>
             <Label Text="Definición" FontSize="20"/>
