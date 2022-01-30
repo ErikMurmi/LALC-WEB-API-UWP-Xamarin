@@ -6,6 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Dongle-Bold.ttf" />
+    <None Remove="Montserrat-SemiBold.ttf" />
+    <None Remove="OpenSans-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Dongle-Bold.ttf" />
+    <EmbeddedResource Include="Montserrat-SemiBold.ttf" />
+    <EmbeddedResource Include="OpenSans-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
     <PackageReference Include="Spillman.Xamarin.Forms.ColorPicker" Version="1.0.7" />
