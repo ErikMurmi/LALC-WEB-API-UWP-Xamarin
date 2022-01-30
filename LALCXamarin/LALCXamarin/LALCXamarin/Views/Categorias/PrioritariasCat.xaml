@@ -4,10 +4,7 @@
              x:Class="LALCXamarin.Views.PrioritariasCat">
 
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Crear" Clicked="CrearPrioCategoria_Clicked" />
-    </ContentPage.ToolbarItems>
-    
+   
     <StackLayout>
         <Frame>
             <SearchBar x:Name="Barrabusprio" HorizontalTextAlignment="Start" Placeholder="Buscar categoria...." TextChanged="Barrabusprio_TextChanged"/>

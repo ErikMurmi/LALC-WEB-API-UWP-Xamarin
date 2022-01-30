@@ -9,7 +9,7 @@
         <ToolbarItem Text="Prioritarias" Clicked="CatPrioritarias_Clicked" />
     </ContentPage.ToolbarItems>
 
-    <StackLayout>
+    <StackLayout x:Name="StackCate">
         <Frame>
             <SearchBar x:Name="Barrabus" HorizontalTextAlignment="Start" Placeholder="Buscar categoria...." TextChanged="BarraBusqueda_TextChanged"/>
         </Frame>
@@ -38,7 +38,7 @@
                                     <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                                         <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" FontSize="22"
                                                HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White"/>
                                     </StackLayout>
                                 </StackLayout>
                                 
