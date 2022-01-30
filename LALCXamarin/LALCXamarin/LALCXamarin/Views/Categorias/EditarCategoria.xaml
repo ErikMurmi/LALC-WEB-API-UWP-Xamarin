@@ -6,7 +6,7 @@
              Title="Editar Categoría">
 
     <ContentPage.Content>
-                <StackLayout Margin="20,0,20,0">
+                <StackLayout Margin="20,20,20,0">
             <StackLayout.BindingContext>
                 <colorPicker:ColorPickerViewModel />
             </StackLayout.BindingContext>

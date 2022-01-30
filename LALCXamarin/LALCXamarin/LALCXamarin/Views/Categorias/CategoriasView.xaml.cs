@@ -33,8 +33,8 @@ namespace LALCXamarin.Views
 
         private async void CategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Subcategorias.Subcategorias.cate = (Categoria)e.Item;
-            await Navigation.PushAsync(new Subcategorias.Subcategorias());
+            Subcategorias.SubcategoriasView.cate = (Categoria)e.Item;
+            await Navigation.PushAsync(new Subcategorias.SubcategoriasView());
         }
 
         private async void EliminarCategoria_Invoked(object sender, EventArgs e)

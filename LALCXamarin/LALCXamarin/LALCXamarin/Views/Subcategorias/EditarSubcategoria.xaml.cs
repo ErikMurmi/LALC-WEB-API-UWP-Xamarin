@@ -13,6 +13,7 @@ using System.Net;
 using Newtonsoft.Json;
 using LALC_UWP.Models;
 using LALCXamarin.ViewModels.Categorias;
+using LALCXamarin.Views.Subcategorias;
 
 namespace LALCXamarin.Views
 {
@@ -74,7 +75,7 @@ namespace LALCXamarin.Views
                     };
                     if (await _viewModel.EditarSubcategoria(subcategoriaSeleccionada, subcategoriaEditada))
                     {
-                        await Navigation.PopAsync();
+                        await Shell.Current.GoToAsync($"//{nameof(SubcategoriasView)}");
                     }
                 }
             }

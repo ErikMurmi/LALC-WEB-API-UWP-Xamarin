@@ -38,8 +38,8 @@ namespace LALCXamarin.Views
 
         private async void CategoriasPrioVista_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Subcategorias.Subcategorias.cate = (Categoria)e.Item;
-            await Navigation.PushAsync(new Subcategorias.Subcategorias());
+            Subcategorias.SubcategoriasView.cate = (Categoria)e.Item;
+            await Navigation.PushAsync(new Subcategorias.SubcategoriasView());
         }
 
         private async void ModificarPrioCat_Invoked(object sender, EventArgs e)

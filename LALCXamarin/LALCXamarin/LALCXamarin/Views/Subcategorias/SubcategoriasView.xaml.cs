@@ -12,13 +12,13 @@ using Xamarin.Forms.Xaml;
 namespace LALCXamarin.Views.Subcategorias
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Subcategorias : ContentPage
+    public partial class SubcategoriasView : ContentPage
     {
         LalcAPI lalc;
         public static Categoria cate = new Categoria();
         public List<Subcategoria> Elemen { get; set; }
         
-        public Subcategorias()
+        public SubcategoriasView()
         {
             InitializeComponent();
             lalc = new LalcAPI();
