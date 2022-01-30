@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Conceptos\Conceptos.xaml">
+    <EmbeddedResource Update="Views\Conceptos\ConceptosView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Conceptos\CrearConcepto.xaml">
@@ -58,6 +58,9 @@
   <ItemGroup>
     <Compile Update="Views\Categorias\CategoriasView.xaml.cs">
       <DependentUpon>CategoriasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Conceptos\ConceptosView.xaml.cs">
+      <DependentUpon>ConceptosView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Subcategorias\EditarSubcategoria.xaml.cs">
       <DependentUpon>EditarSubcategoria.xaml</DependentUpon>

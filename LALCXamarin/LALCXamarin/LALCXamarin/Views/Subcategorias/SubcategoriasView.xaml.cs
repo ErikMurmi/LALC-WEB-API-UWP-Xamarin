@@ -60,8 +60,8 @@ namespace LALCXamarin.Views.Subcategorias
 
         private async void SubcategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Conceptos.Conceptos.sub = (Subcategoria)e.Item;           
-            await Navigation.PushAsync(new Conceptos.Conceptos());
+            Conceptos.ConceptosView.sub = (Subcategoria)e.Item;           
+            await Navigation.PushAsync(new Conceptos.ConceptosView());
         }
 
         private async void EliminarSubcategoria_Invoked(object sender, EventArgs e)

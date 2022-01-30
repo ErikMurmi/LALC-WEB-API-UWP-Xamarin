@@ -31,19 +31,5 @@ namespace LALCXamarin.ViewModels
 
         }
 
-        /*public async void OnCrearCategoria(Categoria ct)
-        {
-
-            var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-            var client = new HttpClient(httpHandler);
-            var serializedCategoria = JsonConvert.SerializeObject(ct);
-            var dato = new StringContent(serializedCategoria, Encoding.UTF8, "application/json");
-            var httpResponse = await client.PostAsync(categorias_url, dato);
-
-            if (httpResponse.Content != null)
-            {
-                await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
-            }
-        }*/
     }
 }
