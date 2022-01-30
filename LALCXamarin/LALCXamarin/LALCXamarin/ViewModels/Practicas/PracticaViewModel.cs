@@ -23,7 +23,7 @@ namespace LALCXamarin.ViewModels.Practicas
 
         public async Task<List<Practica>> OnAppearing()
         {
-            return await lalcAPI.GetPracticas();
+            return await lalcAPI.GetPracticas(App.actualUserId);
         }
 
 

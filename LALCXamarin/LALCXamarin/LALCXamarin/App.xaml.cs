@@ -14,8 +14,10 @@ namespace LALCXamarin
         public App()
         {
             InitializeComponent();
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
+            //MainPage = new NavigationPage(new LoginPage());
             MainPage = new AppShell();
+            
         }
 
         protected override void OnStart()
