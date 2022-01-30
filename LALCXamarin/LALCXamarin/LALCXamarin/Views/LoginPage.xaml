@@ -17,10 +17,10 @@
                    TextColor="#0b1f2e"></Label>
             <Label Text="Email" Margin="35,10,20,5"></Label>
             <Entry x:Name="campoEmail" Margin="20,0,20,0"></Entry>
-            <Label x:Name="msEmail" Margin="20,0,20,0" FontSize="Small"></Label>
+            <Label x:Name="msEmail" Margin="30,0,20,0" FontSize="Small" TextColor="Red" ></Label>
             <Label Text="Contraseña" Margin="35,0,20,0"></Label>
             <Entry x:Name="campoContraseña" IsPassword="True" Margin="20,0,20,0"></Entry>
-            <Label x:Name="msContraseña" FontSize="Small"></Label>
+            <Label x:Name="msContraseña" TextColor="Red" FontSize="Small" Margin="30,0,20,5"></Label>
             <Button VerticalOptions="Center" 
                     Text="Login" 
                     Clicked="Button_Clicked"
