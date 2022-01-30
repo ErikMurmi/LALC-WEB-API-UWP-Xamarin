@@ -30,27 +30,9 @@ namespace LALCXamarin.Views.Subcategorias
             base.OnAppearing();
             cate = await lalc.GetCategoria(cate.CategoriaID);
             Elemen = (List<Subcategoria>)cate.Subcategorias;
-            Cargar();
+            SubcategoriasVista.ItemsSource = Elemen;
         }
 
-        private void Cargar()
-        {
-            if(Elemen != null)
-            {
-                SubcategoriasVista.ItemsSource = Elemen;
-            }
-            else
-            {
-                Button button = new Button
-                {
-                    Text = "Crea una Subcategoria",
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center
-
-                };
-                button.Clicked += OnButtonClicked;
-            }
-        }
 
         private async void OnButtonClicked(object sender, EventArgs e)
         {

@@ -31,27 +31,8 @@ namespace LALCXamarin.Views.Conceptos
             sub = await lalc.GetSubcategoria(sub.SubcategoriaID);
             color = sub.Color;
             Con = (List<Concepto>)sub.Conceptos;
-            Cargar();
-        }
-
-        private void Cargar()
-        {
-            if (Con != null)
-            {
-                ConceptosVista.ItemsSource = Con;
-            }
-            else
-            {
-                Button button = new Button
-                {
-                    Text = "Crea una Conceptos",
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center  
-
-                };
-                button.Clicked += OnButtonClicked;
-            }
-        }
+            ConceptosVista.ItemsSource = Con;
+        }        
 
         private async void OnButtonClicked(object sender, EventArgs e)
         {
