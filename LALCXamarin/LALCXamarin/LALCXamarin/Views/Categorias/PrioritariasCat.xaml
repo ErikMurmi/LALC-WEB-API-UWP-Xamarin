@@ -32,7 +32,7 @@
                                      Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
                                     <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                                         <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" FontSize="22"
-                                               HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"/>
+                                               HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold"/>
                                         <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White"/>
                                     </StackLayout>
                                 </StackLayout>
