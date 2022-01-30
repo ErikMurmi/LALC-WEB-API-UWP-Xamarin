@@ -98,7 +98,7 @@ namespace LALCXamarin.Views
                     {
                         App.actualUserId = i.UsuarioID;
                         //await Application.Current.MainPage.Navigation.PushAsync(new TabbedPage());
-                        await Shell.Current.GoToAsync($"//{nameof(Categorias)}");
+                        await Shell.Current.GoToAsync($"//{nameof(CategoriasView)}");
                     }
                 }
                 if (App.actualUserId == 0)
