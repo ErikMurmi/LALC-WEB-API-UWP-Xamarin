@@ -14,6 +14,7 @@ namespace LALCXamarin.Views.Subcategorias
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CrearSubcategoria : ContentPage
     {
+        public static int categoriaid = new int(); 
         CrearSubcategoriaViewModel _viewModel;
         public CrearSubcategoria()
         {
@@ -43,7 +44,7 @@ namespace LALCXamarin.Views.Subcategorias
                     Subcategoria subcategoriaCreada = new Subcategoria
                     {
                         Nombre = Nombre.Text,
-                        CategoriaID = 1,
+                        CategoriaID = categoriaid,
                         Descripcion = Descripcion.Text,
                         Color = "#" + ColorPick.ViewModel.Hex.ToString()
                     };

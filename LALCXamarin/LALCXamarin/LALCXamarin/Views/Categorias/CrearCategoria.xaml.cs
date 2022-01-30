@@ -12,19 +12,23 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Security;
 using LALCXamarin.ViewModels;
+using LALCXamarin.Services;
 
 namespace LALCXamarin.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CrearCategoria : ContentPage
     {
+        LalcAPI lalc;
         CrearCategoriaViewModel _viewModel { get; set; }
-
+        public static int usuarioid;
+        
         public CrearCategoria()
         {
             InitializeComponent();
             _viewModel = new CrearCategoriaViewModel();
             BindingContext = _viewModel = new CrearCategoriaViewModel();
+            usuarioid = new int();
         }
 
         protected override void OnAppearing()
@@ -34,7 +38,7 @@ namespace LALCXamarin.Views
 
         private async void CrearNuevaCategoria(object sender, EventArgs e)
         {
-
+         
             if (String.IsNullOrEmpty(Nombre.Text))
             {
                 await DisplayAlert("Nombre vacío", "La categoría debe tener un nombre", "OK");
@@ -46,7 +50,7 @@ namespace LALCXamarin.Views
                 {
                     Categoria categoriaCreada = new Categoria
                     {
-                        UsuarioID = 1,
+                        UsuarioID = usuarioid,
                         Nombre = Nombre.Text,
                         Descripcion = Descripcion.Text,
                         esPrioritaria = EsPrioritaria.IsChecked,

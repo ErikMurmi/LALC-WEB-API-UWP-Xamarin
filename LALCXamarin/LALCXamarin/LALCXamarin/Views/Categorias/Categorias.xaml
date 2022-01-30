@@ -4,6 +4,10 @@
              x:Class="LALCXamarin.Views.Categorias"
              xmlns:vm="clr-namespace:LALCXamarin.ViewModels" xmlns:models="clr-namespace:LALC_UWP.Models">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Crear" Clicked="CrearCategoria_Clicked" />
+    </ContentPage.ToolbarItems>
+
     <StackLayout>
         <Frame>
             <SearchBar x:Name="Barrabus" HorizontalTextAlignment="Start" Placeholder="Buscar categoria...." TextChanged="BarraBusqueda_TextChanged"/>

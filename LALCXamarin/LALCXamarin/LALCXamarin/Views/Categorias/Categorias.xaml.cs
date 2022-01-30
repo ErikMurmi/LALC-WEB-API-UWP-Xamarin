@@ -65,5 +65,12 @@ namespace LALCXamarin.Views
             var searchresult = lista.FindAll(s => s.Nombre.ToLower().Contains(Barrabus.Text.ToLower()));
             CategoriasVista.ItemsSource = searchresult;
         }
+
+        private async void CrearCategoria_Clicked(object sender, EventArgs e)
+        {
+            Usuario usuarioact = await lalc.GetUsuario(App.actualUserId);
+            CrearCategoria.usuarioid = usuarioact.UsuarioID;
+            await Navigation.PushAsync(new CrearCategoria());
+        }
     }
 }
