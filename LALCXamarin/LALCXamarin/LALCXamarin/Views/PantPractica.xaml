@@ -1,40 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:LALC_UWP.Models"
              x:Class="LALCXamarin.Views.PantPractica"
              Title="Práctica">
     <ContentPage.Content>
-        <StackLayout Margin="25,45,25,0">
+        <StackLayout Margin="25,0,25,0" VerticalOptions="Center">
             <CarouselView x:Name="CarruselConceptos"
                       PositionChanged="CarruselConceptos_PositionChanged"
                           VerticalOptions="Center"
-                          HeightRequest="300">
+                          HeightRequest="300"
+                          IsScrollAnimated="True">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal" >
+                        
+                    </LinearItemsLayout>
+                </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BorderColor="#6e625b"
+                    <DataTemplate x:DataType="models:Concepto">
+                        <Frame 
+                           BackgroundColor="{Binding Subcategoria.Color}"
+                           BorderColor="Gray"
+                           
                            CornerRadius="8"
+                           HasShadow="True"
                            HorizontalOptions="Center"
                            Margin="20"
                            VerticalOptions="CenterAndExpand"
                                >
-                            <StackLayout>
+                            <StackLayout HorizontalOptions="Center"
+                                         VerticalOptions="Center">
                                 <Label x:Name="TituloConce"
-                                   HorizontalOptions="Center"
-                                   Text="{Binding Titulo}}"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{Binding Titulo}"
                                    FontAttributes="Bold"
-                                   FontSize="Subtitle"/>
+                                   FontSize="30"
+                                   FontFamily="Monserrate"
+                                       TextColor="White"/>
                                 <Label x:Name="Concepto" 
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
                                         Text="{Binding Definicion}"
-                                        FontSize="Small"
+                                        FontSize="20"
                                        MaxLines="10"
-                                        LineBreakMode="TailTruncation"/>
+                                        LineBreakMode="TailTruncation"
+                                       Margin="0,30,0,0"
+                                       TextColor="White"/>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>
-            <Button x:Name="GuardarPractica" Text="Guardar" Clicked="GuardarPractica_Clicked" Margin="30,30,30,30"></Button>
+            <Button x:Name="GuardarPractica" Text="Guardar" Clicked="GuardarPractica_Clicked" Margin="60,100,60,0"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
