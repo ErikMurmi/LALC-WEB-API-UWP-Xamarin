@@ -64,7 +64,7 @@ namespace LALCXamarin.Views
 
         private async void ToolbarItem_Clicked_6(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Categorias());
+            await Navigation.PushAsync(new CategoriasView());
         }
 
         private async void ToolbarItem_Clicked_7(object sender, EventArgs e)

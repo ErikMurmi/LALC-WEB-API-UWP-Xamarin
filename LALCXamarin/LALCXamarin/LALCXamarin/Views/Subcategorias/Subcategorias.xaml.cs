@@ -30,7 +30,32 @@ namespace LALCXamarin.Views.Subcategorias
             base.OnAppearing();
             cate = await lalc.GetCategoria(cate.CategoriaID);
             Elemen = (List<Subcategoria>)cate.Subcategorias;
-            SubcategoriasVista.ItemsSource = Elemen;
+            Cargar();
+        }
+
+        private void Cargar()
+        {
+            if(Elemen != null)
+            {
+                SubcategoriasVista.ItemsSource = Elemen;
+            }
+            else
+            {
+                Button button = new Button
+                {
+                    Text = "Crea una Subcategoria",
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center
+
+                };
+                button.Clicked += OnButtonClicked;
+            }
+        }
+
+        private async void OnButtonClicked(object sender, EventArgs e)
+        {
+            CrearSubcategoria.categoriaid = cate.CategoriaID;
+            await Navigation.PushAsync(new CrearSubcategoria());
         }
 
         private async void SubcategoriasVista_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -60,7 +85,7 @@ namespace LALCXamarin.Views.Subcategorias
             await Navigation.PushAsync(new EditarSubcategoria());
         }
 
-        private async void Barrabus2_TextChanged(object sender, TextChangedEventArgs e)
+        private void Barrabus2_TextChanged(object sender, TextChangedEventArgs e)
         {          
             List<Subcategoria> lista = (List<Subcategoria>)cate.Subcategorias;
             var searchresult = lista.FindAll(s => s.Nombre.ToLower().Contains(Barrabus2.Text.ToLower()));

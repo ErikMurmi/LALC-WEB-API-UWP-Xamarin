@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LALCXamarin.Views.Categorias"
+             x:Class="LALCXamarin.Views.CategoriasView"
              xmlns:vm="clr-namespace:LALCXamarin.ViewModels" xmlns:models="clr-namespace:LALC_UWP.Models">
 
     <ContentPage.ToolbarItems>
@@ -36,7 +36,8 @@
                                 <StackLayout Orientation="Vertical" BackgroundColor="{Binding Color}"
                                      Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
                                     <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                                        <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" FontSize="22"
+                                               HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"/>
                                         <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
                                     </StackLayout>
                                 </StackLayout>

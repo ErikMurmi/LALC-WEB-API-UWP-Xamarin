@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 
 namespace LALCXamarin.Views
 {
-    public partial class Categorias : ContentPage
+    public partial class CategoriasView : ContentPage
     {
         LalcAPI lalc;
         public List<Categoria> Items { get; set; }
-        public Categorias()
+        public CategoriasView()
         {
             InitializeComponent();
             lalc = new LalcAPI();

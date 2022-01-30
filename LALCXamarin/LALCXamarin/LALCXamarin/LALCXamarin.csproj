@@ -56,6 +56,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Categorias\CategoriasView.xaml.cs">
+      <DependentUpon>CategoriasView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Subcategorias\EditarSubcategoria.xaml.cs">
       <DependentUpon>EditarSubcategoria.xaml</DependentUpon>
     </Compile>
