@@ -67,7 +67,7 @@ namespace LALCXamarin.Views
 
             if (answer)
             {
-                await Navigation.PopAsync();
+                await Shell.Current.Navigation.PopAsync();
             }
         }
     }

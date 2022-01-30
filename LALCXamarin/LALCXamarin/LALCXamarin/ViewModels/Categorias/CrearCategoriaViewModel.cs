@@ -25,7 +25,7 @@ namespace LALCXamarin.ViewModels
             var creada = await lalcAPI.CrearCategoria(ct);
             if (creada)
             {
-                await Shell.Current.GoToAsync($"//{nameof(CategoriasView)}");
+                await Shell.Current.Navigation.PopAsync();
             }
             
         }

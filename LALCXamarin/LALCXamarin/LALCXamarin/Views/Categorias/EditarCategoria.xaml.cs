@@ -74,7 +74,7 @@ namespace LALCXamarin.Views
                         Nombre = Nombre.Text,
                         Descripcion = Descripcion.Text,
                         esPrioritaria = EsPrioritaria.IsChecked,
-                        Color = "#4287f5"
+                        Color = "#" + ColorPick.ViewModel.Hex.ToString()
                     };
                     if (await _viewModel.EditarCategoria(categoriaSeleccionada, categoriaEditada))
                     {
