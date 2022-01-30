@@ -82,7 +82,7 @@
     <ShellItem x:Name="log"  Route="login" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
     </ShellItem>
-    <ShellItem x:Name="Reg"  Route="regist" FlyoutItemIsVisible="False">
+    <ShellItem x:Name="Registro"  Route="Registro" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:Registro}"/>
     </ShellItem>
     <FlyoutItem Title="Categorias" Icon="icon_about.png">

@@ -116,7 +116,7 @@ namespace LALCXamarin.Views
         }
         private async void IreRegistro_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}/{nameof(Registro)}");
+            await Shell.Current.GoToAsync($"//{nameof(Registro)}");
         }
     }
 }
