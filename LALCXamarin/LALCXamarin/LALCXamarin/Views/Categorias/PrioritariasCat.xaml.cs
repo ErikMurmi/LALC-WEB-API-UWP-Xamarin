@@ -62,12 +62,5 @@ namespace LALCXamarin.Views
                 }
             }
         }
-
-        private async void CrearPrioCategoria_Clicked(object sender, EventArgs e)
-        {
-            Usuario usuarioact = await lalc.GetUsuario(App.actualUserId);
-            CrearCategoria.usuarioid = usuarioact.UsuarioID;
-            await Navigation.PushAsync(new CrearCategoria());
-        }
     }
 }

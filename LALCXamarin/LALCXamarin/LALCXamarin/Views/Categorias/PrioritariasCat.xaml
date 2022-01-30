@@ -4,10 +4,7 @@
              x:Class="LALCXamarin.Views.PrioritariasCat">
 
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Crear" Clicked="CrearPrioCategoria_Clicked" />
-    </ContentPage.ToolbarItems>
-    
+   
     <StackLayout>
         <Frame>
             <SearchBar x:Name="Barrabusprio" HorizontalTextAlignment="Start" Placeholder="Buscar categoria...." TextChanged="Barrabusprio_TextChanged"/>
@@ -36,7 +33,7 @@
                                     <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                                         <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" FontSize="22"
                                                HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White"/>
                                     </StackLayout>
                                 </StackLayout>
 
