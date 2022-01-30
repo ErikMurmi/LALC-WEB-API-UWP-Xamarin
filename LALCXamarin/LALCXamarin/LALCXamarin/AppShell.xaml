@@ -94,7 +94,7 @@
         <ShellContent  Route="SubcategoriasView" ContentTemplate="{DataTemplate sb:SubcategoriasView}"/>
     </FlyoutItem>
     <FlyoutItem x:Name="Conceptos"   FlyoutItemIsVisible="False">
-        <ShellContent Route="ConceotosView" ContentTemplate="{DataTemplate cpt:ConceptosView}"/>
+        <ShellContent Route="ConceptosView" ContentTemplate="{DataTemplate cpt:ConceptosView}"/>
     </FlyoutItem>
     <FlyoutItem x:Name="Practicas" Title="Practicas" Icon="icon_feed.png">
         <ShellContent Route="Practicas" ContentTemplate="{DataTemplate pr:Practicas}" />
