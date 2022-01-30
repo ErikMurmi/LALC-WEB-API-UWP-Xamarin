@@ -32,8 +32,8 @@
                                 <StackLayout Orientation="Vertical" BackgroundColor="{Binding Color}"
                                      Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300">
                                     <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                                        <Label Text="{Binding Nombre}" TextColor="Black"/>
-                                        <Label Text="{Binding Descripcion}" TextColor="Black"/>
+                                        <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
                                     </StackLayout>
                                 </StackLayout>
                             </SwipeView>

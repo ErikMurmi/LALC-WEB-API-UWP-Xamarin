@@ -37,9 +37,9 @@
 
                                 <StackLayout Orientation="Vertical" 
                                     Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300" >
-                                    <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding Titulo}" TextColor="Black"/>
-                                        <Label Text="{Binding Definicion}" TextColor="Black"/>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                                        <Label Text="{Binding Titulo}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Definicion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
                                     </StackLayout>
                                 </StackLayout>
 
