@@ -26,7 +26,7 @@ namespace LALCXamarin.ViewModels
             var creada = await lalcAPI.CrearConcepto(Nconcepto);
             if (creada)
             {
-                await Shell.Current.GoToAsync($"//{nameof(ConceptosView)}");
+                await Shell.Current.Navigation.PopAsync();
             }
             
         }
