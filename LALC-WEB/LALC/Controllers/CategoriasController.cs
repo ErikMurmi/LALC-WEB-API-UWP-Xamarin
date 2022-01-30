@@ -151,6 +151,7 @@ namespace LALC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategoriaID,Nombre,Color,Descripcion,esPrioritaria")] Categoria categoria)
         {
+            categoria.UsuarioID = data.getUserID();
             if (ModelState.IsValid)
             {
                 db.Entry(categoria).State = EntityState.Modified;
