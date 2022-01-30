@@ -97,7 +97,8 @@ namespace LALCXamarin.Views
                     if (i.email.Equals(campoEmail.Text) && i.password.Equals(campoContraseña.Text))
                     {
                         App.actualUserId = i.UsuarioID;
-                        await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+                        //await Application.Current.MainPage.Navigation.PushAsync(new TabbedPage());
+                        await Shell.Current.GoToAsync($"//{nameof(Categorias)}");
                     }
                 }
                 if (App.actualUserId == 0)
@@ -115,7 +116,7 @@ namespace LALCXamarin.Views
         }
         private async void IreRegistro_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Registro());
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}/{nameof(Registro)}");
         }
     }
 }
