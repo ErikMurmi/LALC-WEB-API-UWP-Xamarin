@@ -1,35 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LALCXamarin.Views.Categorias"
-             xmlns:vm="clr-namespace:LALCXamarin.ViewModels" xmlns:models="clr-namespace:LALC_UWP.Models">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:LALC_UWP.Models"
+             x:Class="LALCXamarin.Views.PrioritariasCat">
+
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Crear" Clicked="CrearCategoria_Clicked" />
-        <ToolbarItem Text="Prioritarias" Clicked="CatPrioritarias_Clicked" />
+        <ToolbarItem Text="Crear" Clicked="CrearPrioCategoria_Clicked" />
     </ContentPage.ToolbarItems>
-
+    
     <StackLayout>
         <Frame>
-            <SearchBar x:Name="Barrabus" HorizontalTextAlignment="Start" Placeholder="Buscar categoria...." TextChanged="BarraBusqueda_TextChanged"/>
+            <SearchBar x:Name="Barrabusprio" HorizontalTextAlignment="Start" Placeholder="Buscar categoria...." TextChanged="Barrabusprio_TextChanged"/>
         </Frame>
         <ScrollView>
-            <ListView x:Name="CategoriasVista" Margin="20" HasUnevenRows="True" ItemTapped="CategoriasVista_ItemTapped">
+            <ListView x:Name="CategoriasPrioVista" Margin="20" HasUnevenRows="True" ItemTapped="CategoriasPrioVista_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
                             <SwipeView x:DataType="models:Categoria" >
-
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Edit" BackgroundColor="Green"
-                                           CommandParameter="{Binding CategoriaID}" Invoked="ModificarCategoria_Invoked"></SwipeItem>
+                                           CommandParameter="{Binding CategoriaID}" Invoked="ModificarPrioCat_Invoked"></SwipeItem>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Delete" BackgroundColor="Red"
-                                           CommandParameter="{Binding CategoriaID}" Invoked="EliminarCategoria_Invoked"></SwipeItem>
+                                           CommandParameter="{Binding CategoriaID}" Invoked="EliminarPrioCat_Invoked"></SwipeItem>
                                     </SwipeItems>
                                 </SwipeView.RightItems>
 
@@ -40,8 +38,8 @@
                                         <Label Text="{Binding Descripcion}" TextColor="Black"/>
                                     </StackLayout>
                                 </StackLayout>
-                                
-                                
+
+
                             </SwipeView>
                         </ViewCell>
 
@@ -50,4 +48,5 @@
             </ListView>
         </ScrollView>
     </StackLayout>
+
 </ContentPage>
