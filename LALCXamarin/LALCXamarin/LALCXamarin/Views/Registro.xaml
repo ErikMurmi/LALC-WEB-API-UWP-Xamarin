@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout >
             <ImageButton Source="back_icon.png" Padding="10,10,0,0" HeightRequest="40"
-                         VerticalOptions="Start" HorizontalOptions="Start"
+                         VerticalOptions="Start" HorizontalOptions="Start" Clicked="irLogin"
                          BackgroundColor="White"></ImageButton>
             <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
                 <Label Text="REGISTRO   " 

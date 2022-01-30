@@ -114,7 +114,7 @@ namespace LALCXamarin.Views
             }
         }
 
-        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        private async void irLogin(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
