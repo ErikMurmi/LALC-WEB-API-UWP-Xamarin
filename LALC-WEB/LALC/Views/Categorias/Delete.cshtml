@@ -1,0 +1,74 @@
+﻿@model LALC.Models.Categoria
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/colorpicker.css" type="text/css" />
+<script type="text/javascript" src="js/colorpicker.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.5/jquery.minicolors.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-minicolors/2.3.5/jquery.minicolors.css" type="text/css" rel="stylesheet" />
+
+
+<h2 style="font-family: 'Segoe UI'">Eliminar</h2>
+<br />
+<h3 style="font-family: 'Segoe UI'">¿Está seguro de querer eliminar este elemento?</h3>
+<div>
+    <br />
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            <div style="width:40px;height:30px; background-color: @Model.Color"></div>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col" style="width:fit-content">
+                    <input type="submit" value="Eliminar" class="btn btn-default fs-5" style="width: auto; color: white; background: #3a70cf" />
+                </div>
+                <div class="col" style="width:fit-content">
+                    <button type="button" class="btn btn-dark fs-5" style="width:auto" onclick="goBack()">Cancelar</button>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                </div>
+                <div class="col">
+
+                </div>
+                <div class="col">
+
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

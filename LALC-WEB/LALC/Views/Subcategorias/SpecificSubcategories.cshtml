@@ -1,0 +1,105 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<LALC.Models.Subcategoria>
+@{
+    ViewBag.Title = "SpecificSubcategories";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<br />
+<h2 style="font-family: 'Segoe UI'">SUBCATEGORÍAS</h2>
+<br />
+<div class="row">
+    <div class="col">
+        <button type="button" class="btn btn-dark fs-5" style="width:18%" onclick="location.href='@Url.Action("Create", "Subcategorias",new { CategoriaId = LALC.Controllers.SubcategoriasController.getCreateId() })'">Crear</button>
+    </div>
+    <div class="col">
+        <form class="d-flex">
+            @using (Html.BeginForm("SpecificSubcategories", "Subcategorias", FormMethod.Get, new { style = "margin-right:80px" }))
+            {
+                <input name="TituloS" class="form-control me-2" type="search" placeholder="Ingrese su subcategoria" style="width:250px">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            }
+        </form>
+    </div>
+</div>
+
+<style>
+    .cards {
+        margin-top: 30px;
+        max-width: 1000px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: transparent;
+        color: black;
+        margin-top: 0px;
+        height: 15px;
+        padding-bottom: 25px;
+        border: none;
+        margin-left: 180px;
+        object-position: right;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        margin-left: 180px;
+        position: absolute;
+        background-color: lightgrey;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        object-position: right;
+    }
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 5px 5px;
+            text-decoration: none;
+            display: block;
+        }
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: transparent;
+    }
+</style>
+
+<div class="cards">
+    @foreach (var item in Model)
+    {
+        <div class="card text-center text-white mb-3" style="background-color: @item.Color" onclick="location.href = '@Url.Action("SpecificConcepts", "Conceptoes", new { id=item.SubcategoriaID}) '">
+            <div class="card-body">
+                <div class="dropdown">
+                    <button class="dropbtn card pull-right">+</button>
+                    <div class="dropdown-content">
+                        <a href="@Url.Action("Edit", "Subcategorias", new { id=item.SubcategoriaID})">Editar</a>
+                        <a href="@Url.Action("Delete", "Subcategorias", new { id=item.SubcategoriaID})">Eliminar</a>
+                    </div>
+                </div>
+                <h5 class="card-title">@item.Nombre</h5>
+                <p class="card-text">@item.Descripcion</p>
+            </div>
+        </div>
+    }
+</div>
+
+
+@Html.PagedListPager(Model, pagina => Url.Action("SpecificSubcategories", new { pagina, TituloS = Request.QueryString["TituloS"] }))
+
+

@@ -1,0 +1,65 @@
+﻿@model LALC.Models.Concepto
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 style="font-family: 'Segoe UI'">Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4 style="font-family: 'Segoe UI'">Concepto</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubcategoriaID, "SubcategoriaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SubcategoriaID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SubcategoriaID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Definicion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Definicion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Definicion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col" style="width:fit-content">
+                    <input type="submit" value="Crear" class="btn btn-default fs-5" style="width: auto; color: white; background: #3a70cf" />
+                </div>
+                <div class="col" style="width:fit-content">
+                    <button type="button" class="btn btn-dark fs-5" style="width:auto" onclick="goBack()">Cancelar</button>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                </div>
+                <div class="col">
+
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

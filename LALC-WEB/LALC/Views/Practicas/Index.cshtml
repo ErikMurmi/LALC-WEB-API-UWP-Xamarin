@@ -1,0 +1,54 @@
+﻿@model IEnumerable<LALC.Models.Practica>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Historial de Prácticas</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Categoria
+        </th>
+        <th>
+            Subcategoria
+        </th>
+        <th>
+            Cantidad de Conceptos
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td style="width:fit-content">
+        @Html.DisplayFor(modelItem => item.PracticaID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Subcategoria.Categoria.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Subcategoria.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CantidadConceptos)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Fecha)
+    </td>
+    <td>
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.PracticaID })
+    </td>
+</tr>
+}
+
+</table>

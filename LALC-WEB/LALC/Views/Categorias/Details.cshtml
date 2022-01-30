@@ -1,0 +1,37 @@
+﻿@model LALC.Models.Categoria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Subcategorias</h2>
+<div class="row">
+    <div class="col">
+        <button type="button" class="btn btn-dark fs-5" style="width:18%" onclick="location.href='@Url.Action("Create", "Subcategorias")'">Crear</button>
+    </div>
+    <div class="col">
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("Titulo")
+            <input style="background: skyblue" class="justify-content-end" type="submit" value="Buscar" />
+        }
+    </div>
+</div>
+
+<div class="d-flex p-2 bd-highlight">
+    @foreach (var item in Model.Subcategoria)
+        {
+            <div class="col-lg-4">
+                <div class="card text-center text-white bg-primary mb-3" style="max-width: 18rem;" onclick="location.href = '@Url.Action("SpecificSubcategories", "Subcategorias",new { id=item.CategoriaID}) '">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Nombre</h5>
+                        <p class="card-text">@item.Descripcion</p>
+                    </div>
+                </div>
+            </div>
+            }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoriaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

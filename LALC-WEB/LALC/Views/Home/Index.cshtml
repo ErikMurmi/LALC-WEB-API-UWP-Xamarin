@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<style>
+    .center {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+    }
+</style>
+<div class="center">
+    <img src="~/img/LALC_Home.png" width="800" />
+</div>
+
+@if (!User.Identity.IsAuthenticated)
+{
+<div class="d-grid gap-3 col-2 mx-auto"  >
+    <input type="button" value="Login" class="btn btn-primary" onclick="location.href='@Url.Action("Login", "Auth")'"style="width: 300px;color:black;background-color: white; border-color: black;border-radius:unset; font-family:'Segoe UI'; font-size:50px" />
+    <input type="button" value="Registrarse" class="btn btn-primary" onclick="location.href='@Url.Action("Registrar", "Auth")'"style="width: 300px; background-color: black; border-color: black; border-radius: unset; font-family: 'Segoe UI'; font-size: 50px "/>
+</div>
+    
+}
+
+ 

@@ -1,0 +1,50 @@
+﻿@model LALC.Models.Subcategoria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="font-family: 'Segoe UI'">Details</h2>
+
+<div>
+    <h4 style="font-family: 'Segoe UI'">Subcategoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.CategoriaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SubcategoriaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
