@@ -9,8 +9,12 @@
             <Editor x:Name="Titulo" Text="" AutoSize="TextChanges"/>
             <Label Text="Definición" FontSize="20"/>
             <Editor x:Name="Definicion" Text="" AutoSize="TextChanges"/>
-            <Button Text="Crear" FontSize="20" FontAttributes="Bold" BackgroundColor="CadetBlue" Clicked="CrearNuevoConcepto"/>
-            <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Crear" FontSize="20" FontAttributes="Bold" Margin="0,20,10,10" WidthRequest="120"
+                    BackgroundColor="CadetBlue" Clicked="CrearNuevoConcepto" />
+                <Button Text="Cancelar" FontSize="20" FontAttributes="Bold" WidthRequest="130" Margin="0,20,0,10"
+                        BackgroundColor="PaleVioletRed" Clicked="CancelarCrear"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
