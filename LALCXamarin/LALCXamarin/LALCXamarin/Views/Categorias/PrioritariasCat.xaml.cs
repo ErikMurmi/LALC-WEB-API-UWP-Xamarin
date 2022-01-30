@@ -30,9 +30,8 @@ namespace LALCXamarin.Views
         }
 
         private async void Barrabusprio_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Usuario usuarioact = await lalc.GetUsuario(App.actualUserId);
-            List<Categoria> lista = (List<Categoria>)usuarioact.Categorias;
+        {           
+            List<Categoria> lista = ItemsPriocat;
             var searchresult = lista.FindAll(s => s.Nombre.ToLower().Contains(Barrabusprio.Text.ToLower()));
             CategoriasPrioVista.ItemsSource = searchresult;
         }
