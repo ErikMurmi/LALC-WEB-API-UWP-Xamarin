@@ -72,5 +72,14 @@ namespace LALCXamarin.Views
             CrearCategoria.usuarioid = usuarioact.UsuarioID;
             await Navigation.PushAsync(new CrearCategoria());
         }
+
+        private async void CatPrioritarias_Clicked(object sender, EventArgs e)
+        {
+            Usuario usuarioact = await lalc.GetUsuario(App.actualUserId);
+            List<Categoria> lista = (List<Categoria>)usuarioact.Categorias;
+            var searchresult = lista.FindAll(s => s.esPrioritaria.Equals(true));
+            PrioritariasCat.ItemsPriocat = searchresult;
+            await Navigation.PushAsync(new PrioritariasCat());
+        }
     }
 }
