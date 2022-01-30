@@ -71,7 +71,7 @@ namespace LALCXamarin.Views.Conceptos
                     };
                     if (await _viewModel.EditarConcepto(ConceptoSeleccionado, conceptoEditado))
                     {
-                        await Shell.Current.GoToAsync($"//{nameof(ConceptosView)}");
+                        await Shell.Current.Navigation.PopAsync();
                     }
                 }
             }
@@ -84,7 +84,7 @@ namespace LALCXamarin.Views.Conceptos
 
             if (answer)
             {
-                await Shell.Current.GoToAsync($"//{nameof(ConceptosView)}");
+                await Shell.Current.Navigation.PopAsync();
             }
         }
     }

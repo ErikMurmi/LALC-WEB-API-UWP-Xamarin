@@ -75,7 +75,7 @@ namespace LALCXamarin.Views
                     };
                     if (await _viewModel.EditarSubcategoria(subcategoriaSeleccionada, subcategoriaEditada))
                     {
-                        await Shell.Current.GoToAsync($"//{nameof(SubcategoriasView)}");
+                        await Shell.Current.Navigation.PopAsync();
                     }
                 }
             }

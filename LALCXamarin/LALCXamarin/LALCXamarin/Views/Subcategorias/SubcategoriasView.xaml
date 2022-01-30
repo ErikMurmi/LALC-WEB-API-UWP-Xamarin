@@ -6,7 +6,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Crear" Clicked="CrearSubcategoria_Clicked" />
     </ContentPage.ToolbarItems>
-    <StackLayout>
+    <StackLayout x:Name="LayoutSub">
         <Frame>
             <SearchBar x:Name="Barrabus2" HorizontalTextAlignment="Start" Placeholder="Buscar subcategoria...." TextChanged="Barrabus2_TextChanged"/>
         </Frame>
@@ -32,8 +32,8 @@
                                 <StackLayout Orientation="Vertical" BackgroundColor="{Binding Color}"
                                      Margin="0,0,0,20" Padding="20" HeightRequest="80" WidthRequest="300">
                                     <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                                        <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
-                                        <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                        <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White"/>
+                                        <Label Text="{Binding Descripcion}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White"/>
                                     </StackLayout>
                                 </StackLayout>
                             </SwipeView>

@@ -31,37 +31,6 @@ namespace LALCXamarin.ViewModels.Conceptos
             BindingContext = _viewModel = new CrearConceptoViewModel();
         }
 
-        /*private async void CrearNuevoConcepto(object sender, EventArgs e)
-        {
-
-            if (String.IsNullOrEmpty(Titulo.Text))
-            {
-                await DisplayAlert("Nombre vacío", "El concepto debe tener un titulo", "OK");
-            }
-            else
-            {
-                bool answer = await DisplayAlert("Crear", "¿Está seguro de crear el concepto?", "Si", "No");
-                if (answer)
-                {
-                    var conceptoCreado = new Concepto
-                    {
-                        Titulo = Titulo.Text,
-                        SubcategoriaID = 1,
-                        Definicion = Definicion.Text
-                    };
-                    var httpHandler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (o, cert, chain, errors) => true };
-                    var client = new HttpClient(httpHandler);
-                    var serializedSubcategoria = JsonConvert.SerializeObject(conceptoCreado);
-                    var dato = new StringContent(serializedSubcategoria, Encoding.UTF8, "application/json");
-                    var httpResponse = await client.PostAsync(conceptos_url, dato);
-
-                    if (httpResponse.Content != null)
-                    {
-                        await Navigation.PopAsync();
-                    }
-                }
-            }
-        }*/
 
         private async void CrearNuevoConcepto(object sender, EventArgs e)
         {
