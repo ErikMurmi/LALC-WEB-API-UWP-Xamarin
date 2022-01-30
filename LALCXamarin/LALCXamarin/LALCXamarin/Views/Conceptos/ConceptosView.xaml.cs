@@ -12,13 +12,13 @@ using Xamarin.Forms.Xaml;
 
 namespace LALCXamarin.Views.Conceptos
 {
-    public partial class Conceptos : ContentPage
+    public partial class ConceptosView : ContentPage
     {
         LalcAPI lalc;
         public static Subcategoria sub = new Subcategoria();
         public static string color;
         public List<Concepto> Con { get; set; }
-        public Conceptos()
+        public ConceptosView()
         {
             InitializeComponent();
             Con = new List<Concepto>();

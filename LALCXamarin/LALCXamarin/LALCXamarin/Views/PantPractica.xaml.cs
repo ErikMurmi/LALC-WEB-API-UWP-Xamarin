@@ -32,7 +32,7 @@ namespace LALCXamarin.Views
         public void generarListaPractica()
         {
             CarruselConceptos.IsSwipeEnabled = true;
-            sub = Conceptos.Conceptos.sub;
+            sub = Conceptos.ConceptosView.sub;
             contadorConceptos = 1;
             conceptosPractica = sub.Conceptos.ToList();
             conceptosPractica = Shuffle<Concepto>(conceptosPractica);

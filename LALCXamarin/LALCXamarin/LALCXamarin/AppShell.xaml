@@ -3,6 +3,8 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:LALCXamarin.Views"
        xmlns:pr ="clr-namespace:LALCXamarin.Views.Practicas"
+       xmlns:sb ="clr-namespace:LALCXamarin.Views.Subcategorias"
+       xmlns:cpt ="clr-namespace:LALCXamarin.Views.Conceptos"
        Title="LALCXamarin"
        x:Class="LALCXamarin.AppShell">
 
@@ -87,6 +89,12 @@
     </ShellItem>
     <FlyoutItem Title="Categorias" Icon="icon_about.png">
         <ShellContent Route="CategoriasView" ContentTemplate="{DataTemplate local:CategoriasView}" />
+    </FlyoutItem>
+    <FlyoutItem x:Name="Subcategorias"  FlyoutItemIsVisible="False">
+        <ShellContent  Route="SubcategoriasView" ContentTemplate="{DataTemplate sb:SubcategoriasView}"/>
+    </FlyoutItem>
+    <FlyoutItem x:Name="Conceptos"   FlyoutItemIsVisible="False">
+        <ShellContent Route="ConceotosView" ContentTemplate="{DataTemplate cpt:ConceptosView}"/>
     </FlyoutItem>
     <FlyoutItem x:Name="Practicas" Title="Practicas" Icon="icon_feed.png">
         <ShellContent Route="Practicas" ContentTemplate="{DataTemplate pr:Practicas}" />
